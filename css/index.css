@@ -1,0 +1,140 @@
+ *{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding-left: 8%;
+    padding-right: 8%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    cursor: pointer;
+    margin: 30px 0;
+}
+
+.menu-icon {
+    width: 25px;
+    cursor: pointer;
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 30px;
+}
+nav ul li a {
+text-decoration: none;
+color: white;
+font-size: 14px;
+}
+
+nav ul li a:hover {
+    color: purple;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 100px 0;
+    /* background-image: url(/assets/fundo-roxo.png); */
+}
+
+.col-1{
+    flex-basis: 100%;
+    position: relative;
+    margin-left: 50px;
+}
+
+.col-1 h2 {
+    font-size: 54px;
+}
+
+.col-1 h3 {
+    font-size: 30px;
+    color: #707070;
+    font-weight: 100;
+    margin: 20px 0 10px;
+}
+.col-1 p {
+    font-size: 16px;
+    color: #b7b7b7;
+    font-weight: 100;
+}
+.col-1 p {
+    margin: 30px 0;
+    font-size: 20px;
+}
+
+button {
+    width: 140px;
+    border: 0;
+    padding: 12px 10px;
+    outline: none;
+    color: #fff;
+    background: linear-gradient(to right, #4e034e, #101010  );
+    border-radius: 6px;
+    cursor: pointer;
+    transition: width 1s;
+}
+button:hover {
+    width: 160px;
+    display: flex;
+    align-items: center;
+}
+.col-2 {
+    position: relative;
+    flex-basis: 90%;
+    display: flex;
+    align-items: center;
+    margin-right: 10vh;
+}
+.col-2 .menu-photo {
+    width: 100%;
+}
+
+.container {
+  /* background: linear-gradient(to right, #161616, #7634BF); */
+  background-image: url(/assets/fundo-roxo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media only screen and (max-width:700px){
+
+    nav ul {
+        width: 100%;
+
+        position: absolute;
+        top: 40px;
+        right: 0;
+        z-index: 2;
+    }
+    nav ul li {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    nav ul li a {
+        color: white;
+    }
+}
