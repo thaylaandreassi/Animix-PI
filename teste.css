@@ -132,6 +132,8 @@ header .container .col-md-7 p {
 .primary-btn {
   border-radius: 30px;
   font-weight: bold;
+  cursor: pointer;
+  transition: 1s;
 }
 
 /********** section 1 **************/
