@@ -3,6 +3,7 @@
 
 <head>
     <title>Login Form Design</title>
+    <link rel="stylesheet" href="login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -25,52 +26,37 @@
 <body>
         <div class="container">
             <header>
-                    <a href="teste.html"><img src="assets/animix-logo-preto.svg" alt=""></a>
-              </header>
+            <a href="teste.html"><img src="assets/animix-logo-preto.svg" alt=""></a>
+            </header>
             <div class="myCard">
                 <div class="row">
                     <div class="col-md-6">
+                        <div class="myRightCtn">
+                            <img src="assets/b.png"
+                                alt="">
+                            <div class="box">
+                            </div>
+                            <p>Ainda não é cadastrado?</p> 
+                            <input type="button" class="butt_out" value="Cadastre-se" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="myLeftCtn">
                             <form class="myForm text-center">
-                                <header>Cria uma nova conta</header>
-                                <div class="form-group">
-                                    <i class="fas fa-user"></i>
-                                    <input class="myInput" type="text" placeholder="Nome de usuário" id="username" required>
-                                </div>
-    
+                                <header>Entre com sua conta</header>
                                 <div class="form-group">
                                     <i class="fas fa-envelope"></i>
                                     <input class="myInput" placeholder="Email" type="text" id="email" required>
                                 </div>
-                              
-    
                                 <div class="form-group">
                                     <i class="fas fa-lock"></i>
                                     <input class="myInput" type="password" id="password" placeholder="Senha" required>
                                 </div>
-                                <div class="form-group">
-                                    <i class="fas fa-lock"></i>
-                                    <input class="myInput" type="password" id="password" placeholder="Senha" required>
-                                </div>
-    
-                                <input type="submit" class="butt" value="CRIAR CONTA">
-    
+                                <input type="submit" class="butt" value="ENTRAR">
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="myRightCtn">
-                            <img src="https://media1.giphy.com/media/yYslOlck6ev86URDJR/giphy.gif?cid=790b76118f637b064cfa672b38371082b9215d8db3beb28c&rid=giphy.gif&ct=s"
-                                alt="">
-                            <div class="box">
-    
-                                
-                                
-                            </div>
-                            <p>Já é cadastrado? Faça o Login</p> 
-                            <input type="button" class="butt_out" value="Login" />
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
