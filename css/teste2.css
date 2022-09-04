@@ -4,6 +4,7 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow: hidden;
 }
 header,
 section {
@@ -95,8 +96,6 @@ header a {
   transition: all 1s;
   margin-top: 25px;
 }
-
-
 .btn1:hover {
   background-color: #E03584;
 }
@@ -153,7 +152,6 @@ header .container .col-md-7 h6 {
 margin-left: -200px;
 
 }
-
 .options{
   margin-top: -50px;
 }
@@ -426,12 +424,9 @@ position: relative;
   margin-top: -10px;
 }
 
-
-
 .section-9 {
   padding: 20vmin 0vmin;
   background: var(--bggradient2);
-
 }
 
 .section-9 img {
@@ -666,11 +661,6 @@ footer .column i + i {
                 border-radius: 50%;
             }
 
-
-          
-          
-          
-          
           /*linha dos links: inicio*/
             .nav-link::after {
               content: '';
@@ -712,7 +702,9 @@ footer .column i + i {
               transition: all 0.5s;
           }
     /*linha dos links: fim*/
-        /*fio2 significa que a linha ficará estática no link para que o usúario consiga identificar em que página ele está, ou seja, devemos colocar fio2 como class na home quando o usúario estiver na home*/
+        /*fio2 significa que a linha ficará estática no link para que o usúario
+         consiga identificar em que página ele está, ou seja, devemos colocar fio2
+          como class na home quando o usúario estiver na home*/
 
 
 
