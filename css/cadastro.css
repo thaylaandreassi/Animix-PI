@@ -95,6 +95,7 @@
     margin-top: 50px;
   } 
   .left-container .butt {
+    cursor: pointer;
     background: linear-gradient(45deg, #bb36fd, #9b00e8);
     color: #fff;
     width: 230px;
@@ -117,6 +118,7 @@
     left: 36px;
   } 
   .butt_out {
+    cursor: pointer;
     background: transparent;
     color: #fff;
     width: 120px;
