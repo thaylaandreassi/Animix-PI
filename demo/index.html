@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>simpleheat demo</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+
+        .options input {
+            width: 400px;
+        }
+    </style>
+    <link rel="stylesheet" href="css.css">
+</head>
+
+
+<body>
+
+
+    <p>
+    <div id="diva">
+        <div class="container">
+
+            <div class="options">
+                <input oninput="kk()" onchange="kk()" type="range" id="tink" class="iptRange" value="1" min="10" max="20"><br />
+                <input oninput="kk2()" type="text" id="valor" value="100" style="display: none;"><br />
+                <input type="range" id="blurr" value="19" min="10" max="50" style="display: none;">
+                <p id="budget">08:00</p>
+            </div>
+<div class="mapa">
+
+<canvas id="canvas" width="900" height="600"></canvas>
+
+</div>
+
+        </div>
+    </div>
+    <script>
+
+        function kk2() {
+
+            var radius = get('valor');
+
+            heat.radius(+radius.value);
+            frame = frame || window.requestAnimationFrame(draw);
+
+            if (changeType > 11) {
+                diva.style.display = 'none'
+            }
+        }
+
+        function kk(params) {
+            if (document.getElementById("tink").value == 10) {
+                document.getElementById("valor").value = 3;
+                budget.innerHTML = "08:00"
+
+                kk2() 
+            }
+            if (document.getElementById("tink").value == 11) {
+                document.getElementById("valor").value = 6;
+                budget.innerHTML = "09:00"
+
+                kk2()
+            }
+            if (document.getElementById("tink").value == 12) {
+                document.getElementById("valor").value = 7;
+                budget.innerHTML = "10:00"
+
+                kk2() 
+
+            } 
+            if (document.getElementById("tink").value == 13) {
+                document.getElementById("valor").value = 4;
+                budget.innerHTML = "11:00"
+
+                kk2() 
+
+            }  
+            if (document.getElementById("tink").value == 14) {
+                document.getElementById("valor").value = 10;
+                budget.innerHTML = "12:00"
+
+                kk2() 
+
+            }  
+            if (document.getElementById("tink").value == 15) {
+                document.getElementById("valor").value = 10;
+                budget.innerHTML = "13:00"
+
+                kk2() 
+
+            }  
+            if (document.getElementById("tink").value == 16) {
+                document.getElementById("valor").value = 8;
+                budget.innerHTML = "14:00"
+
+                kk2() 
+            }
+            if (document.getElementById("tink").value == 17) {
+                document.getElementById("valor").value = 7;
+                budget.innerHTML = "15:00"
+
+                kk2() 
+            }
+            if (document.getElementById("tink").value == 18) {
+                document.getElementById("valor").value = 10;
+                budget.innerHTML = "16:00"
+
+                kk2() 
+            }
+            if (document.getElementById("tink").value == 19) {
+                document.getElementById("valor").value = 7;
+                budget.innerHTML = "17:00"
+
+                kk2() 
+            }
+            if (document.getElementById("tink").value == 20) {
+                document.getElementById("valor").value = 4;
+                budget.innerHTML = "18:00"
+
+                kk2() 
+            }
+        }
+
+    </script>
+
+    <script src="../simpleheat.js"></script>
+    <script src="data.js"></script>
+    <script>
+
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+        function get(id) {
+            return document.getElementById(id);
+        }
+
+        var heat = simpleheat('canvas').data(data2).max(15),
+            frame;
+           
+        function draw() {
+            console.time('draw');
+            heat.draw();
+            console.timeEnd('draw');
+            frame = null;
+        }
+
+        draw();
+
+        get('canvas').onclick = function (e) {
+            heat.add([e.layerX, e.layerY, 1]);
+            frame = frame || window.requestAnimationFrame(draw);
+        };
+
+
+
+    </script>
+</body>
+
+</html>
