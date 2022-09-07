@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Animix | Cadastro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/cadastro.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <script src="js/funcoes.js"></script>
+
+</head>
+
+<body>
+        <div class="container">
+            <header>
+                    <a href="index.html"><img src="assets/animix-logo-preto.svg" alt=""></a>
+              </header>
+            <div class="container-card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="left-container">
+                            <div class="myForm text-center">
+                                <header>Cria uma nova conta</header>
+                                <div class="form-group">
+                                    <i class="fas fa-user"></i>
+                                    <input class="myInput" type="text" placeholder="Nome de usuário" id="username_ipt">
+                                </div>
+                                <div class="form-group">
+                                    <i class="fas fa-envelope"></i>
+                                    <input class="myInput" placeholder="Email" type="text" id="email_ipt">
+                                </div>
+                                <div class="form-group">
+                                    <i class="fas fa-lock"></i>
+                                    <input class="myInput" type="password" id="password_ipt" placeholder="Senha">
+                                </div>
+                                <div class="form-group">
+                                    <i class="fas fa-lock"></i>
+                                    <input class="myInput" type="password" id="password_confirm_ipt" placeholder="Senha">
+                                </div>
+                                <button onclick="cadastrar()" class="butt"> CRIAR CONTA </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="right-container">
+                            <img src="https://media1.giphy.com/media/yYslOlck6ev86URDJR/giphy.gif?cid=790b76118f637b064cfa672b38371082b9215d8db3beb28c&rid=giphy.gif&ct=s"
+                                alt="">
+                            <div class="box">       
+                            </div>
+                            <p>Já é cadastrado? Faça o Login</p> 
+                            <a href="login.html"><button type="button" class="butt_out">Login</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
+
+<script>
+    function cadastrar() {
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var usuarioVar = username_ipt.value;
+        var emailVar = email_ipt.value;
+        var senhaVar = password_ipt.value;
+        var confirmacaoSenhaVar = password_confirm_ipt.value;
+
+        if (usuarioVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            return false;
+        }
+        else {
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                usuarioServer: usuarioVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+                
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+        });
+
+        return false;
+    }
+
+</script>
