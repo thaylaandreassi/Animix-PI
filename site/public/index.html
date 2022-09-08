@@ -18,12 +18,23 @@
     <div class="container-fluid p-0">
       <nav class="navbar navbar-expand-lg">
         <img style="width: 12%;" src="assets/logo-animix-transparente.png" alt="">
-        <a class="navbar-brand" href="#">
-          </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        <a class="navbar-brand" href="#"></a>
+        <div class="navbar-menu">
+          <button onclick="show()" id="btnNavbar" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fas fa-align-right text-light"></i>
         </button>
+        <div id="hiddenMenu">
+              <div class="navbar-hidden">
+              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="#sec1">Serviços</a>
+              <a class="nav-link" href="#team">Equipe</a>
+              <a class="nav-link" href="#sec6">Sobre nós</a>
+              <a class="nav-link" href="#sec9">Faça parte!</a>
+              <a class="nav-link" href="#sec10">Siga-nos</a>
+              </div>
+        </div>
+        </div>
         <div class="collapse navbar-collapse" id="navbarNav">
           <div class="mr-auto"></div>
           <ul class="navbar-nav">
@@ -462,5 +473,16 @@
     </div>
   </footer>
 </body>
-
 </html>
+<script>
+  var divmenu = document.getElementById('hiddenMenu')
+  function show() {
+    if (divmenu.classList.contains('open')) {
+      console.log('Event.target111, event.target')
+      divmenu.classList.remove('open')
+      return;
+    }
+    divmenu.classList.add('open')
+  }
+
+</script>
