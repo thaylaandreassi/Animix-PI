@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/index.css" />
 </head>
 
-<body>
+<body onload="atualizacaoPeriodica()">
   <header>
     <div class="container-fluid p-0">
       <nav class="navbar navbar-expand-lg">
@@ -405,7 +405,7 @@
             <p>Membros da equipe</p>
           </div>
           <div class="rect">
-            <h1>400</h1>
+            <h1 id="qtd_usuarios"></h1>
             <p>Usuários</p>
           </div>
           <div class="rect">
@@ -484,5 +484,44 @@
     }
     divmenu.classList.add('open')
   }
+
+  // Inicio da aquisição de dados em tempo real 
+
+  function atualizacaoPeriodica() {
+        obterdados();
+
+        setInterval(() => {
+            // sendData();
+        }, 2000);
+        setTimeout(atualizacaoPeriodica, 5000);
+    }
+
+    function obterdados() {
+        fetch(`/medidas/tempo-real`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {                
+
+                        alertar(resposta[0].qtd);
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+          
+          }
+
+    function alertar(quantidade) {
+
+        if (quantidade != null) {
+            qtd_usuarios.innerHTML = quantidade;
+        }
+    }
+    // Fim da aquisição de dados em tempo real
 
 </script>
