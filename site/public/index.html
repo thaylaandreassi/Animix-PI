@@ -8,31 +8,34 @@
   <title>Animix | Home</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+ 
   <link rel="stylesheet" href="css/index.css" />
+  <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
 </head>
 
 <body onload="atualizacaoPeriodica()">
   <header>
     <div class="container-fluid p-0">
+      
       <nav class="navbar navbar-expand-lg">
-        <img style="width: 12%;" src="assets/logo-animix-transparente.png" alt="">
+        <img  src="assets/logo-animix-transparente.png" alt="">
         <a class="navbar-brand" href="#"></a>
         <div class="navbar-menu">
           <button onclick="show()" id="btnNavbar" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-align-right text-light"></i>
+          <i id="iconenavbar" class="fas fa-bars text-light"></i>
         </button>
         <div id="hiddenMenu">
-              <div class="navbar-hidden">
-              <a class="nav-link" href="#">Home</a>
-              <a class="nav-link" href="#sec1">Serviços</a>
-              <a class="nav-link" href="#team">Equipe</a>
-              <a class="nav-link" href="#sec6">Sobre nós</a>
-              <a class="nav-link" href="#sec9">Faça parte!</a>
-              <a class="nav-link" href="#sec10">Siga-nos</a>
+          <div class="navbar-hidden">
+              <div class="itens-nav">
+                <a onclick="show()" class="nav-link" href="#"><i class="fa-solid fa-house fa-2xs"></i> Home</a>
+              <a onclick="show()" class="nav-link" href="#sec1"><i class="fa-solid fa-briefcase fa-2xs"></i> Serviços</a>
+              <a onclick="show()" class="nav-link" href="#team"><i class="fa-solid fa-people-group fa-2xs"></i> Equipe</a>
+              <a onclick="show()" class="nav-link" href="#sec6"><i class="fa-solid fa-question fa-2xs"></i> Sobre nós</a>
+              <a onclick="show()" class="nav-link" href="#sec9"><i class="fa-solid fa-user fa-2xs"></i> Faça parte!</a>
+              <a onclick="show()" class="nav-link" href="#sec10"><i class="fa-sharp fa-solid fa-share-nodes fa-2xs"></i> Siga-nos</a>
               </div>
+          </div>
         </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -476,15 +479,42 @@
 </html>
 <script>
   var divmenu = document.getElementById('hiddenMenu')
+  var icone = document.getElementById('iconenavbar')
+  const classToAdd = ['fa-lg', 'fa-solid', 'fa-xmark', 'fa-flip']
+  const classToRemove = ['fas', 'fa-bars', 'text-light']
   function show() {
     if (divmenu.classList.contains('open')) {
       console.log('Event.target111, event.target')
       divmenu.classList.remove('open')
+      classToRemove.forEach(element => {
+      icone.classList.add(element)
+      icone.style.color = 'white'
+      setTimeout(() => {
+        icone.classList.remove('fa-flip')
+      }, 500);
+    });
+    classToAdd.forEach(element => {
+      icone.classList.remove(element);
+      icone.classList.add('fa-flip')
+    });
       return;
     }
     divmenu.classList.add('open')
+    classToRemove.forEach(element => {
+      icone.classList.remove(element)
+      icone.style.color = 'white'
+      setTimeout(() => {
+        icone.classList.remove('fa-flip')
+      }, 500);
+    });
+    classToAdd.forEach(element => {
+      icone.classList.add(element);
+      icone.classList.add('fa-flip')
+      
+    });
   }
 
+  
   // Inicio da aquisição de dados em tempo real 
 
   function atualizacaoPeriodica() {

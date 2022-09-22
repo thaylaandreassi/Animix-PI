@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 
+button:focus {
+  outline: none;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -157,6 +160,10 @@ header .nav-link:hover {
 header .row .col-md-7 {
   padding: 22vmin 1vmin;
   padding-bottom: 35vmin;
+}
+
+header img {
+  width: 200px;
 }
 
 header .row .col-md-5 {
@@ -672,32 +679,58 @@ section .section-title {
   border-radius: 50%;
 }
 
+#iconenavbar {
+  z-index: 10000;
+    position: absolute;
+    right: 20px;
+    line-height: 0;
+    
+}
 
 #hiddenMenu {
-  height: 240px;
-  width: 110px;
-  top: 10px;
+  height: 100vh;
+  width: 100%;
+  top: 0px;
+  right: 0px;
   display: none;
-  background: #1010105e;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(9.9px);
-  -webkit-backdrop-filter: blur(9.9px);
+  background: #101010d6;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(16, 16, 16, 1);
-  position: relative;
+  position: fixed;
+  z-index: 999;
 }
 
 .navbar-hidden {
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  touch-action: none;
 }
 
 .navbar-hidden a {
-  background: #1010105e;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  font-size: 2.5rem;
+  margin-top: 20px;
 }
 
 .open {
   display: flex !important;
+}
+
+@media (max-width: 600px)
+{
+  header img {
+    width: 100px;
+    z-index: 9999;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 400px)
+{
+  .navbar-hidden a {
+    font-size: 2rem;
+  }
 }
