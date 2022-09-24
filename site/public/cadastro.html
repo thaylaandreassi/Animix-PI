@@ -20,7 +20,7 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
     <script src="js/funcoes.js"></script>
-
+    <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -51,6 +51,10 @@
                                     <input class="myInput" type="password" id="password_confirm_ipt" placeholder="Senha">
                                 </div>
                                 <button onclick="cadastrar()" class="butt"> CRIAR CONTA </button>
+                                
+                            </div>
+                            <div id="loading" class="loading">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
                             </div>
                         </div>
                     </div>
@@ -105,17 +109,18 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-
+             var divLoad = document.getElementById('loading');
+             divLoad.style.display = 'flex';
                 setTimeout(() => {
                     window.location = "login.html";
-                }, "2000")
+                }, 2000)
+                divLoad.style.display = 'none';
                 
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-
         });
 
         return false;

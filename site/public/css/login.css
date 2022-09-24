@@ -151,6 +151,12 @@
     color: #fbf3ff;
     font-size: 1rem;
   }
-
+  .loading{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    font-size: 24px;
+  }
 
   

@@ -1,0 +1,51 @@
+.graphs-container {
+    background-color: #F5F5F5;
+    height: 100vh;
+    width: 100vw;
+    box-shadow: inset 15px 15px 15px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+}
+
+.left-section {
+    height: 100vh;
+    width: 45vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.right-section {
+    height: 100vh;
+    width: 50vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info-card {
+    background-color: #fff;
+    height: 250px;
+    width: 400px;
+    border-radius: 12px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.10);
+}
+
+.quick-access {
+    background-color: #fff;
+    height: 250px;
+    width: 400px;
+    border-radius: 12px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.10);
+}
+
+.heatmap {
+    background-color: #fff;
+    height: 500px;
+    width: 450px;
+    border-radius: 8px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.10);
+}
+
+

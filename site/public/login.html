@@ -20,6 +20,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -51,6 +52,9 @@
                                     <input class="myInput" type="password" id="password_ipt" placeholder="Senha" required>
                                 </div>
                                 <input onclick="entrar()" type="submit" class="butt" value="ENTRAR">
+                                <div id="loading" class="loading">
+                                    <i class="fa-solid fa-spinner fa-spin"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -98,11 +102,14 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
+                    var divLoad = document.getElementById('loading');
+                    divLoad.style.display = 'flex';
 
                     setTimeout(function () {
                         window.location = "inovacao-demo.html";
                     }, 1000); // apenas para exibir o loading
                 });
+                divLoad.style.display = 'none';
 
             } else {
 
