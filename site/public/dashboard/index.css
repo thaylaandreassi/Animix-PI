@@ -65,32 +65,41 @@ aside .content {
 section {
     display: flex;
 }
+main {
+    height: 100%;
+    width: 100%;
+}
 
 /* INICIO MAIN */
 
 .main-container {
     background-color: #F5F5F5;
-    height: 100vh;
+    height: 100%;
     width: 95vw;
-    display: flex;
-    justify-content: center;
     padding-top: 50px;
     box-shadow: inset 15px 15px 15px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-wrap: wrap; 
 }
-.cards {
-    height: 80vh;
-    width: 85vw;
+
+.div-cards{
+    width: 100vw;
+    height: 50vh;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
 .card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     background-color: #E9E9E9;
-    height: 220px;
-    width: 275px;
+    height: 275px;
+    width: 300px;
     border-radius: 10px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.10);
+    
 }
 
 .critico {
@@ -118,30 +127,32 @@ section {
     padding: 6px;
 }
 .placa {
+    margin-top: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 20px;
+    height: 150px;
+    width: 150px;
 }
 
 .placa-critica {
     background-image: url(assets/Motherboard-critica.svg);
     background-repeat: no-repeat;
     background-position: center;
-    width: 120px;
-    height: 120px;
+    height: 150px;
+    width: 150px;
 }
 .placa-alerta {
     background-image: url(assets/Motherboard-alerta.svg);
     background-repeat: no-repeat;
     background-position: center;
-    width: 120px;
-    height: 120px;
+    height: 150px;
+    width: 150px;
 }
 .placa-ok {
     background-image: url(assets/Motherboard-ok.svg);
     background-repeat: no-repeat;
     background-position: center;
-    width: 120px;
-    height: 120px;
+    height: 150px;
+    width: 150px;
 }
