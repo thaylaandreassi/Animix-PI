@@ -265,7 +265,7 @@ header .container .col-md-7 p {
   text-align: left;
   padding: 13vmin 5vmin 20vmin 10vmin;
   box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.2);
-  font-family: var(--Rubik);
+  : var(--Rubik);
   z-index: 1;
 }
 
