@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastro-maquinas.css">
+    <title></title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    <header>
+        <div class="nav-bar">
+            <span class="material-symbols-outlined">menu</span>
+            <i style="margin-left: -30px; font-weight: 600;" class="fa-regular fa-bell"></i>
+            <i style="margin-left: 25px;" class="fa-regular fa-user"></i>
+        </div>
+    </header>
+    <section>
+        <aside>
+            <div class="content">
+                <div class="icons">
+
+                    <i id="active" class="fa-solid fa-chart-line"></i>
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="material-symbols-outlined">group_add</span>
+                    <span class="material-symbols-outlined">support_agent</span>
+                    <span id="logout" class="material-symbols-outlined">logout</span>
+                </div>
+            </div>
+        </aside>
+        <main>
+            <div class="main-container">
+                <div class="top">
+                    <h1>CADASTRO DE MÁQUINAS</h1>
+                </div>
+                <div class="formulario-cadastro">
+                    <div class="left-form">
+                        <h3>Informações da máquina</h3> 
+                        <select name="" id="disco_select">
+                            <option value="0">Insira seu disco</option>
+                            <option value="1">1TB</option>
+                            <option value="2">2TB</option>
+                            <option value="4">4TB</option>
+                            <option value="8">8TB</option>
+                            <option value="16">16TB</option>
+                        </select>
+                        <select name="" id="memoria_select">
+                            <option value="0">Insira sua memoria</option>
+                            <option value="32">32gb</option>
+                            <option value="64">64gb</option>
+                            <option value="128">128gb</option>
+                            <option value="256">256gb</option>
+                            <option value="512">512gb</option>
+                        </select>
+                        <select name="" id="processador_select">
+                            <option value="0">Insira seu processador</option>
+                            <option value="Intel">Intel</option>
+                            <option value="AMD">AMD</option>
+                        </select>
+                        <select name="" id="sistema_select">
+                            <option value="0">Insira seu sistema operacional</option>
+                            <option value="Windows">Windows</option>
+                            <option value="Linux">Linux</option>
+                            <option value="Mac0S">MacOS</option>
+                        </select>
+                        <select name="" id="discoideal_select">
+                            <option value="0">Insira o consumo de disco ideal</option>
+                            <option value="30">30%</option>
+                            <option value="40">40%</option>
+                            <option value="50">50%</option>
+                            <option value="60">60%</option>
+                            <option value="70">70%</option>
+                        </select>
+                        <select name="" id="memoriaideal_select">
+                            <option value="0">Insira o consumo de memoria ideal</option>
+                            <option value="30">30%</option>
+                            <option value="40">40%</option>
+                            <option value="50">50%</option>
+                            <option value="60">60%</option>
+                            <option value="70">70%</option>
+                        </select>
+                        <select name="" id="processadorideal_select">
+                            <option value="0">Insira o consumo de processador ideal</option>
+                            <option value="30">30%</option>
+                            <option value="40">40%</option>
+                            <option value="50">50%</option>
+                            <option value="60">60%</option>
+                            <option value="70">70%</option>
+                        </select>
+                        <select name="" id="tempideal_select">
+                            <option value="0">Insira a temperatura ideal</option>
+                            <option value="30">30%</option>
+                            <option value="40">40%</option>
+                            <option value="50">50%</option>
+                            <option value="60">60%</option>
+                            <option value="70">70%</option>
+                        </select>
+                    </div>
+                    <div class="right-form">
+                        <h1>Opções de monitoramento da máquina</h1>
+                        <select name="" id="disco_bool">
+                            <option value="0">Monitoramento de disco?</option>
+                            <option value="true">Sim</option>
+                            <option value="false">Não</option>
+                        </select>
+                        <select name="" id="processador_bool">
+                            <option value="0">Monitoramento de processador?</option>
+                            <option value="true">Sim</option>
+                            <option value="false">Não</option>
+                        </select>
+                        <select name="" id="memoria_bool">
+                            <option value="0">Monitoramento de memória?</option>
+                            <option value="true">Sim</option>
+                            <option value="false">Não</option>
+                        </select>
+                        <select name="" id="temperatura_bool">
+                            <option value="0">Monitoramento de temperatura?</option>
+                            <option value="true">Sim</option>
+                            <option value="false">Não</option>
+                        </select>
+                        <button onclick="cadastrar()">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+</body>
+</html>
+<script>
+    function cadastrar() {
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var disco = disco_select.value;
+        var memoria = memoria_select.value;
+        var processador = processador_select.value;
+        var sistema = sistema_select.value;
+        var discoIdeal = discoideal_select.value;
+        var memoriaIdeal = memoriaideal_select.value;
+        var processadorIdeal = processadorideal_select.value;
+        var tempIdeal = tempideal_select.value;
+        var monitoraDisco = disco_bool.value;
+        var monitoraMemoria = memoria_bool.value;
+        var monitoraProcessador = processador_bool.value;
+        var monitoraTemperatura = temperatura_bool.value;
+
+
+
+        if (disco == "" || memoria == "" || processador == "" || sistema == "") {
+            return false;
+        }
+        else {
+        }
+
+        // Enviando o valor da nova input
+        fetch("/maquinas/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                discoServer: disco,
+                memoriaServer: memoria,
+                processadorServer: processador,
+                sistemaServer: sistema,
+                discoIdealServer: disco,
+                memoriaIdealServer: memoriaIdeal,
+                processadorIdealServer: processadorIdeal,
+                tempIdealServer: tempIdeal,
+                monitoraDiscoServer: monitoraDisco,
+                monitoraMemoriaServer: monitoraMemoria,
+                monitoraProcessadorServer: monitoraProcessador,
+                monitoraTemperaturaServer: monitoraTemperatura,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+             var divLoad = document.getElementById('loading');
+             divLoad.style.display = 'flex';
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, 2000)
+                divLoad.style.display = 'none';
+                
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+</script>
