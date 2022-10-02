@@ -15,120 +15,127 @@
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="logo_content">
-            <div class="logo">
-                <div class="logo_nome">Animix</div>
+    <section>
+        <div class="sidebar">
+            <div class="logo_content">
+                <div class="logo">
+                    <div class="logo_nome">Animix</div>
+                </div>
+                <i class='bx bx-menu' id="btn"></i>
             </div>
-            <i class='bx bx-menu' id="btn"></i>
+            <ul class="nav_list">
+                <li>
+                    <a href="pre-dashboard.html">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="links_name">Pré-Dashboard</span>
+                    </a>
+                    <span class="tooltip">Pré-Dashboard</span>
+                </li>
+                <li>
+                    <a href="dashboard.html">
+                        <i class=' bx bx-objects-horizontal-left'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="cadastro-funcionarios.html">
+                        <i class='bx bx-user-plus'></i>
+                        <span class="links_name">Adicionar Pessoas</span>
+                    </a>
+                    <span class="tooltip">Funcionários</span>
+                </li>
+                <li>
+                    <a href="cadastro-maquinas.html">
+                        <i class='bx bx-laptop'></i>
+                        <span class="links_name">Adicionar Máquinas</span>
+                    </a>
+                    <span class="tooltip">Máquinas</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-support'></i>
+                        <span class="links_name">Suporte</span>
+                    </a>
+                    <span class="tooltip">Suporte</span>
+                </li>
+                <li>
+                    <a href="../index.html">
+                        <i class='bx bx-exit' id="log_out"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <ul class="nav_list">
-            <li>
-                <a href="pre-dashboard.html">
-                    <i class='bx bx-grid-alt'></i>
-                    <span class="links_name">Pré-Dashboard</span>
-                </a>
-                <span class="tooltip">Pré-Dashboard</span>
-            </li>
-            <li>
-                <a href="dashboard.html">
-                    <i class=' bx bx-objects-horizontal-left'></i>
-                    <span class="links_name">Dashboard</span>
-                </a>
-                <span class="tooltip">Dashboard</span>
-            </li>
-            <li>
-                <a href="cadastro-funcionarios.html">
-                    <i class='bx bx-user-plus'></i>
-                    <span class="links_name">Adicionar Pessoas</span>
-                </a>
-                <span class="tooltip">Funcionários</span>
-            </li>
-            <li>
-                <a href="cadastro-maquinas.html">
-                    <i class='bx bx-laptop'></i>
-                    <span class="links_name">Adicionar Máquinas</span>
-                </a>
-                <span class="tooltip">Máquinas</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-support'></i>
-                    <span class="links_name">Suporte</span>
-                </a>
-                <span class="tooltip">Suporte</span>
-            </li>
-            <li>
-                <a href="../index.html">
-                    <i class='bx bx-exit' id="log_out"></i>
-                </a>
-            </li>
-        </ul>
-    </div>
         <main>
             <div class="main-container">
-                <div class="div-cards">
-                    <div class="card"><span class="critico">ESTADO CRITICO</span>
-                        <div class="placa">
-                            <div class="placa-critica"></div>
-                        </div>
+                <div class="maquinas">
+                    <div class="card">
+                        <h2>Máquina 01 🚨</h2>
+                        <div class="placa-critica"></div>
                     </div>
-                    <div class="card"><span class="critico">ESTADO CRITICO</span>
-                        <div class="placa">
-                            <div class="placa-critica"></div>
-                        </div>
+                    <div class="card">
+                        <h2>Máquina 02 🚨</h2>
+                        <div class="placa-critica"></div>
                     </div>
-                    <div class="card"><span class="critico">ESTADO CRITICO</span>
-                        <div class="placa">
-                            <div class="placa-critica"></div>
-                        </div>
+                    <div class="card">
+                        <h2>Máquina 03 🚨</h2>
+                        <div class="placa-critica"></div>
                     </div>
                 </div>
-                <div class="div-cards">
-                    <div class="card"><span class="alerta">ESTADO DE RISCO</span>
-                        <div class="placa">
-                            <div class="placa-alerta"></div>
-                        </div>
+                <div class="maquinas">
+                    <div class="card">
+                        <h2>Máquina 04 ⚠️</h2>
+                        <div class="placa-alerta"></div>
                     </div>
-                    <div class="card"><span class="alerta">ESTADO DE RISCO</span>
-                        <div class="placa">
-                            <div class="placa-alerta"></div>
-                        </div>
+                    <div class="card">
+                        <h2>Máquina 05 ⚠️</h2>
+                        <div class="placa-alerta"></div>
                     </div>
-                    <div class="card"><span class="alerta">ESTADO DE RISCO</span>
-                        <div class="placa">
-                            <div class="placa-alerta"></div>
-                        </div>
+                    <div class="card">
+                        <h2>Máquina 06 ⚠️</h2>
+                        <div class="placa-alerta"></div>
                     </div>
                 </div>
-                <div class="div-cards">
-                    <div class="card"><span class="ok">ESTADO OK</span>
-                        <div class="placa">
-                            <div class="placa-ok"></div>
-                        </div>
+                <div class="maquinas">
+                    <div class="card">
+                        <h2>Máquina 07 ⚠️</h2>
+                        <div class="placa-alerta"></div>
                     </div>
-                    <div class="card"><span class="ok">ESTADO OK</span>
-                        <div class="placa">
-                            <div class="placa-ok"></div>
-                        </div>
+                    <div class="card">
+                        <h2>Máquina 08 ✔️</h2>
+                        <div class="placa-ok"></div>
                     </div>
-                    <div class="card"><span class="ok">ESTADO OK</span>
-                        <div class="placa">
-                            <div class="placa-ok"></div>
-                        </div>
+                    <div class="card">
+                        <h2>Máquina 09 ✔️ </h2>
+                        <div class="placa-ok"></div>
                     </div>
                 </div>
-
+                <div class="maquinas">
+                    <div class="card">
+                        <h2>Máquina 10 ✔️</h2>
+                        <div class="placa-ok"></div>
+                    </div>
+                    <div class="card">
+                        <h2>Máquina 11 ✔️</h2>
+                        <div class="placa-ok"></div>
+                    </div>
+                    <div class="card">
+                        <h2>Máquina 12 ✔️ </h2>
+                        <div class="placa-ok"></div>
+                    </div>
+                </div>
             </div>
         </main>
     </section>
+    
 </body>
+
 </html>
 <script>
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
 
-    btn.onclick = function(params) {
+    btn.onclick = function (params) {
         sidebar.classList.toggle("active");
     }
 </script>
