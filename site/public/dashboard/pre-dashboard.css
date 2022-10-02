@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -17,7 +19,7 @@ body{
     position: fixed;
     height: 100%;
     width: 78px;
-    background-color: #000;
+    background: linear-gradient(to bottom, #0C050C, #4E184C, #78205E);
     left: 0;
     top: 0;
     padding: 6px 14px;
@@ -145,7 +147,18 @@ body{
 .sidebar.active #log_out{
     left: 88%;
 }
+main {
+    position: absolute;
+    height: 100%;
+    width: calc(100% - 78px);
+    left: 78px;
+    transition: all 0.5 ease;
+}
 
+.sidebar.active ~ main {
+    width: calc(100% - 240px);
+    left: 240px;
+}
 /* INICIO NAV BAR */
 header {
     width: 100vw;
