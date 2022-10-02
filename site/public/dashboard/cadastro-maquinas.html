@@ -8,39 +8,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="cadastro-maquinas.css">
     <title></title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
-    <header>
-        <div class="nav-bar">
-            <span class="material-symbols-outlined">menu</span>
-            <i style="margin-left: -30px; font-weight: 600;" class="fa-regular fa-bell"></i>
-            <i style="margin-left: 25px;" class="fa-regular fa-user"></i>
-        </div>
-    </header>
-    <section>
-        <aside>
-            <div class="content">
-                <div class="icons">
-
-                    <i id="active" class="fa-solid fa-chart-line"></i>
-                    <span class="material-symbols-outlined">dashboard</span>
-                    <span class="material-symbols-outlined">group_add</span>
-                    <span class="material-symbols-outlined">support_agent</span>
-                    <span id="logout" class="material-symbols-outlined">logout</span>
+    <main>
+        <div class="sidebar">
+            <div class="logo_content">
+                <div class="logo">
+                    <div class="logo_nome">Animix</div>
                 </div>
+                <i class='bx bx-menu' id="btn"></i>
             </div>
-        </aside>
-        <main>
+            <ul class="nav_list">
+                <li>
+                    <a href="#">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="links_name">Pré-Dashboard</span>
+                    </a>
+                    <span class="tooltip">Pré-Dashboard</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class=' bx bx-objects-horizontal-left'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-user-plus'></i>
+                        <span class="links_name">Adicionar Pessoas</span>
+                    </a>
+                    <span class="tooltip">Funcionários</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-laptop'></i>
+                        <span class="links_name">Adicionar Máquinas</span>
+                    </a>
+                    <span class="tooltip">Máquinas</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-support'></i>
+                        <span class="links_name">Suporte</span>
+                    </a>
+                    <span class="tooltip">Suporte</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-exit' id="log_out"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
             <div class="main-container">
-                <div class="top">
-                    <h1>CADASTRO DE MÁQUINAS</h1>
-                </div>
                 <div class="formulario-cadastro">
                     <div class="left-form">
-                        <h3>Informações da máquina</h3> 
+                        <h3>Informações da máquina</h3>
                         <select name="" id="disco_select">
                             <option value="0">Insira seu disco</option>
                             <option value="1">1TB</option>
@@ -102,7 +132,7 @@
                         </select>
                     </div>
                     <div class="right-form">
-                        <h1>Opções de monitoramento da máquina</h1>
+                        <h3>Opções de monitoramento da máquina</h3>
                         <select name="" id="disco_bool">
                             <option value="0">Monitoramento de disco?</option>
                             <option value="true">Sim</option>
@@ -127,10 +157,18 @@
                     </div>
                 </div>
             </div>
-        </main>
+    </main>
     </section>
 </body>
 </html>
+<script>
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+
+    btn.onclick = function(params) {
+        sidebar.classList.toggle("active");
+    }
+</script>
 <script>
     function cadastrar() {
         //Recupere o valor da nova input pelo nome do id
@@ -183,13 +221,13 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-             var divLoad = document.getElementById('loading');
-             divLoad.style.display = 'flex';
+                var divLoad = document.getElementById('loading');
+                divLoad.style.display = 'flex';
                 setTimeout(() => {
                     window.location = "login.html";
                 }, 2000)
                 divLoad.style.display = 'none';
-                
+
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }

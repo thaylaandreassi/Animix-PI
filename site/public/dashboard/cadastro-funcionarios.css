@@ -145,6 +145,29 @@ body{
 .sidebar.active #log_out{
     left: 88%;
 }
+
+/* INICIO NAV BAR */
+header {
+    width: 100vw;
+    height: 8vh;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 10px 5px 5px 10px rgba(0, 0, 0, 0.11);
+}
+.nav-bar span{
+    overflow: hidden;
+    color: #101010;
+    font-size: 2em;
+    margin-top: 10px;
+    margin-right: 1150px;
+    margin-left: 15px;
+}
+
+.nav-bar i {
+    color: #101010;
+    font-size: 1.7em;
+    margin-top: 10px;
+}
+
 main {
     position: absolute;
     height: 100%;
@@ -157,6 +180,7 @@ main {
     width: calc(100% - 240px);
     left: 240px;
 }
+
 .main-container {
     width: 100vw;
     height: 100vh;
@@ -166,7 +190,7 @@ main {
     align-items: center;
 }
 
-.formulario-cadastro {
+.formulario-funcionario {
     display: flex;
     border-radius: 32px;
     height: 460px;
@@ -176,24 +200,24 @@ main {
 }
 
 .left-form {
-    color: rgb(0, 0, 0);
-    background: white;
+    border-radius: 24px 0px 0px 24px;
+    color: black;
     height: 100%;
-    width: 60%;
+    width: 70%;
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     justify-content: space-evenly;
-    border-radius: 24px 0px 0px 24px;
+    background-color: rgb(240, 240, 240);
 }
 .right-form {
     background: linear-gradient(to bottom, #4E184C, #78205E);
     border-radius: 0px 24px 24px 0px;
-    color: #ffffff;
+    color: #101010;
     height: 100%;
-    width: 40%;
+    width: 30%;
     display: flex;
     text-align: center;
     align-items: center;
@@ -202,50 +226,34 @@ main {
     justify-content: space-evenly;
 }
 
-.left-form select {
-    color: rgb(0, 0, 0);
-    font-size: 0.7rem;
-    width: 60%;
-    height: 6%;
-    background-color: transparent;
-    outline: none;
+input {
+    width: 280px;
+    height: 30px;
     border-left: none;
     border-right: none;
     border-top: none;
-}
-.right-form select {
-    color: white;
-    font-size: 0.7rem;
-    width: 60%;
-    height: 6%;
-    background-color: transparent;
-    outline: none;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-}
-.left-form option {
-    background-color: #fff;
-}
-.right-form option {
-    background-color: #fff;
+    border-bottom: 1px solid #101010;
     color: #101010;
+    padding-left: 8px;
+    outline: none;
 }
 
-.right-form button {
-    color: rgb(0, 0, 0);
+input:focus {
+    border-bottom: 1px solid #ad2f87;
+    
+}
+.left-form button {
+    color: white;
     border-radius: 4px;
     border: none;
     height: 30px;
     width: 100px;
-    background-color: #ffffff;
+    background-color: #78205E;
     transition: all 0.6s;
     cursor: pointer;
 }
 
-.right-form button:hover {
-    background-color: #101010;
+.left-form button:hover {
+    background-color: #9c4683;
     color: white;
 }
-
-

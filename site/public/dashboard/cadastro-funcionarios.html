@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cadastro-funcionarios.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <main>
+        <div class="sidebar">
+            <div class="logo_content">
+                <div class="logo">
+                    <div class="logo_nome">Animix</div>
+                </div>
+                <i class='bx bx-menu' id="btn"></i>
+            </div>
+            <ul class="nav_list">
+                <li>
+                    <a href="#">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="links_name">Pré-Dashboard</span>
+                    </a>
+                    <span class="tooltip">Pré-Dashboard</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class=' bx bx-objects-horizontal-left'></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>
+                    <span class="tooltip">Dashboard</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-user-plus'></i>
+                        <span class="links_name">Adicionar Pessoas</span>
+                    </a>
+                    <span class="tooltip">Funcionários</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-laptop'></i>
+                        <span class="links_name">Adicionar Máquinas</span>
+                    </a>
+                    <span class="tooltip">Máquinas</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-support'></i>
+                        <span class="links_name">Suporte</span>
+                    </a>
+                    <span class="tooltip">Suporte</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-exit' id="log_out"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="main-container">
+            <div class="formulario-funcionario">
+                <div class="left-form">
+                    <h1>Cadastro de Funcionários</h1>
+                    <input type="text" id="nome_ipt" placeholder="Insira o nome completo">
+                    <input type="text" id="email_ipt" placeholder="Insira o email de acesso">
+                    <input type="password" id="senha_ipt" placeholder="Insira a senha de acesso">
+                    <input type="text" id="cargo_ipt" placeholder="Insira o cargo">
+                    <button onclick="cadastrar()">Cadastrar</button>
+                </div>
+                <div class="right-form">
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
+<script>
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+
+    btn.onclick = function(params) {
+        sidebar.classList.toggle("active");
+    }
+</script>
+<script>
+    function cadastrar() {
+        var nome = nome_ipt.value;
+        var email = email_ipt.value;
+        var senha = senha_ipt.value;
+        var cargo = cargo_ipt.value;
+
+        if (nome == "" || email == "" || senha == "" || cargo == "") {
+            return false;
+        }
+        else {
+        }
+
+        // Enviando o valor da nova input
+        fetch("/funcionarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nome,
+                emailServer: email,
+                senhaServer: senha,
+                cargoServer: cargo,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+             var divLoad = document.getElementById('loading');
+             divLoad.style.display = 'flex';
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, 2000)
+                divLoad.style.display = 'none';
+                
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+</script>
