@@ -11,29 +11,60 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="dashboard.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
-    <header>
-        <div class="nav-bar">
-            <span class="material-symbols-outlined">menu</span>
-            <i style="margin-left: -30px; font-weight: 600;" class="fa-regular fa-bell"></i>
-            <i style="margin-left: 25px;" class="fa-regular fa-user"></i>
-        </div>
-    </header>
-    <section>
-        <aside>
-            <div class="content">
-                <div class="icons">
-
-                    <i id="active" class="fa-solid fa-chart-line"></i>
-                    <span class="material-symbols-outlined">dashboard</span>
-                    <span class="material-symbols-outlined">group_add</span>
-                    <span class="material-symbols-outlined">support_agent</span>
-                    <span id="logout" class="material-symbols-outlined">logout</span>
-                </div>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <div class="logo_nome">Animix</div>
             </div>
-        </aside>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="#">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Pré-Dashboard</span>
+                </a>
+                <span class="tooltip">Pré-Dashboard</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class=' bx bx-objects-horizontal-left'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-user-plus'></i>
+                    <span class="links_name">Adicionar Pessoas</span>
+                </a>
+                <span class="tooltip">Funcionários</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-laptop'></i>
+                    <span class="links_name">Adicionar Máquinas</span>
+                </a>
+                <span class="tooltip">Máquinas</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-support'></i>
+                    <span class="links_name">Suporte</span>
+                </a>
+                <span class="tooltip">Suporte</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-exit' id="log_out"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
         <main>
             <div class="graphs-container">
                 <div class="left-section">
@@ -56,3 +87,11 @@
 </body>
 
 </html>
+<script>
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+
+    btn.onclick = function(params) {
+        sidebar.classList.toggle("active");
+    }
+</script>

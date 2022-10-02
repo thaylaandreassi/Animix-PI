@@ -1,6 +1,0 @@
-Mostrar eficiência;
-Saber visualmente o que está acontecendo por notificação pelo celular;
-Não tem log, e seria ótimo ter (Atráves da escrita ou no heatmap);
-
-
-
