@@ -4,16 +4,18 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Rubik", sans-serif;
+    text-decoration: none;
 }
-body{
+
+body {
     position: relative;
     min-width: 100vh;
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-.sidebar{
+.sidebar {
     position: fixed;
     height: 100%;
     width: 78px;
@@ -23,10 +25,12 @@ body{
     padding: 6px 14px;
     transition: all 0.5s ease;
 }
-.sidebar.active{
+
+.sidebar.active {
     width: 240px;
 
 }
+
 .sidebar .logo_content .logo_nome {
     color: #fff;
     display: flex;
@@ -37,15 +41,18 @@ body{
     pointer-events: none;
     transition: all 0.5s ease;
 }
-.logo_content .logo_nome i{
+
+.logo_content .logo_nome i {
     font-size: 20px;
     font-weight: 400;
 }
-.sidebar.active .logo_content .logo_nome{
+
+.sidebar.active .logo_content .logo_nome {
     opacity: 1;
     pointer-events: none;
 
 }
+
 .sidebar #btn {
     position: absolute;
     color: #fff;
@@ -58,13 +65,16 @@ body{
     line-height: 50px;
     transform: translateX(-50%);
 }
+
 .sidebar.active #btn {
     left: 90%;
 
 }
-.sidebar ul{
+
+.sidebar ul {
     margin-top: 20px;
 }
+
 .sidebar ul li {
     position: relative;
     height: 50px;
@@ -73,11 +83,12 @@ body{
     list-style: none;
     line-height: 50px;
 }
+
 .sidebar ul li .tooltip {
     position: absolute;
     left: 122px;
     top: 0;
-    transform: translateY(-50% , -50%); 
+    transform: translateY(-50%, -50%);
     border-radius: 6px;
     height: 35px;
     width: 122px;
@@ -90,15 +101,18 @@ body{
     pointer-events: none;
     display: block;
 }
-.sidebar.active ul li .tooltip{
+
+.sidebar.active ul li .tooltip {
     display: none;
 }
-.sidebar ul li:hover .tooltip{
+
+.sidebar ul li:hover .tooltip {
     transition: all 0.5s ease;
     opacity: 1;
     top: 50%;
 
 }
+
 .sidebar ul li a {
     color: #fff;
     display: flex;
@@ -108,27 +122,33 @@ body{
     border-radius: 12px;
     white-space: nowrap;
 }
-.sidebar ul li a:hover{
+
+.sidebar ul li a:hover {
     background: #fff;
-    color: #7634BF;;
+    color: #7634BF;
+    ;
 }
-.sidebar ul li a i{
+
+.sidebar ul li a i {
     height: 50px;
     min-width: 50px;
     border-radius: 12px;
     line-height: 50px;
     text-align: center;
 }
-.sidebar .links_name{
+
+.sidebar .links_name {
     opacity: 0;
     pointer-events: none;
     transition: all 0.5s ease;
 }
-.sidebar.active .links_name{
+
+.sidebar.active .links_name {
     opacity: 1;
     pointer-events: auto;
 }
-#log_out{
+
+#log_out {
     position: absolute;
     left: 50%;
     bottom: 5px;
@@ -137,14 +157,16 @@ body{
     min-height: 50px;
     line-height: 50px;
     font-size: 20px;
-    border-radius: 12px; 
+    border-radius: 12px;
     margin-bottom: -250px;
     text-align: center;
 
 }
-.sidebar.active #log_out{
+
+.sidebar.active #log_out {
     left: 88%;
 }
+
 main {
     position: absolute;
     height: 100%;
@@ -153,7 +175,7 @@ main {
     transition: all 0.5 ease;
 }
 
-.sidebar.active ~ main {
+.sidebar.active~main {
     width: calc(100% - 240px);
     left: 240px;
 }
@@ -163,7 +185,6 @@ main {
     background-color: #F5F5F5;
     height: 100vh;
     width: 100vw;
-    box-shadow: inset 15px 15px 15px 0px rgba(0, 0, 0, 0.2);
     display: flex;
 }
 
@@ -187,10 +208,14 @@ main {
 
 .info-card {
     background-color: #fff;
-    height: 250px;
+    height: 200px;
     width: 400px;
     border-radius: 12px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.10);
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .quick-access {
@@ -198,15 +223,148 @@ main {
     height: 250px;
     width: 400px;
     border-radius: 12px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.10);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 .heatmap {
-    background-color: #fff;
     height: 500px;
     width: 450px;
-    border-radius: 8px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.10);
+    border-radius: 12px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
+    margin-right: 180px;
+}
+
+.quick-access .top {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.quick-access .bottom {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-decoration: none;
+}
+
+.maquina-critica {
+    height: 100px;
+    width: 100px;
+    background-image: url(assets/Motherboard-critica.svg);
+    background-size: cover;
+}
+
+.maquina-alerta {
+    height: 100px;
+    width: 100px;
+    background-image: url(assets/Motherboard-alerta.svg);
+    background-size: cover;
+}
+
+.maquina-ok {
+    height: 100px;
+    width: 100px;
+    background-image: url(assets/Motherboard-ok.svg);
+    background-size: cover;
+}
+
+.outro {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+}
+
+.charts-container {
+    height: 140vh;
+    width: 96vw;
+}
+
+.kpis {
+    height: 140px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.kpi-card {
+    box-shadow:  20px 20px 38px #cecece,
+             -20px -20px 38px #ffffff;
+    height: 110px;
+    width: 220px;
+    margin-right: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.mid-graphs {
+    height: 350px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.bottom-graphs {
+    height: 350px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.graph-left {
+    box-shadow:  20px 20px 38px #cecece,
+             -20px -20px 38px #ffffff;
+    height: 280px;
+    width: 45%;
+    border-radius: 12px;
+}
+.graph-right {
+    box-shadow:  20px 20px 38px #cecece,
+             -20px -20px 38px #ffffff;
+    height: 280px;
+    width: 40%;
+    border-radius: 12px;
+}
+
+.bottom-graphs .card {
+    box-shadow:  20px 20px 38px #cecece,
+             -20px -20px 38px #ffffff;
+    height: 280px;
+    width: 330px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
+.kpi-card i {
+    font-size: 2.6rem;
+    color: #551542;
+}
+
+.text-temp {
+    margin-left: 30px;
+    justify-content: center;
+    align-items: center;
+}
