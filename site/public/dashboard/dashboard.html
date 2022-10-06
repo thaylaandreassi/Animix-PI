@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body onload="obterdados(1)">
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
@@ -73,28 +73,28 @@
                     <i class="fa-solid fa-temperature-arrow-up"></i>
                     <div class="text-temp">
                         <h5>Maior temperatura</h5>
-                        <h1>40º</h1>
+                        <h1 id="maiortemp"></h1>
                     </div>
                 </div>
                 <div class="kpi-card">
                     <i class="fa-solid fa-floppy-disk"></i>
                     <div class="text-temp">
                         <h5>Maior uso de disco</h5>
-                        <h1>76%</h1>
+                        <h1 id="maiordisco"></h1>
                     </div>
                 </div>
                 <div class="kpi-card">
                     <i class="fa-solid fa-memory"></i>
                     <div class="text-temp">
                         <h5>Maior uso de memoria</h5>
-                        <h1>68%</h1>
+                        <h1 id="maiormemoria"></h1>
                     </div>
                 </div>
                 <div class="kpi-card">
                     <i class="fa-solid fa-microchip"></i>
                     <div class="text-temp">
                         <h5>Maior uso de processador</h5>
-                        <h1>97%</h1>
+                        <h1 id="maiorprocessador"></h1>
                     </div>
                 </div>
             </div>
@@ -290,6 +290,36 @@
         document.getElementById('myChart5'),
         config5
     );
+
+    setInterval(() => {
+        obterdados(1)
+    }, 5000);
+
+    function obterdados(idMaquina) {
+        fetch(`/cards/tempo-real/${idMaquina}`)
+            .then(resposta => {
+                var maiorTemp = document.getElementById('maiortemp');
+                var maiorDisco = document.getElementById('maiordisco');
+                var maiorProcessador = document.getElementById('maiorprocessador');
+                var maiorMemoria = document.getElementById('maiormemoria');
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                       maiorProcessador.innerHTML = resposta[0].processador + "%";
+                       maiorDisco.innerHTML = resposta[0].disco + "%";
+                       maiorMemoria.innerHTML = resposta[0].memoria + "%";
+                       maiorTemp.innerHTML = resposta[0].temperatura + "°";
+
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+
+    }
 
 
 </script>
