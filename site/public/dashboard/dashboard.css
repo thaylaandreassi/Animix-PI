@@ -355,7 +355,7 @@ main {
     box-shadow: 6px 6px 16px #d6d6d6,
     -6px -6px 16px #ffffff;
     height: 280px;
-    width: 40%;
+    width: 45%;
     border-radius: 12px;
     padding: 12px;
     transition: all 600ms;
@@ -364,8 +364,8 @@ main {
 .bottom-graphs .card {
     box-shadow: 6px 6px 16px #d6d6d6,
     -6px -6px 16px #ffffff;
-    height: 280px;
-    width: 330px;
+    height: 250px;
+    width: 30%;
     border-radius: 12px;
     display: flex;
     justify-content: center;
