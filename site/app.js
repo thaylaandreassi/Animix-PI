@@ -15,6 +15,7 @@ var medidasRouter = require("./src/routes/medidas");
 var maquinasRouter = require("./src/routes/maquinas");
 var funcionariosRouter = require("./src/routes/funcionarios");
 var cardsRouter = require("./src/routes/cards");
+var graficosRouter = require("./src/routes/graficos");
 
 
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use("/medidas", medidasRouter);
 app.use("/maquinas", maquinasRouter)
 app.use("/funcionarios", funcionariosRouter)
 app.use("/cards", cardsRouter)
+app.use("/graficos", graficosRouter)
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

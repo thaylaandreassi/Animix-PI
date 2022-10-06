@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="obterdados(1)">
+<body onload="obterdados(1), obterDadosGrafico(1)">
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
@@ -100,10 +100,10 @@
             </div>
             <div class="mid-graphs">
                 <div class="graph-left">
-                    <canvas id="myChart" width="100px" height="51px"></canvas>
+                    <canvas id="myChart"></canvas>
                 </div>
                 <div class="graph-right">
-                    <canvas id="myChart2" width="100px" height="57px"></canvas>
+                    <canvas id="myChart2"></canvas>
                 </div>
             </div>
             <div class="bottom-graphs">
@@ -161,6 +161,7 @@
 
 </html>
 <script>
+    var idMaquina = 1;
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
 
@@ -170,13 +171,9 @@
 </script>
 <script>
     const labels = [
-        '10:12:05',
-        '10:12:06',
-        '10:12:07',
-        '10:12:08',
-        '10:12:09',
-        '10:12:10',
+        
     ];
+
 
     const data = {
         labels: labels,
@@ -184,7 +181,7 @@
             label: 'Memoria em tempo real',
             backgroundColor: 'rgb(255, 255, 255)',
             borderColor: 'rgb(85, 21, 66)',
-            data: [36, 40, 35, 49, 57, 50, 45],
+            data: [],
         }]
     };
     const data2 = {
@@ -193,7 +190,7 @@
             label: 'Processador em tempo real',
             backgroundColor: 'rgb(255, 255, 255)',
             borderColor: 'rgb(85, 21, 66)',
-            data: [75, 77, 70, 72, 76, 80, 74],
+            data: [],
         }]
     };
     const data3 = {
@@ -202,7 +199,7 @@
             label: 'Disco em tempo real',
             backgroundColor: 'rgb(255, 255, 255)',
             borderColor: 'rgb(85, 21, 66)',
-            data: [20, 35, 32, 33, 38, 30, 45],
+            data: [],
         }]
     };
     const data4 = {
@@ -211,14 +208,14 @@
             label: 'Temperatura em tempo real',
             backgroundColor: 'rgb(255, 255, 255)',
             borderColor: 'rgb(85, 21, 66)',
-            data: [45, 50, 52, 48, 44, 40, 45],
+            data: [],
         }]
     };
     const data5 = {
         labels: labels,
         datasets: [{
             label: 'A definir',
-            data: [65, 59, 80, 81, 56, 55, 40],
+            data: [],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
@@ -292,8 +289,8 @@
     );
 
     setInterval(() => {
-        obterdados(1)
-    }, 5000);
+        obterdados(1), atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5)
+    }, 2000);
 
     function obterdados(idMaquina) {
         fetch(`/cards/tempo-real/${idMaquina}`)
@@ -304,10 +301,10 @@
                 var maiorMemoria = document.getElementById('maiormemoria');
                 if (resposta.ok) {
                     resposta.json().then(resposta => {
-                       maiorProcessador.innerHTML = resposta[0].processador + "%";
-                       maiorDisco.innerHTML = resposta[0].disco + "%";
-                       maiorMemoria.innerHTML = resposta[0].memoria + "%";
-                       maiorTemp.innerHTML = resposta[0].temperatura + "°";
+                        maiorProcessador.innerHTML = resposta[0].processador + "%";
+                        maiorDisco.innerHTML = resposta[0].disco + "%";
+                        maiorMemoria.innerHTML = resposta[0].memoria + "%";
+                        maiorTemp.innerHTML = resposta[0].temperatura + "°";
 
                     });
                 } else {
@@ -318,7 +315,179 @@
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
             });
+    }
 
+    function obterDadosGrafico(idMaquina) {
+
+        // if (proximaAtualizacao != undefined) {
+        //     clearTimeout(proximaAtualizacao);
+        // }
+
+        fetch(`/graficos/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idMaquina);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, idMaquina) {
+        console.log('iniciando plotagem do gráfico...');
+
+        // // Criando estrutura para plotar gráfico - labels
+        // let labels = [];
+
+        // // Criando estrutura para plotar gráfico - dados
+        // let dados = {
+        //     labels: labels,
+        //     datasets: [{
+        //         label: 'Umidade',
+        //         data: [],
+        //         fill: false,
+        //         borderColor: 'rgb(75, 192, 192)',
+        //         tension: 0.1
+        //     },
+        //     {
+        //         label: 'Temperatura',
+        //         data: [],
+        //         fill: false,
+        //         borderColor: 'rgb(199, 52, 52)',
+        //         tension: 0.1
+        //     }]
+        // };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.momento_grafico);
+            data.datasets[0].data.push(registro.memoria);
+            data2.datasets[0].data.push(registro.processador);
+            data3.datasets[0].data.push(registro.disco);
+            data4.datasets[0].data.push(registro.temperatura);
+            // data5.datasets[4].data.push(registro.umidade);
+        }
+
+        // console.log('----------------------------------------------')
+        // console.log('O gráfico será plotado com os respectivos valores:')
+        // console.log('Labels:')
+        // console.log(labels)
+        // console.log('Dados:')
+        // console.log(dados.datasets)
+        // console.log('----------------------------------------------')
+
+        // // Criando estrutura para plotar gráfico - config
+        // const config = {
+        //     type: 'line',
+        //     data: dados,
+        // };
+
+        // // Adicionando gráfico criado em div na tela
+        // let myChart = new Chart(
+        //     document.getElementById('myChart'),
+        //     config
+        // );
+
+        setTimeout(() => atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 2000);
+    }
+
+
+    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // buscando a última medida inserida em tabela contendo as capturas, 
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5) {
+
+        fetch(`/graficos/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    // console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    // console.log(`Dados atuais do gráfico:`);
+                    // console.log(dados);
+
+                    // document.getElementById("avisoCaptura").innerHTML = ""
+
+                    // if (novoRegistro[0].momento_grafico == data.labels[data.labels.length - 1]) {
+                    //     // console.log("---------------------------------------------------------------")
+                    //     // console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                    //     // document.getElementById("avisoCaptura").innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                    //     // console.log("Horário do novo dado capturado:")
+                    //     // console.log(novoRegistro[0].momento_grafico)
+                    //     // console.log("Horário do último dado capturado:")
+                    //     // console.log(dados.labels[dados.labels.length - 1])
+                    //     // console.log("---------------------------------------------------------------")
+                    // } else {
+                        // tirando e colocando valores no gráfico
+                        data.labels.shift(); // apagar o primeiro
+                        data.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                        data.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        data.datasets[0].data.push(novoRegistro[0].memoria); // incluir uma nova medida de umidade
+
+                        myChart.update();
+
+                        data2.labels.shift(); // apagar o primeiro
+                        data2.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                        data2.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        data2.datasets[0].data.push(novoRegistro[0].processador); // incluir uma nova medida de umidade
+
+                        myChart2.update();
+
+                        data3.labels.shift(); // apagar o primeiro
+                        data3.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                        data3.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        data3.datasets[0].data.push(novoRegistro[0].disco); // incluir uma nova medida de umidade
+
+                        myChart3.update();
+                        
+                        data4.labels.shift(); // apagar o primeiro
+                        data4.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                        data4.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        data4.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de umidade
+
+                        myChart4.update();
+
+                        // data5.labels.shift(); // apagar o primeiro
+                        // data5.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+                        // data5.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        // data5.datasets[0].data.push(novoRegistro[0].processador); // incluir uma nova medida de umidade
+
+                        // myChart5.update();
+                    // }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    // proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
     }
 
 

@@ -99,12 +99,12 @@ body {
     opacity: 0;
     pointer-events: none;
     display: block;
-   
+
 }
 
 .sidebar.active ul li .tooltip {
     display: none;
-    
+
 }
 
 .sidebar ul li:hover .tooltip {
@@ -211,8 +211,8 @@ main {
     height: 200px;
     width: 400px;
     border-radius: 12px;
-    box-shadow:  -9px -9px 16px #d6d6d6,
-             9px 9px 16px #ffffff;
+    box-shadow: -9px -9px 16px #d6d6d6,
+        9px 9px 16px #ffffff;
     font-size: 1rem;
     display: flex;
     flex-direction: column;
@@ -226,8 +226,8 @@ main {
     height: 250px;
     width: 400px;
     border-radius: 12px;
-    box-shadow:  -9px -9px 16px #d6d6d6,
-             9px 9px 16px #ffffff;
+    box-shadow: -9px -9px 16px #d6d6d6,
+        9px 9px 16px #ffffff;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -236,12 +236,12 @@ main {
 }
 
 .heatmap {
-    
+
     height: 500px;
     width: 450px;
     border-radius: 12px;
-    box-shadow:  -9px -9px 16px #d6d6d6,
-             9px 9px 16px #ffffff;
+    box-shadow: -9px -9px 16px #d6d6d6,
+        9px 9px 16px #ffffff;
     margin-right: 180px;
     transition: all 600ms;
 }
@@ -310,8 +310,8 @@ main {
 }
 
 .kpi-card {
-    box-shadow:  -9px -9px 16px #d6d6d6,
-             9px 9px 16px #ffffff;
+    box-shadow: -9px -9px 16px #d6d6d6,
+        9px 9px 16px #ffffff;
     height: 110px;
     width: 220px;
     margin-right: 20px;
@@ -330,7 +330,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    
+
 }
 
 .bottom-graphs {
@@ -342,17 +342,18 @@ main {
 }
 
 .graph-left {
-    box-shadow:  -9px -9px 16px #d6d6d6,
-             9px 9px 16px #ffffff;
+    box-shadow: -9px -9px 16px #d6d6d6,
+        9px 9px 16px #ffffff;
     height: 280px;
     width: 45%;
     border-radius: 12px;
     padding: 12px;
     transition: all 600ms;
 }
+
 .graph-right {
-    box-shadow:  -9px -9px 16px #d6d6d6,
-             9px 9px 16px #ffffff;
+    box-shadow: -9px -9px 16px #d6d6d6,
+        9px 9px 16px #ffffff;
     height: 280px;
     width: 40%;
     border-radius: 12px;
@@ -361,8 +362,8 @@ main {
 }
 
 .bottom-graphs .card {
-    box-shadow:  -9px -9px 16px #d6d6d6,
-             9px 9px 16px #ffffff;
+    box-shadow: -9px -9px 16px #d6d6d6,
+        9px 9px 16px #ffffff;
     height: 280px;
     width: 330px;
     border-radius: 12px;
@@ -375,37 +376,38 @@ main {
 }
 
 .bottom-graphs .card:hover {
-    box-shadow:  -9px -9px 16px #e0e0e0,
-             9px 9px 16px #ffffff;
+    box-shadow: -9px -9px 16px #e0e0e0,
+        9px 9px 16px #ffffff;
 }
 
-.graph-right:hover{
-    box-shadow:  -9px -9px 16px #e0e0e0,
-             9px 9px 16px #ffffff;
+.graph-right:hover {
+    box-shadow: -9px -9px 16px #e0e0e0,
+        9px 9px 16px #ffffff;
 }
 
-.graph-left:hover{
-    box-shadow:  -9px -9px 16px #e0e0e0,
-             9px 9px 16px #ffffff;
+.graph-left:hover {
+    box-shadow: -9px -9px 16px #e0e0e0,
+        9px 9px 16px #ffffff;
 }
-.kpi-card:hover{
-    box-shadow:  -9px -9px 16px #e0e0e0,
-             9px 9px 16px #ffffff;
+
+.kpi-card:hover {
+    box-shadow: -9px -9px 16px #e0e0e0,
+        9px 9px 16px #ffffff;
 }
 
 .info-card:hover {
-    box-shadow:  -9px -9px 16px #e0e0e0,
-             9px 9px 16px #ffffff;
+    box-shadow: -9px -9px 16px #e0e0e0,
+        9px 9px 16px #ffffff;
 }
 
 .heatmap:hover {
-    box-shadow:  -9px -9px 16px #e0e0e0,
-             9px 9px 16px #ffffff;
+    box-shadow: -9px -9px 16px #e0e0e0,
+        9px 9px 16px #ffffff;
 }
 
 .quick-access:hover {
-    box-shadow:  -9px -9px 16px #e0e0e0,
-             9px 9px 16px #ffffff;
+    box-shadow: -9px -9px 16px #e0e0e0,
+        9px 9px 16px #ffffff;
 }
 
 
