@@ -211,8 +211,8 @@ main {
     height: 200px;
     width: 400px;
     border-radius: 12px;
-    box-shadow: -9px -9px 16px #d6d6d6,
-        9px 9px 16px #ffffff;
+    box-shadow: 6px 6px 16px #d6d6d6,
+    -6px -6px 16px #ffffff;
     font-size: 1rem;
     display: flex;
     flex-direction: column;
@@ -226,8 +226,8 @@ main {
     height: 250px;
     width: 400px;
     border-radius: 12px;
-    box-shadow: -9px -9px 16px #d6d6d6,
-        9px 9px 16px #ffffff;
+    box-shadow: 6px 6px 16px #d6d6d6,
+    -6px -6px 16px #ffffff;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -240,8 +240,8 @@ main {
     height: 500px;
     width: 450px;
     border-radius: 12px;
-    box-shadow: -9px -9px 16px #d6d6d6,
-        9px 9px 16px #ffffff;
+    box-shadow: 6px 6px 16px #d6d6d6,
+    -6px -6px 16px #ffffff;
     margin-right: 180px;
     transition: all 600ms;
 }
@@ -310,8 +310,8 @@ main {
 }
 
 .kpi-card {
-    box-shadow: -9px -9px 16px #d6d6d6,
-        9px 9px 16px #ffffff;
+    box-shadow: 6px 6px 16px #d6d6d6,
+        -6px -6px 16px #ffffff;
     height: 110px;
     width: 220px;
     margin-right: 20px;
@@ -342,8 +342,8 @@ main {
 }
 
 .graph-left {
-    box-shadow: -9px -9px 16px #d6d6d6,
-        9px 9px 16px #ffffff;
+    box-shadow: 6px 6px 16px #d6d6d6,
+    -6px -6px 16px #ffffff;
     height: 280px;
     width: 45%;
     border-radius: 12px;
@@ -352,8 +352,8 @@ main {
 }
 
 .graph-right {
-    box-shadow: -9px -9px 16px #d6d6d6,
-        9px 9px 16px #ffffff;
+    box-shadow: 6px 6px 16px #d6d6d6,
+    -6px -6px 16px #ffffff;
     height: 280px;
     width: 40%;
     border-radius: 12px;
@@ -362,8 +362,8 @@ main {
 }
 
 .bottom-graphs .card {
-    box-shadow: -9px -9px 16px #d6d6d6,
-        9px 9px 16px #ffffff;
+    box-shadow: 6px 6px 16px #d6d6d6,
+    -6px -6px 16px #ffffff;
     height: 280px;
     width: 330px;
     border-radius: 12px;
