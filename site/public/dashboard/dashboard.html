@@ -303,7 +303,7 @@
 
     setInterval(() => {
         obterdados(1), atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5)
-    }, 100000000000);
+    }, 2000);
 
     function obterdados(idMaquina) {
         fetch(`/cards/tempo-real/${idMaquina}`)
