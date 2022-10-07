@@ -160,7 +160,7 @@ main {
 .main-container {
     width: 100vw;
     height: 100vh;
-    background-color: #d8d8d8;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,7 +177,7 @@ main {
 
 .left-form {
     color: rgb(0, 0, 0);
-    background: white;
+    background: #ffffff;
     height: 100%;
     width: 60%;
     display: flex;

@@ -184,7 +184,7 @@ main {
 .main-container {
     width: 100vw;
     height: 100vh;
-    background-color: #d8d8d8;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,6 +197,8 @@ main {
     width: 950px;
     box-shadow:  20px 20px 60px #bebebe,
              -20px -20px 60px #ffffff;
+
+        
 }
 
 .left-form {
@@ -210,7 +212,7 @@ main {
     justify-content: center;
     flex-direction: column;
     justify-content: space-evenly;
-    background-color: rgb(240, 240, 240);
+    background-color: #ffffff;
 }
 .right-form {
     background: linear-gradient(to bottom, #4E184C, #78205E);
@@ -236,6 +238,7 @@ input {
     color: #101010;
     padding-left: 8px;
     outline: none;
+    background-color: transparent;
 }
 
 input:focus {

@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body onload="obterdados(1), obterDadosGrafico(1)">
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
@@ -73,37 +73,37 @@
                     <i class="fa-solid fa-temperature-arrow-up"></i>
                     <div class="text-temp">
                         <h5>Maior temperatura</h5>
-                        <h1>40º</h1>
+                        <h1 id="maiortemp"></h1>
                     </div>
                 </div>
                 <div class="kpi-card">
                     <i class="fa-solid fa-floppy-disk"></i>
                     <div class="text-temp">
                         <h5>Maior uso de disco</h5>
-                        <h1>76%</h1>
+                        <h1 id="maiordisco"></h1>
                     </div>
                 </div>
                 <div class="kpi-card">
                     <i class="fa-solid fa-memory"></i>
                     <div class="text-temp">
                         <h5>Maior uso de memoria</h5>
-                        <h1>68%</h1>
+                        <h1 id="maiormemoria"></h1>
                     </div>
                 </div>
                 <div class="kpi-card">
                     <i class="fa-solid fa-microchip"></i>
                     <div class="text-temp">
                         <h5>Maior uso de processador</h5>
-                        <h1>97%</h1>
+                        <h1 id="maiorprocessador"></h1>
                     </div>
                 </div>
             </div>
             <div class="mid-graphs">
                 <div class="graph-left">
-                    <canvas id="myChart" width="100px" height="51px"></canvas>
+                    <canvas id="myChart"></canvas>
                 </div>
                 <div class="graph-right">
-                    <canvas id="myChart2" width="100px" height="57px"></canvas>
+                    <canvas id="myChart2"></canvas>
                 </div>
             </div>
             <div class="bottom-graphs">
@@ -161,6 +161,7 @@
 
 </html>
 <script>
+    var idMaquina = 1;
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
 
@@ -170,13 +171,9 @@
 </script>
 <script>
     const labels = [
-        '10:12:05',
-        '10:12:06',
-        '10:12:07',
-        '10:12:08',
-        '10:12:09',
-        '10:12:10',
+        
     ];
+
 
     const data = {
         labels: labels,
@@ -184,7 +181,7 @@
             label: 'Memoria em tempo real',
             backgroundColor: 'rgb(255, 255, 255)',
             borderColor: 'rgb(85, 21, 66)',
-            data: [36, 40, 35, 49, 57, 50, 45],
+            data: [],
         }]
     };
     const data2 = {
@@ -193,7 +190,7 @@
             label: 'Processador em tempo real',
             backgroundColor: 'rgb(255, 255, 255)',
             borderColor: 'rgb(85, 21, 66)',
-            data: [75, 77, 70, 72, 76, 80, 74],
+            data: [],
         }]
     };
     const data3 = {
@@ -202,7 +199,7 @@
             label: 'Disco em tempo real',
             backgroundColor: 'rgb(255, 255, 255)',
             borderColor: 'rgb(85, 21, 66)',
-            data: [20, 35, 32, 33, 38, 30, 45],
+            data: [],
         }]
     };
     const data4 = {
@@ -211,14 +208,14 @@
             label: 'Temperatura em tempo real',
             backgroundColor: 'rgb(255, 255, 255)',
             borderColor: 'rgb(85, 21, 66)',
-            data: [45, 50, 52, 48, 44, 40, 45],
+            data: [],
         }]
     };
     const data5 = {
         labels: labels,
         datasets: [{
             label: 'A definir',
-            data: [65, 59, 80, 81, 56, 55, 40],
+            data: [],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
@@ -290,6 +287,116 @@
         document.getElementById('myChart5'),
         config5
     );
+
+    setInterval(() => {
+        obterdados(1), atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5)
+    }, 2000);
+
+    function obterdados(idMaquina) {
+        fetch(`/cards/tempo-real/${idMaquina}`)
+            .then(resposta => {
+                var maiorTemp = document.getElementById('maiortemp');
+                var maiorDisco = document.getElementById('maiordisco');
+                var maiorProcessador = document.getElementById('maiorprocessador');
+                var maiorMemoria = document.getElementById('maiormemoria');
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+                        maiorProcessador.innerHTML = resposta[0].processador + "%";
+                        maiorDisco.innerHTML = resposta[0].disco + "%";
+                        maiorMemoria.innerHTML = resposta[0].memoria + "%";
+                        maiorTemp.innerHTML = resposta[0].temperatura + "°";
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function obterDadosGrafico(idMaquina) {
+
+        fetch(`/graficos/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idMaquina);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGrafico(resposta, idMaquina) {
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.momento_grafico);
+            data.datasets[0].data.push(registro.memoria);
+            data2.datasets[0].data.push(registro.processador);
+            data3.datasets[0].data.push(registro.disco);
+            data4.datasets[0].data.push(registro.temperatura);
+        }
+
+        setTimeout(() => atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 2000);
+    }
+
+    function atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5) {
+
+        fetch(`/graficos/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+
+                        data.labels.shift();
+                        data.labels.push(novoRegistro[0].momento_grafico);
+
+                        data.datasets[0].data.shift(); 
+                        data.datasets[0].data.push(novoRegistro[0].memoria);
+
+                        myChart.update();
+
+                        data2.labels.shift(); 
+                        data2.labels.push(novoRegistro[0].momento_grafico); 
+
+                        data2.datasets[0].data.shift(); 
+                        data2.datasets[0].data.push(novoRegistro[0].processador);
+
+                        myChart2.update();
+
+                        data3.labels.shift();
+                        data3.labels.push(novoRegistro[0].momento_grafico);
+
+                        data3.datasets[0].data.shift();
+                        data3.datasets[0].data.push(novoRegistro[0].disco);
+
+                        myChart3.update();
+                        
+                        data4.labels.shift();
+                        data4.labels.push(novoRegistro[0].momento_grafico); 
+
+                        data4.datasets[0].data.shift();
+                        data4.datasets[0].data.push(novoRegistro[0].temperatura); 
+
+                        myChart4.update();
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
 
 
 </script>
