@@ -23,6 +23,10 @@ public class App {
         
         test.Execut();
         
+        //Memoria memoria = new Memoria();
+        
+        
+        //System.out.println( memoria.getTotal());
         
     }
 }

@@ -25,9 +25,9 @@ public class Connection {
         
         datasource.setUrl("jdbc:mysql://localhost/animix");
         
-        datasource.setUsername("aluno");
+        datasource.setUsername("root");
         
-        datasource.setPassword("sptech");
+        datasource.setPassword("Drifttrike46@");
         
         connection = new JdbcTemplate(datasource);
     }

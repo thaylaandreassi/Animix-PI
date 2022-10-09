@@ -14,6 +14,10 @@ public class TestDatabase {
         Connection connection = new Connection();
         JdbcTemplate con = connection.getConnection();
     
+    public void deserialize(){
+        Looca looca = new Looca();
+    }
+        
     public void Execut() {
         Looca looca = new Looca();
         
@@ -27,7 +31,15 @@ public class TestDatabase {
         
         Memoria memoria = new Memoria();
         
-        memoria.getDisponivel();
+        String insertStatement = "INSERT INTO dados VALUES (null, ?)";
+        con.update(insertStatement, memoria.getDisponivel());
+        List<Dados> onlyFireType = con.query("SELECT * FROM Dados",
+                new BeanPropertyRowMapper(Dados.class));
+
+        System.out.println("Exibindo somente Dados:");
+        
+         //Dessa vez usando "forEach":
+        onlyFireType.forEach(Dados -> System.out.println(Dados.getMemoria()));
         
         
         
@@ -36,14 +48,15 @@ public class TestDatabase {
         //createStatement.append("CREATE TABLE studio(");
         //createStatement.append("idStrudio INT PRIMARY KEY AUTO_INCREMENT,");
         //createStatement.append("nomeEmpresa VARCHAR(255),");
-        String insertStatement = "INSERT INTO dados VALUES (null, ?)";
+        
+        //String insertStatement = "INSERT INTO dados VALUES (null, ?)";
         //String temperatura = looca.getMemoria();
-        con.update(insertStatement, memoria.getDisponivel().intValue());
-        List<Dados> dadosAdvancedUse = con.query("SELECT * FROM dados", new BeanPropertyRowMapper(Dados.class));
-        System.out.println("\nEXIBINDO DA MANEIRA MAIS ÚTIL:");
-        for (Dados Dados : dadosAdvancedUse) {
-            System.out.println("Memória disponível: " + Dados.getMemoria());
-        }
+        //con.update(insertStatement, memoria.getDisponivel());
+        //List<Dados> dadosAdvancedUse = con.query("SELECT * FROM dados", new BeanPropertyRowMapper(Dados.class));
+        //System.out.println("\nEXIBINDO DA MANEIRA MAIS ÚTIL:");
+        //for (Dados Dados : dadosAdvancedUse) {
+            //System.out.println("Memória dilsponível: " + Dados.getMemoria());
+        //}
         
         
     } 
