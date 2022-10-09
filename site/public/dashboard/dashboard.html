@@ -52,12 +52,19 @@
                 </a>
                 <span class="tooltip">Máquinas</span>
             </li>
-            <li>
+            <li >
                 <a href="#">
                     <i class='bx bx-support'></i>
                     <span class="links_name">Suporte</span>
                 </a>
                 <span class="tooltip">Suporte</span>
+            </li>
+            <li id="toggle">
+                <a href="#">
+                    <i class="fa-solid fa-toggle-off"></i>
+                    <span class="links_name">Modo escuro</span>
+                </a>
+                <span class="tooltip">Modo escuro</span>
             </li>
             <li>
                 <a href="../index.html">
@@ -98,6 +105,10 @@
                     </div>
                 </div>
             </div>
+            <div class="warning-msg" style="display: none;">
+                <i class="fa fa-warning"></i>
+                This is a warning message.
+            </div>
             <div class="mid-graphs">
                 <div class="graph-left">
                     <canvas id="myChart"></canvas>
@@ -119,6 +130,7 @@
             </div>
         </div>
         <div class="graphs-container">
+
             <div class="left-section">
                 <div class="info-card">
                     <h4> <i class="fa-solid fa-laptop"></i> Sistema operacional: <span id="sistema">Ubuntu</span> </h4>
@@ -161,6 +173,7 @@
 
 </html>
 <script>
+    localStorage.setItem('theme', 'light'); 
     var idMaquina = 1;
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
@@ -171,7 +184,7 @@
 </script>
 <script>
     const labels = [
-        
+
     ];
 
 
@@ -356,37 +369,37 @@
                 response.json().then(function (novoRegistro) {
 
 
-                        data.labels.shift();
-                        data.labels.push(novoRegistro[0].momento_grafico);
+                    data.labels.shift();
+                    data.labels.push(novoRegistro[0].momento_grafico);
 
-                        data.datasets[0].data.shift(); 
-                        data.datasets[0].data.push(novoRegistro[0].memoria);
+                    data.datasets[0].data.shift();
+                    data.datasets[0].data.push(novoRegistro[0].memoria);
 
-                        myChart.update();
+                    myChart.update();
 
-                        data2.labels.shift(); 
-                        data2.labels.push(novoRegistro[0].momento_grafico); 
+                    data2.labels.shift();
+                    data2.labels.push(novoRegistro[0].momento_grafico);
 
-                        data2.datasets[0].data.shift(); 
-                        data2.datasets[0].data.push(novoRegistro[0].processador);
+                    data2.datasets[0].data.shift();
+                    data2.datasets[0].data.push(novoRegistro[0].processador);
 
-                        myChart2.update();
+                    myChart2.update();
 
-                        data3.labels.shift();
-                        data3.labels.push(novoRegistro[0].momento_grafico);
+                    data3.labels.shift();
+                    data3.labels.push(novoRegistro[0].momento_grafico);
 
-                        data3.datasets[0].data.shift();
-                        data3.datasets[0].data.push(novoRegistro[0].disco);
+                    data3.datasets[0].data.shift();
+                    data3.datasets[0].data.push(novoRegistro[0].disco);
 
-                        myChart3.update();
-                        
-                        data4.labels.shift();
-                        data4.labels.push(novoRegistro[0].momento_grafico); 
+                    myChart3.update();
 
-                        data4.datasets[0].data.shift();
-                        data4.datasets[0].data.push(novoRegistro[0].temperatura); 
+                    data4.labels.shift();
+                    data4.labels.push(novoRegistro[0].momento_grafico);
 
-                        myChart4.update();
+                    data4.datasets[0].data.shift();
+                    data4.datasets[0].data.push(novoRegistro[0].temperatura);
+
+                    myChart4.update();
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -398,5 +411,26 @@
             });
     }
 
+    const toggle = document.getElementById("toggle");
+
+    toggle.addEventListener("click", () => {
+        if (localStorage.getItem('theme') == 'light') {
+        document.documentElement.style.setProperty('--background_color', '#121212')
+        document.documentElement.style.setProperty('--background_color-card', '#212121')
+        document.documentElement.style.setProperty('--font-color-preta', '#ffffff')
+        document.documentElement.style.setProperty('--background_branca', '#101010')
+        document.documentElement.style.setProperty('--top-shadow', '#101010')
+        document.documentElement.style.setProperty('--bottom-shadow', '#121212')
+        localStorage.setItem('theme', 'dark')
+        } else {
+        document.documentElement.style.setProperty('--background_color', '#fff')
+        document.documentElement.style.setProperty('--background_color-card', '#fff')
+        document.documentElement.style.setProperty('--font-color-preta', '#101010')
+        document.documentElement.style.setProperty('--background_branca', '#fff')
+        document.documentElement.style.setProperty('--top-shadow', '#d6d6d6')
+        document.documentElement.style.setProperty('--bottom-shadow', '#ffffff')
+        localStorage.setItem('theme', 'light')
+        }
+    });
 
 </script>
