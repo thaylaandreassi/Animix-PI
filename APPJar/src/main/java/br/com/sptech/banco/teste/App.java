@@ -5,6 +5,8 @@
 package br.com.sptech.banco.teste;
 
 import com.github.britooo.looca.api.core.Looca;
+import oshi.SystemInfo;
+import oshi.hardware.HardwareAbstractionLayer;
 import com.github.britooo.looca.api.group.temperatura.Temperatura;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.sistema.Sistema;
@@ -23,12 +25,14 @@ public class App {
         Looca looca = new Looca();
         TestDatabase test = new TestDatabase();
         //test.convert();
-        //test.TempoAtiv();
+        test.TempoAtiv();
+        test.temperatura();
+        test.Processos();
         
         
-        //System.out.println(looca.getGrupoDeDiscos().getDiscos());        
-        System.out.println(looca.getGrupoDeProcessos().getTotalProcessos());
-        //System.out.println(looca.getGrupoDeServicos().getServicosAtivos());
+        //System.out.println(looca.getGrupoDeDiscos().getVolumes());        
+        //System.out.println(looca.getGrupoDeProcessos().getTotalProcessos());
+        //System.out.println(looca.getGrupoDeServicos());
         //System.out.println(looca.getMemoria());
         //System.out.println(looca.getProcessador().getNumeroCpusFisicas());
         //System.out.println(looca.getSistema().getTempoDeAtividade());

@@ -1,7 +1,10 @@
 package br.com.sptech.banco.teste;
 
 import com.github.britooo.looca.api.core.Looca;
+import oshi.SystemInfo;
+import oshi.hardware.HardwareAbstractionLayer;
 import com.github.britooo.looca.api.group.memoria.Memoria;
+import com.github.britooo.looca.api.group.processos.Processo;
 import com.github.britooo.looca.api.group.processos.ProcessoGrupo;
 import com.github.britooo.looca.api.group.sistema.Sistema;
 import com.github.britooo.looca.api.group.temperatura.Temperatura;
@@ -24,22 +27,20 @@ public class TestDatabase {
         
         
     public void temperatura(){
-       ProcessoGrupo processo = new ProcessoGrupo();
+       Temperatura temperatura = new Temperatura();
        
-       String processos = null;
-        processos = Long.toString(processo.getTotalProcessos());
+       String temp = null;
+        temp = Double.toString(temperatura.getTemperatura());
         
-        
-        
-        String insertStatement = "INSERT INTO dados VALUES (null, ?)";
-        con.update(insertStatement, processos);
+       String insertStatement = "INSERT INTO dados VALUES (null,?,?,?,?,?)";
+        con.update(insertStatement, temp, null, null, null, null);
         List<Dados> onlyFireType = con.query("SELECT * FROM Dados",
                 new BeanPropertyRowMapper(Dados.class));
 
         System.out.println("Exibindo somente Dados:");
         
         for (Dados dados : onlyFireType) {
-            System.out.println("Total de Processos" + dados.getQtdProcessosAtuantes());
+            System.out.println("temperatura: " + dados.getTemperatura());
         }
     }    
     
@@ -60,6 +61,25 @@ public class TestDatabase {
         
         for (Dados dados : onlyFireType) {
             System.out.println("Tempo de Atividade :" + dados.getTempoAtiv());
+        }
+    }
+    
+    public void Processos(){
+        ProcessoGrupo processo = new ProcessoGrupo();
+        
+        String process = null;
+        process = Long.toString(processo.getTotalProcessos());
+        
+                String insertStatement = "INSERT INTO dados VALUES (null,?,?,?,?,?)";
+        con.update(insertStatement, null, null, null, null, process);
+        List<Dados> onlyFireType = con.query("SELECT * FROM Dados",
+                new BeanPropertyRowMapper(Dados.class));
+
+        System.out.println("Exibindo somente Dados:");
+        
+        for (Dados dados : onlyFireType) {
+            System.out.println("Quantidade de Processos Atuantes:"
+                    + dados.getQtdProcessosAtuantes());
         }
     }
         
@@ -103,8 +123,7 @@ public class TestDatabase {
         //for (Dados Dados : dadosAdvancedUse) {
             //System.out.println("Memória dilsponível: " + Dados.getMemoria());
         //}
-        
-        
+         
     } 
     
 }
