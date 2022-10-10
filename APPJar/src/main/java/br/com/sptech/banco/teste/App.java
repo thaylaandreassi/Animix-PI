@@ -9,6 +9,8 @@ import com.github.britooo.looca.api.group.temperatura.Temperatura;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.sistema.Sistema;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +22,16 @@ public class App {
     public static void main(String[] args) {
         Looca looca = new Looca();
         TestDatabase test = new TestDatabase();
-        
-        test.Execut();
-        
-        //Memoria memoria = new Memoria();
+        //test.convert();
+        //test.TempoAtiv();
         
         
-        //System.out.println( memoria.getTotal());
-        
+        //System.out.println(looca.getGrupoDeDiscos().getDiscos());        
+        System.out.println(looca.getGrupoDeProcessos().getTotalProcessos());
+        //System.out.println(looca.getGrupoDeServicos().getServicosAtivos());
+        //System.out.println(looca.getMemoria());
+        //System.out.println(looca.getProcessador().getNumeroCpusFisicas());
+        //System.out.println(looca.getSistema().getTempoDeAtividade());
+        //System.out.println(looca.getTemperatura().getTemperatura());
     }
 }

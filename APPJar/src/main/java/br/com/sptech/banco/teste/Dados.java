@@ -9,8 +9,12 @@ package br.com.sptech.banco.teste;
  * @author Eduardo
  */
 public class Dados {
-     private Integer idDados;
-    private String memoria;
+    private Integer idDados;
+    private Double temperatura;
+    private Double PorcentCPU;
+    private Double Porcentdiscos;
+    private String TempoAtiv;
+    private Integer QtdProcessosAtuantes;
 
     public Integer getIdDados() {
         return idDados;
@@ -20,13 +24,44 @@ public class Dados {
         this.idDados = idDados;
     }
 
-    public String getMemoria() {
-        return memoria;
+    public Double getTemperatura() {
+        return temperatura;
     }
 
-    public void setMemoria(String memoria) {
-        this.memoria = memoria;
+    public void setTemperatura(Double temperatura) {
+        this.temperatura = temperatura;
     }
 
-    
+    public Double getPorcentCPU() {
+        return PorcentCPU;
+    }
+
+    public void setPorcentCPU(Double PorcentCPU) {
+        this.PorcentCPU = PorcentCPU;
+    }
+
+    public Double getPorcentdiscos() {
+        return Porcentdiscos;
+    }
+
+    public void setPorcentdiscos(Double Porcentdiscos) {
+        this.Porcentdiscos = Porcentdiscos;
+    }
+
+    public String getTempoAtiv() {
+        return TempoAtiv;
+    }
+
+    public void setTempoAtiv(String TempoAtiv) {
+        this.TempoAtiv = TempoAtiv;
+    }
+
+    public Integer getQtdProcessosAtuantes() {
+        return QtdProcessosAtuantes;
+    }
+
+    public void setQtdProcessosAtuantes(Integer QtdProcessosAtuantes) {
+        this.QtdProcessosAtuantes = QtdProcessosAtuantes;
+    }
+
 }
