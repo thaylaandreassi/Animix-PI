@@ -27,10 +27,10 @@ public class App {
         //test.convert();
         test.TempoAtiv();
         test.temperatura();
-        test.Processos();
+        //test.Processos();
         
         
-        //System.out.println(looca.getGrupoDeDiscos().getVolumes());        
+        //System.out.println(looca.getGrupoDeDiscos().getVolumes().get(0).getTipo());        
         //System.out.println(looca.getGrupoDeProcessos().getTotalProcessos());
         //System.out.println(looca.getGrupoDeServicos());
         //System.out.println(looca.getMemoria());

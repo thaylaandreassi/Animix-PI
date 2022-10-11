@@ -5,7 +5,7 @@ import oshi.SystemInfo;
 import oshi.hardware.HardwareAbstractionLayer;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processos.Processo;
-import com.github.britooo.looca.api.group.processos.ProcessoGrupo;
+//import com.github.britooo.looca.api.group.processos.ProcessoGrupo;
 import com.github.britooo.looca.api.group.sistema.Sistema;
 import com.github.britooo.looca.api.group.temperatura.Temperatura;
 import com.google.gson.Gson;
@@ -27,7 +27,7 @@ public class TestDatabase {
         
         
     public void temperatura(){
-       Temperatura temperatura = new Temperatura();
+       Temperatura temperatura = looca.getTemperatura();
        
        String temp = null;
         temp = Double.toString(temperatura.getTemperatura());
@@ -40,7 +40,7 @@ public class TestDatabase {
         System.out.println("Exibindo somente Dados:");
         
         for (Dados dados : onlyFireType) {
-            System.out.println("temperatura: " + dados.getTemperatura());
+            System.out.println("temperatura: " + dados.getTemperaturaHard());
         }
     }    
     
@@ -61,25 +61,6 @@ public class TestDatabase {
         
         for (Dados dados : onlyFireType) {
             System.out.println("Tempo de Atividade :" + dados.getTempoAtiv());
-        }
-    }
-    
-    public void Processos(){
-        ProcessoGrupo processo = new ProcessoGrupo();
-        
-        String process = null;
-        process = Long.toString(processo.getTotalProcessos());
-        
-                String insertStatement = "INSERT INTO dados VALUES (null,?,?,?,?,?)";
-        con.update(insertStatement, null, null, null, null, process);
-        List<Dados> onlyFireType = con.query("SELECT * FROM Dados",
-                new BeanPropertyRowMapper(Dados.class));
-
-        System.out.println("Exibindo somente Dados:");
-        
-        for (Dados dados : onlyFireType) {
-            System.out.println("Quantidade de Processos Atuantes:"
-                    + dados.getQtdProcessosAtuantes());
         }
     }
         
