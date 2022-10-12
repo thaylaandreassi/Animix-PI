@@ -51,4 +51,4 @@ public class App {
         //System.out.println(looca.getSistema().getTempoDeAtividade());
         //System.out.println(looca.getTemperatura().getTemperatura());
     }
-}
+
