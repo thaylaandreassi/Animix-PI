@@ -12,9 +12,8 @@ public class Dados {
     private Integer idDados;
     private Double temperaturaHard;
     private Double PorcentCPU;
-    private Double Porcentdiscos;
+    private Long Porcentdiscos;
     private Long TempoAtiv;
-    private Integer QtdProcessosAtuantes;
 
     public Integer getIdDados() {
         return idDados;
@@ -40,11 +39,11 @@ public class Dados {
         this.PorcentCPU = PorcentCPU;
     }
 
-    public Double getPorcentdiscos() {
+    public Long getPorcentdiscos() {
         return Porcentdiscos;
     }
 
-    public void setPorcentdiscos(Double Porcentdiscos) {
+    public void setPorcentdiscos(Long Porcentdiscos) {
         this.Porcentdiscos = Porcentdiscos;
     }
 
@@ -56,14 +55,5 @@ public class Dados {
         this.TempoAtiv = TempoAtiv;
     }
 
-    public Integer getQtdProcessosAtuantes() {
-        return QtdProcessosAtuantes;
-    }
-
-    public void setQtdProcessosAtuantes(Integer QtdProcessosAtuantes) {
-        this.QtdProcessosAtuantes = QtdProcessosAtuantes;
-    }
-
-    
-    
+   
 }

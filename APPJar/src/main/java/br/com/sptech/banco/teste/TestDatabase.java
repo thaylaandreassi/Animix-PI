@@ -5,6 +5,7 @@ import oshi.SystemInfo;
 import oshi.hardware.HardwareAbstractionLayer;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processos.Processo;
+import com.github.britooo.looca.api.group.processos.ProcessoGrupo;
 //import com.github.britooo.looca.api.group.processos.ProcessoGrupo;
 import com.github.britooo.looca.api.group.sistema.Sistema;
 import com.github.britooo.looca.api.group.temperatura.Temperatura;
@@ -43,68 +44,48 @@ public class TestDatabase {
             System.out.println("temperatura: " + dados.getTemperaturaHard());
         }
     }    
-    
-    public void TempoAtiv(){
-        Sistema sistema = new Sistema();
-       
-       String sistemas = null;
-        sistemas = Long.toString(sistema.getTempoDeAtividade());
-        
-        
-        
-        String insertStatement = "INSERT INTO dados VALUES (null,?,?,?,?,?)";
-        con.update(insertStatement, null, null, null, sistemas, null);
-        List<Dados> onlyFireType = con.query("SELECT * FROM Dados",
-                new BeanPropertyRowMapper(Dados.class));
-
-        System.out.println("Exibindo somente Dados:");
-        
-        for (Dados dados : onlyFireType) {
-            System.out.println("Tempo de Atividade :" + dados.getTempoAtiv());
-        }
-    }
+   
         
     public void Execut() {
+        // Temperatura:
         
-        Memoria memoria = new Memoria();
+        Temperatura temperatura = looca.getTemperatura();
+       
+       Double temp = 0.0;
+        temp = temperatura.getTemperatura();
         
         
-        String teste = null;
-        teste = Long.toString(memoria.getEmUso());
+        // PorcentCPU e BytesEmEscrita:
+        
+        ProcessoGrupo processo = new ProcessoGrupo();
         
         
+                 Double porcentCPU = 0.0;
+                 Long porcentDisco = null;
         
-        String insertStatement = "INSERT INTO dados VALUES (null, ?)";
-        con.update(insertStatement, teste);
+           porcentCPU = looca.getGrupoDeProcessos().getProcessos().get(0).getUsoCpu();           
+           porcentDisco = looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho();
+        
+        // TempoAtiv
+        
+                Sistema sistema = new Sistema();
+       
+        Long sistemas = null;
+        sistemas = sistema.getTempoDeAtividade();
+        
+        
+        String insertStatement = "INSERT INTO dados VALUES (null,?,?,?,?)";
+        con.update(insertStatement, temp, porcentCPU, porcentDisco, sistemas);
         List<Dados> onlyFireType = con.query("SELECT * FROM Dados",
                 new BeanPropertyRowMapper(Dados.class));
-
-        System.out.println("Exibindo somente Dados:");
         
         for (Dados dados : onlyFireType) {
-            System.out.println("Memória Ram: " + dados.getIdDados());
+            System.out.println("temperatura: \n" + dados.getTemperaturaHard()
+                + "\n Porcentagem CPU: \n" + dados.getPorcentCPU()
+                 + "\n Bytes Escritos no Disco: \n" + dados.getPorcentdiscos()
+                  + "\n Tempo de Atividade: \n" + dados.getTempoAtiv()
+            );
         }
-        
-         //Dessa vez usando "forEach":
-        //onlyFireType.forEach(Dados -> System.out.println(Dados);
-        
-        
-        
-        //con.execute("DROP TABLE IF EXISTS studio");
-        //StringBuilder createStatement = new StringBuilder();
-        //createStatement.append("CREATE TABLE studio(");
-        //createStatement.append("idStrudio INT PRIMARY KEY AUTO_INCREMENT,");
-        //createStatement.append("nomeEmpresa VARCHAR(255),");
-        
-        //String insertStatement = "INSERT INTO dados VALUES (null, ?)";
-        //String temperatura = looca.getMemoria();
-        //con.update(insertStatement, memoria.getDisponivel());
-        //List<Dados> dadosAdvancedUse = con.query("SELECT * FROM dados", new BeanPropertyRowMapper(Dados.class));
-        //System.out.println("\nEXIBINDO DA MANEIRA MAIS ÚTIL:");
-        //for (Dados Dados : dadosAdvancedUse) {
-            //System.out.println("Memória dilsponível: " + Dados.getMemoria());
-        //}
-         
     } 
     
 }

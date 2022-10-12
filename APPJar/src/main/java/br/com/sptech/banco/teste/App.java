@@ -12,27 +12,40 @@ import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.sistema.Sistema;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.LongSerializationPolicy;
 import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
  * @author aluno
  */
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Looca looca = new Looca();
         TestDatabase test = new TestDatabase();
         //test.convert();
-        test.TempoAtiv();
-        test.temperatura();
+        //test.TempoAtiv();
+        //test.temperatura();
         //test.Processos();
         
         
-        //System.out.println(looca.getGrupoDeDiscos().getVolumes().get(0).getTipo());        
-        //System.out.println(looca.getGrupoDeProcessos().getTotalProcessos());
-        //System.out.println(looca.getGrupoDeServicos());
+        for (int i = 0; i < 5; i++) {
+            TimeUnit.SECONDS.sleep(2);
+            test.Execut();
+    }
+}
+        
+       
+        
+        
+        //System.out.println(looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel());        
+        //System.out.println(looca.getGrupoDeProcessos().getProcessos().get(0).getUsoCpu());        
+        //System.out.println(looca.getGrupoDeProcessos().getProcessos().get(0).getBytesUtilizados());
+
+        //System.out.println(looca.getGrupoDeServicos().getServicos());
         //System.out.println(looca.getMemoria());
         //System.out.println(looca.getProcessador().getNumeroCpusFisicas());
         //System.out.println(looca.getSistema().getTempoDeAtividade());
