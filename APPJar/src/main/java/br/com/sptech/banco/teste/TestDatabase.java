@@ -6,14 +6,18 @@ import oshi.hardware.HardwareAbstractionLayer;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processos.Processo;
 import com.github.britooo.looca.api.group.processos.ProcessoGrupo;
+//import com.github.britooo.looca.api.group.processos.ProcessoGrupo;
 import com.github.britooo.looca.api.group.sistema.Sistema;
 import com.github.britooo.looca.api.group.temperatura.Temperatura;
+import com.github.britooo.looca.api.util.Conversor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.lang.ProcessBuilder.Redirect.Type;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,108 +26,76 @@ public class TestDatabase {
         Connection connection = new Connection();
         JdbcTemplate con = connection.getConnection();
         Looca looca = new Looca();
-        Memoria memoria = new Memoria();
+        Conversor conversor = new Conversor();
         
+   
+    public void Execut() {
+        Date dataHoraAtual = new Date();
+        // Temperatura:
         
-        
-    public void temperatura(){
-       Temperatura temperatura = new Temperatura();
+        Temperatura temperatura = looca.getTemperatura();
        
-       String temp = null;
-        temp = Double.toString(temperatura.getTemperatura());
-        
-       String insertStatement = "INSERT INTO dados VALUES (null,?,?,?,?,?)";
-        con.update(insertStatement, temp, null, null, null, null);
-        List<Dados> onlyFireType = con.query("SELECT * FROM Dados",
-                new BeanPropertyRowMapper(Dados.class));
-
-        System.out.println("Exibindo somente Dados:");
-        
-        for (Dados dados : onlyFireType) {
-            System.out.println("temperatura: " + dados.getTemperatura());
-        }
-    }    
-    
-    public void TempoAtiv(){
-        Sistema sistema = new Sistema();
-       
-       String sistemas = null;
-        sistemas = Long.toString(sistema.getTempoDeAtividade());
+       Double temp = 0.0;
+       temp = temperatura.getTemperatura();
         
         
+        // PorcentCPU e BytesEmEscrita:
         
-        String insertStatement = "INSERT INTO dados VALUES (null,?,?,?,?,?)";
-        con.update(insertStatement, null, null, null, sistemas, null);
-        List<Dados> onlyFireType = con.query("SELECT * FROM Dados",
-                new BeanPropertyRowMapper(Dados.class));
-
-        System.out.println("Exibindo somente Dados:");
-        
-        for (Dados dados : onlyFireType) {
-            System.out.println("Tempo de Atividade :" + dados.getTempoAtiv());
-        }
-    }
-    
-    public void Processos(){
         ProcessoGrupo processo = new ProcessoGrupo();
         
-        String process = null;
-        process = Long.toString(processo.getTotalProcessos());
         
-                String insertStatement = "INSERT INTO dados VALUES (null,?,?,?,?,?)";
-        con.update(insertStatement, null, null, null, null, process);
-        List<Dados> onlyFireType = con.query("SELECT * FROM Dados",
-                new BeanPropertyRowMapper(Dados.class));
-
-        System.out.println("Exibindo somente Dados:");
+                 Double porcentCPU = 0.0;
+                 
+                 Long porcentDisco = null;
         
-        for (Dados dados : onlyFireType) {
-            System.out.println("Quantidade de Processos Atuantes:"
-                    + dados.getQtdProcessosAtuantes());
-        }
-    }
+           porcentCPU = looca.getGrupoDeProcessos().getProcessos().get(0).getUsoCpu();       
+           porcentDisco = looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho();
         
-    public void Execut() {
+        // TempoAtiv
+        
+                Sistema sistema = new Sistema();
+       
+        String sistemas = null;
+        sistemas = conversor.formatarSegundosDecorridos(sistema.getTempoDeAtividade());
+        
         
         Memoria memoria = new Memoria();
         
-        
-        String teste = null;
-        teste = Long.toString(memoria.getEmUso());
-        
+        String memorias = null;
+        memorias = Conversor.formatarBytes(memoria.getEmUso());
         
         
-        String insertStatement = "INSERT INTO dados VALUES (null, ?)";
-        con.update(insertStatement, teste);
+         //Date Time
+        
+        String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
+        String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
+        
+        
+        // Momento de Subida no banco
+        
+        String insertStatement = "INSERT INTO dados VALUES (null,?,?,?,?,?,?,?)";
+        con.update(insertStatement, temp, porcentCPU, porcentDisco, 
+                sistemas, memorias, hora, data);
+        
+        
+        // Retorno do Banco de dados
+        
         List<Dados> onlyFireType = con.query("SELECT * FROM Dados",
                 new BeanPropertyRowMapper(Dados.class));
-
-        System.out.println("Exibindo somente Dados:");
+        
+        
+        // Exibição
         
         for (Dados dados : onlyFireType) {
-            System.out.println("Memória Ram: " + dados.getIdDados());
+            System.out.println("temperatura: \n" + dados.getTemperaturaHard()
+                + "\n Porcentagem CPU: \n" + dados.getPorcentCPU()
+                 + "\n Bytes Escritos no Disco: \n" + dados.getPorcentdiscos()
+                  + "\n Tempo de Atividade: \n" + dados.getTempoAtiv()
+                    + "\n Memoria em Uso: " + dados.getMemoriaHard()
+                    + "\n Data: " + dados.getDt()
+                    + "\n Hora: " + dados.getHora()
+                    
+            );
         }
-        
-         //Dessa vez usando "forEach":
-        //onlyFireType.forEach(Dados -> System.out.println(Dados);
-        
-        
-        
-        //con.execute("DROP TABLE IF EXISTS studio");
-        //StringBuilder createStatement = new StringBuilder();
-        //createStatement.append("CREATE TABLE studio(");
-        //createStatement.append("idStrudio INT PRIMARY KEY AUTO_INCREMENT,");
-        //createStatement.append("nomeEmpresa VARCHAR(255),");
-        
-        //String insertStatement = "INSERT INTO dados VALUES (null, ?)";
-        //String temperatura = looca.getMemoria();
-        //con.update(insertStatement, memoria.getDisponivel());
-        //List<Dados> dadosAdvancedUse = con.query("SELECT * FROM dados", new BeanPropertyRowMapper(Dados.class));
-        //System.out.println("\nEXIBINDO DA MANEIRA MAIS ÚTIL:");
-        //for (Dados Dados : dadosAdvancedUse) {
-            //System.out.println("Memória dilsponível: " + Dados.getMemoria());
-        //}
-         
     } 
-    
 }

@@ -161,7 +161,170 @@
             </div>
             <div class="right-section">
                 <div class="heatmap">
-
+                    <div class="col-md-5 ">
+                        <div class="options">
+                          <input oninput="kk()" onchange="kk()" type="range" id="tink" class="iptRange" value="1" min="10"
+                            max="20"><br />
+                          <input oninput="kk2()" type="text" id="valor" value="100" style="display: none;"><br />
+                          <input type="range" id="blurr" value="19" min="10" max="50" style="display: none;">
+                        </div>
+                        <!--HEATMAP: COMEÇO -->
+                        <div class="mapa">
+                          <canvas id="canvas" class="heatt"width=460 height=450></canvas>
+                          <p id="budget"></p>
+                          <div class="fim2">
+              
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  
+                  </div>
+              
+                </header>
+                <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+              </body>
+              </html>
+              
+              
+              
+              <script>
+                var rangeSlider = document.getElementById("iptRange");
+                var rangeBullet = document.getElementById("rs-bullet");
+              
+                rangeSlider.addEventListener("input", showSliderValue, false);
+              
+                function showSliderValue() {
+                  rangeBullet.innerHTML = iptRange.value;
+                  var bulletPosition = (iptRange.value / iptRange.max);
+                  rangeBullet.style.left = (bulletPosition * 578) + "px";
+                }
+              
+              </script>
+              
+              
+              <script>
+                // pode colocar isso em qualquer lugar msm
+                function kk2() {
+              
+                  var radius = get('valor');
+              
+                  heat.radius(+radius.value);
+                  frame = frame || window.requestAnimationFrame(draw);
+              
+                  if (changeType > 11) {
+                    diva.style.display = 'none'
+                  }
+                }
+              
+                function kk(params) {
+                  if (document.getElementById("tink").value == 10) {
+                    document.getElementById("valor").value = 3;
+                    budget.innerHTML = "Renderização:  . . ."
+              
+                    kk2()
+                  }
+                  if (document.getElementById("tink").value == 11) {
+                    document.getElementById("valor").value = 6;
+                    budget.innerHTML = "Renderização: 10:00 - 11:00"
+              
+                    kk2()
+                  }
+                  if (document.getElementById("tink").value == 12) {
+                    document.getElementById("valor").value = 7;
+                    budget.innerHTML = "Renderização: 11:00 - 12:00"
+              
+                    kk2()
+              
+                  }
+                  if (document.getElementById("tink").value == 13) {
+                    document.getElementById("valor").value = 8;
+                    budget.innerHTML = "Renderização: 12:00 - 13:00"
+              
+                    kk2()
+              
+                  }
+                  if (document.getElementById("tink").value == 14) {
+                    document.getElementById("valor").value = 10;
+                    budget.innerHTML = "Renderização: 13:00 - 14:00"
+              
+                    kk2()
+              
+                  }
+                  if (document.getElementById("tink").value == 15 ) {
+                    document.getElementById("valor").value = 11;
+                    budget.innerHTML = "Renderização: 14:00 - 15:00"
+              
+                    kk2()
+              
+                  }
+                  if (document.getElementById("tink").value == 16) {
+                    document.getElementById("valor").value = 10;
+                    budget.innerHTML = "Renderização: 15:00 - 16:00"
+              
+                    kk2()
+                  }
+                  if (document.getElementById("tink").value == 17) {
+                    document.getElementById("valor").value = 9;
+                    budget.innerHTML = "Renderização: 16:00 - 17:00"
+              
+                    kk2()
+                  }
+                  if (document.getElementById("tink").value == 18) {
+                    document.getElementById("valor").value = 10;
+                    budget.innerHTML = "Renderização: 17:00 - 18:00"
+              
+                    kk2()
+                  }
+                  if (document.getElementById("tink").value == 19) {
+                    document.getElementById("valor").value = 8;
+                    budget.innerHTML = "Renderização: 18:00 - 19:00"
+              
+                    kk2()
+                  }
+                  if (document.getElementById("tink").value == 20) {
+                    document.getElementById("valor").value = 6;
+                    budget.innerHTML = "Renderização: 19:00 - 20:00"
+              
+                    kk2()
+                  }
+                }
+                // Não esqueça de linkar os dos src's abaixo, sendo eles "simpleheat.js e "demo/data"
+              </script>
+              
+              <script src="js/simpleheat.js"></script>
+              <script src="demo/data.js"></script>
+              <script>
+              
+                window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                  window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+              
+                function get(id) {
+                  return document.getElementById(id);
+                }
+              
+                var heat = simpleheat('canvas').data(data00).max(15),
+                  frame;
+              
+                function draw() {
+                  console.time('draw');
+                  heat.draw();
+                  console.timeEnd('draw');
+                  frame = null;
+                }
+              
+                draw();
+              
+                get('canvas').onclick = function (e) {
+                  heat.add([e.layerX, e.layerY, 1]);
+                  frame = frame || window.requestAnimationFrame(draw);
+                };
+              
+              
+              
+              </script>
                 </div>
             </div>
 

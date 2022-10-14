@@ -10,11 +10,13 @@ package br.com.sptech.banco.teste;
  */
 public class Dados {
     private Integer idDados;
-    private Double temperatura;
+    private Double temperaturaHard;
     private Double PorcentCPU;
-    private Double Porcentdiscos;
+    private Long Porcentdiscos;
     private String TempoAtiv;
-    private Integer QtdProcessosAtuantes;
+    private String memoriaHard;
+    private String hora;
+    private String Dt;
 
     public Integer getIdDados() {
         return idDados;
@@ -24,12 +26,12 @@ public class Dados {
         this.idDados = idDados;
     }
 
-    public Double getTemperatura() {
-        return temperatura;
+    public Double getTemperaturaHard() {
+        return temperaturaHard;
     }
 
-    public void setTemperatura(Double temperatura) {
-        this.temperatura = temperatura;
+    public void setTemperaturaHard(Double temperaturaHard) {
+        this.temperaturaHard = temperaturaHard;
     }
 
     public Double getPorcentCPU() {
@@ -40,11 +42,11 @@ public class Dados {
         this.PorcentCPU = PorcentCPU;
     }
 
-    public Double getPorcentdiscos() {
+    public Long getPorcentdiscos() {
         return Porcentdiscos;
     }
 
-    public void setPorcentdiscos(Double Porcentdiscos) {
+    public void setPorcentdiscos(Long Porcentdiscos) {
         this.Porcentdiscos = Porcentdiscos;
     }
 
@@ -56,12 +58,29 @@ public class Dados {
         this.TempoAtiv = TempoAtiv;
     }
 
-    public Integer getQtdProcessosAtuantes() {
-        return QtdProcessosAtuantes;
+    public String getMemoriaHard() {
+        return memoriaHard;
     }
 
-    public void setQtdProcessosAtuantes(Integer QtdProcessosAtuantes) {
-        this.QtdProcessosAtuantes = QtdProcessosAtuantes;
+    public void setMemoriaHard(String memoriaHard) {
+        this.memoriaHard = memoriaHard;
     }
 
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getDt() {
+        return Dt;
+    }
+
+    public void setDt(String Dt) {
+        this.Dt = Dt;
+    }
+
+    
 }
