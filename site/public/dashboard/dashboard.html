@@ -416,11 +416,12 @@
     toggle.addEventListener("click", () => {
         if (localStorage.getItem('theme') == 'light') {
         document.documentElement.style.setProperty('--background_color', '#121212')
-        document.documentElement.style.setProperty('--background_color-card', '#212121')
+        document.documentElement.style.setProperty('--background_color-card', '#242424')
         document.documentElement.style.setProperty('--font-color-preta', '#ffffff')
         document.documentElement.style.setProperty('--background_branca', '#101010')
         document.documentElement.style.setProperty('--top-shadow', '#101010')
         document.documentElement.style.setProperty('--bottom-shadow', '#121212')
+        document.documentElement.style.setProperty('--icon-color', '#ffffff')
         localStorage.setItem('theme', 'dark')
         } else {
         document.documentElement.style.setProperty('--background_color', '#fff')
@@ -429,6 +430,7 @@
         document.documentElement.style.setProperty('--background_branca', '#fff')
         document.documentElement.style.setProperty('--top-shadow', '#d6d6d6')
         document.documentElement.style.setProperty('--bottom-shadow', '#ffffff')
+        document.documentElement.style.setProperty('--icon-color', '#551542')
         localStorage.setItem('theme', 'light')
         }
     });

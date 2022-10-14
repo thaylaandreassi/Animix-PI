@@ -62,6 +62,13 @@
                     </a>
                     <span class="tooltip">Suporte</span>
                 </li>
+                <li id="toggle">
+                    <a href="#">
+                        <i class="fa-solid fa-toggle-off"></i>
+                        <span class="links_name">Modo escuro</span>
+                    </a>
+                    <span class="tooltip">Modo escuro</span>
+                </li>
                 <li>
                     <a href="../index.html">
                         <i class='bx bx-exit' id="log_out"></i>
@@ -69,105 +76,106 @@
                 </li>
             </ul>
         </div>
-            <div class="main-container">
-                <div class="formulario-cadastro">
-                    <div class="left-form">
-                        <h3>Informações da máquina</h3>
-                        <select name="" id="disco_select">
-                            <option value="0">Insira seu disco</option>
-                            <option value="1">1TB</option>
-                            <option value="2">2TB</option>
-                            <option value="4">4TB</option>
-                            <option value="8">8TB</option>
-                            <option value="16">16TB</option>
-                        </select>
-                        <select name="" id="memoria_select">
-                            <option value="0">Insira sua memoria</option>
-                            <option value="32">32gb</option>
-                            <option value="64">64gb</option>
-                            <option value="128">128gb</option>
-                            <option value="256">256gb</option>
-                            <option value="512">512gb</option>
-                        </select>
-                        <select name="" id="processador_select">
-                            <option value="0">Insira seu processador</option>
-                            <option value="Intel">Intel</option>
-                            <option value="AMD">AMD</option>
-                        </select>
-                        <select name="" id="sistema_select">
-                            <option value="0">Insira seu sistema operacional</option>
-                            <option value="Windows">Windows</option>
-                            <option value="Linux">Linux</option>
-                            <option value="Mac0S">MacOS</option>
-                        </select>
-                        <select name="" id="discoideal_select">
-                            <option value="0">Insira o consumo de disco ideal</option>
-                            <option value="30">30%</option>
-                            <option value="40">40%</option>
-                            <option value="50">50%</option>
-                            <option value="60">60%</option>
-                            <option value="70">70%</option>
-                        </select>
-                        <select name="" id="memoriaideal_select">
-                            <option value="0">Insira o consumo de memoria ideal</option>
-                            <option value="30">30%</option>
-                            <option value="40">40%</option>
-                            <option value="50">50%</option>
-                            <option value="60">60%</option>
-                            <option value="70">70%</option>
-                        </select>
-                        <select name="" id="processadorideal_select">
-                            <option value="0">Insira o consumo de processador ideal</option>
-                            <option value="30">30%</option>
-                            <option value="40">40%</option>
-                            <option value="50">50%</option>
-                            <option value="60">60%</option>
-                            <option value="70">70%</option>
-                        </select>
-                        <select name="" id="tempideal_select">
-                            <option value="0">Insira a temperatura ideal</option>
-                            <option value="30">30%</option>
-                            <option value="40">40%</option>
-                            <option value="50">50%</option>
-                            <option value="60">60%</option>
-                            <option value="70">70%</option>
-                        </select>
-                    </div>
-                    <div class="right-form">
-                        <h3>Opções de monitoramento da máquina</h3>
-                        <select name="" id="disco_bool">
-                            <option value="0">Monitoramento de disco?</option>
-                            <option value="true">Sim</option>
-                            <option value="false">Não</option>
-                        </select>
-                        <select name="" id="processador_bool">
-                            <option value="0">Monitoramento de processador?</option>
-                            <option value="true">Sim</option>
-                            <option value="false">Não</option>
-                        </select>
-                        <select name="" id="memoria_bool">
-                            <option value="0">Monitoramento de memória?</option>
-                            <option value="true">Sim</option>
-                            <option value="false">Não</option>
-                        </select>
-                        <select name="" id="temperatura_bool">
-                            <option value="0">Monitoramento de temperatura?</option>
-                            <option value="true">Sim</option>
-                            <option value="false">Não</option>
-                        </select>
-                        <button onclick="cadastrar()">Enviar</button>
-                    </div>
+        <div class="main-container">
+            <div class="formulario-cadastro">
+                <div class="left-form">
+                    <h3>Informações da máquina</h3>
+                    <select name="" id="disco_select">
+                        <option value="0">Insira seu disco</option>
+                        <option value="1">1TB</option>
+                        <option value="2">2TB</option>
+                        <option value="4">4TB</option>
+                        <option value="8">8TB</option>
+                        <option value="16">16TB</option>
+                    </select>
+                    <select name="" id="memoria_select">
+                        <option value="0">Insira sua memoria</option>
+                        <option value="32">32gb</option>
+                        <option value="64">64gb</option>
+                        <option value="128">128gb</option>
+                        <option value="256">256gb</option>
+                        <option value="512">512gb</option>
+                    </select>
+                    <select name="" id="processador_select">
+                        <option value="0">Insira seu processador</option>
+                        <option value="Intel">Intel</option>
+                        <option value="AMD">AMD</option>
+                    </select>
+                    <select name="" id="sistema_select">
+                        <option value="0">Insira seu sistema operacional</option>
+                        <option value="Windows">Windows</option>
+                        <option value="Linux">Linux</option>
+                        <option value="Mac0S">MacOS</option>
+                    </select>
+                    <select name="" id="discoideal_select">
+                        <option value="0">Insira o consumo de disco ideal</option>
+                        <option value="30">30%</option>
+                        <option value="40">40%</option>
+                        <option value="50">50%</option>
+                        <option value="60">60%</option>
+                        <option value="70">70%</option>
+                    </select>
+                    <select name="" id="memoriaideal_select">
+                        <option value="0">Insira o consumo de memoria ideal</option>
+                        <option value="30">30%</option>
+                        <option value="40">40%</option>
+                        <option value="50">50%</option>
+                        <option value="60">60%</option>
+                        <option value="70">70%</option>
+                    </select>
+                    <select name="" id="processadorideal_select">
+                        <option value="0">Insira o consumo de processador ideal</option>
+                        <option value="30">30%</option>
+                        <option value="40">40%</option>
+                        <option value="50">50%</option>
+                        <option value="60">60%</option>
+                        <option value="70">70%</option>
+                    </select>
+                    <select name="" id="tempideal_select">
+                        <option value="0">Insira a temperatura ideal</option>
+                        <option value="30">30%</option>
+                        <option value="40">40%</option>
+                        <option value="50">50%</option>
+                        <option value="60">60%</option>
+                        <option value="70">70%</option>
+                    </select>
+                </div>
+                <div class="right-form">
+                    <h3>Opções de monitoramento da máquina</h3>
+                    <select name="" id="disco_bool">
+                        <option value="0">Monitoramento de disco?</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                    <select name="" id="processador_bool">
+                        <option value="0">Monitoramento de processador?</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                    <select name="" id="memoria_bool">
+                        <option value="0">Monitoramento de memória?</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                    <select name="" id="temperatura_bool">
+                        <option value="0">Monitoramento de temperatura?</option>
+                        <option value="true">Sim</option>
+                        <option value="false">Não</option>
+                    </select>
+                    <button onclick="cadastrar()">Enviar</button>
                 </div>
             </div>
+        </div>
     </main>
     </section>
 </body>
+
 </html>
 <script>
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
 
-    btn.onclick = function(params) {
+    btn.onclick = function (params) {
         sidebar.classList.toggle("active");
     }
 </script>
@@ -239,5 +247,27 @@
 
         return false;
     }
+    const toggle = document.getElementById("toggle");
 
+    toggle.addEventListener("click", () => {
+        if (localStorage.getItem('theme') == 'light') {
+            document.documentElement.style.setProperty('--background_color', '#121212')
+            document.documentElement.style.setProperty('--background_color-card', '#242424')
+            document.documentElement.style.setProperty('--font-color-preta', '#ffffff')
+            document.documentElement.style.setProperty('--background_branca', '#101010')
+            document.documentElement.style.setProperty('--top-shadow', '#101010')
+            document.documentElement.style.setProperty('--bottom-shadow', '#121212')
+            document.documentElement.style.setProperty('--icon-color', '#ffffff')
+            localStorage.setItem('theme', 'dark')
+        } else {
+            document.documentElement.style.setProperty('--background_color', '#fff')
+            document.documentElement.style.setProperty('--background_color-card', '#fff')
+            document.documentElement.style.setProperty('--font-color-preta', '#101010')
+            document.documentElement.style.setProperty('--background_branca', '#fff')
+            document.documentElement.style.setProperty('--top-shadow', '#d6d6d6')
+            document.documentElement.style.setProperty('--bottom-shadow', '#ffffff')
+            document.documentElement.style.setProperty('--icon-color', '#551542')
+            localStorage.setItem('theme', 'light')
+        }
+    });
 </script>

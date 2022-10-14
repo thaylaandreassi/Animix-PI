@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
@@ -11,6 +12,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
 <body>
     <main>
         <div class="sidebar">
@@ -56,6 +58,14 @@
                     </a>
                     <span class="tooltip">Suporte</span>
                 </li>
+                <li id="toggle">
+                    <a href="#">
+                        <i class="fa-solid fa-toggle-off"></i>
+                        <span class="links_name">Modo escuro</span>
+                    </a>
+                    <span class="tooltip">Modo escuro</span>
+                </li>
+
                 <li>
                     <a href="../index.html">
                         <i class='bx bx-exit' id="log_out"></i>
@@ -74,19 +84,20 @@
                     <button onclick="cadastrar()">Cadastrar</button>
                 </div>
                 <div class="right-form">
-                    
+
                 </div>
             </div>
         </div>
     </main>
 
 </body>
+
 </html>
 <script>
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
 
-    btn.onclick = function(params) {
+    btn.onclick = function (params) {
         sidebar.classList.toggle("active");
     }
 </script>
@@ -120,13 +131,13 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-             var divLoad = document.getElementById('loading');
-             divLoad.style.display = 'flex';
+                var divLoad = document.getElementById('loading');
+                divLoad.style.display = 'flex';
                 setTimeout(() => {
                     window.location = "login.html";
                 }, 2000)
                 divLoad.style.display = 'none';
-                
+
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
@@ -136,5 +147,28 @@
 
         return false;
     }
+    const toggle = document.getElementById("toggle");
+
+    toggle.addEventListener("click", () => {
+        if (localStorage.getItem('theme') == 'light') {
+            document.documentElement.style.setProperty('--background_color', '#121212')
+            document.documentElement.style.setProperty('--background_color-card', '#242424')
+            document.documentElement.style.setProperty('--font-color-preta', '#ffffff')
+            document.documentElement.style.setProperty('--background_branca', '#101010')
+            document.documentElement.style.setProperty('--top-shadow', '#101010')
+            document.documentElement.style.setProperty('--bottom-shadow', '#121212')
+            document.documentElement.style.setProperty('--icon-color', '#ffffff')
+            localStorage.setItem('theme', 'dark')
+        } else {
+            document.documentElement.style.setProperty('--background_color', '#fff')
+            document.documentElement.style.setProperty('--background_color-card', '#fff')
+            document.documentElement.style.setProperty('--font-color-preta', '#101010')
+            document.documentElement.style.setProperty('--background_branca', '#fff')
+            document.documentElement.style.setProperty('--top-shadow', '#d6d6d6')
+            document.documentElement.style.setProperty('--bottom-shadow', '#ffffff')
+            document.documentElement.style.setProperty('--icon-color', '#551542')
+            localStorage.setItem('theme', 'light')
+        }
+    });
 
 </script>

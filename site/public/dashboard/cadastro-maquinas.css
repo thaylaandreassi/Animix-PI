@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
+@import url(assets/colors.css);
 
 * {
     padding: 0;
@@ -160,7 +161,7 @@ main {
 .main-container {
     width: 100vw;
     height: 100vh;
-    background-color: #ffffff;
+    background-color: var(--background_color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,13 +172,13 @@ main {
     border-radius: 32px;
     height: 460px;
     width: 950px;
-    box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
+    box-shadow:  20px 20px 60px var(--top-shadow),
+             -20px -20px 60px var(--bottom-shadow);
 }
 
 .left-form {
-    color: rgb(0, 0, 0);
-    background: #ffffff;
+    color: var(--font-color-preta);
+    background: var(--background_color-card);
     height: 100%;
     width: 60%;
     display: flex;
@@ -191,7 +192,6 @@ main {
 .right-form {
     background: linear-gradient(to bottom, #4E184C, #78205E);
     border-radius: 0px 24px 24px 0px;
-    color: #ffffff;
     height: 100%;
     width: 40%;
     display: flex;
@@ -200,10 +200,11 @@ main {
     justify-content: center;
     flex-direction: column;
     justify-content: space-evenly;
+    color: #fff;
 }
 
 .left-form select {
-    color: rgb(0, 0, 0);
+    color: var(--font-color-preta);
     font-size: 0.7rem;
     width: 60%;
     height: 6%;
@@ -214,7 +215,7 @@ main {
     border-top: none;
 }
 .right-form select {
-    color: white;
+    color: #fff;
     font-size: 0.7rem;
     width: 60%;
     height: 6%;
@@ -229,7 +230,7 @@ main {
 }
 .right-form option {
     background-color: #fff;
-    color: #101010;
+    color: var(--font-color-preta);
 }
 
 .right-form button {

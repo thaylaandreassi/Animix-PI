@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
+@import url(assets/colors.css);
 
 * {
     padding: 0;
@@ -127,7 +128,6 @@ body {
 .sidebar ul li a:hover {
     background: #fff;
     color: #7634BF;
-    ;
 }
 
 .sidebar ul li a i {
@@ -177,7 +177,7 @@ section {
 main {
     height: 100%;
     width: 100%;
-    background-color: #ffffff;
+    background-color: var(--background_color)
 }
 
 .main-container {
@@ -199,9 +199,9 @@ main {
 
 .card {
     border-radius: 12px;
-    background: #ffffff;
-    box-shadow: 6px 6px 16px #d6d6d6,
-        -6px -6px 16px #ffffff;
+    background: var(--background_color-card);
+    box-shadow: 6px 6px 16px var(--top-shadow),
+    -6px -6px 16px var(--bottom-shadow);
     width: 260px;
     height: 220px;
     display: flex;
@@ -213,8 +213,8 @@ main {
 }
 
 .card:hover {
-    box-shadow: -9px -9px 16px #f0f0f0,
-        9px 9px 16px #ffffff;
+    box-shadow: -9px -9px 16px var(--top-shadow),
+        9px 9px 16px var(--bottom-shadow);
     transform: scale(1.05);
 }
 
