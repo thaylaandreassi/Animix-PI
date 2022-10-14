@@ -26,21 +26,12 @@ public class App {
     public static void main(String[] args) throws InterruptedException {
         Looca looca = new Looca();
         TestDatabase test = new TestDatabase();
-        //test.convert();
-        //test.TempoAtiv();
-        //test.temperatura();
-        //test.Processos();
         
-        
-        for (int i = 0; i < 5; i++) {
-            TimeUnit.SECONDS.sleep(2);
+        for (int i = 0; i < 50; i++) {
+            TimeUnit.SECONDS.sleep(1);
             test.Execut();
     }
 }
-        
-       
-        
-        
         //System.out.println(looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel());        
         //System.out.println(looca.getGrupoDeProcessos().getProcessos().get(0).getUsoCpu());        
         //System.out.println(looca.getGrupoDeProcessos().getProcessos().get(0).getBytesUtilizados());

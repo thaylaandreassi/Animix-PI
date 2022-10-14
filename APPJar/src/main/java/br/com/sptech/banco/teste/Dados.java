@@ -13,7 +13,10 @@ public class Dados {
     private Double temperaturaHard;
     private Double PorcentCPU;
     private Long Porcentdiscos;
-    private Long TempoAtiv;
+    private String TempoAtiv;
+    private String memoriaHard;
+    private String hora;
+    private String Dt;
 
     public Integer getIdDados() {
         return idDados;
@@ -47,13 +50,37 @@ public class Dados {
         this.Porcentdiscos = Porcentdiscos;
     }
 
-    public Long getTempoAtiv() {
+    public String getTempoAtiv() {
         return TempoAtiv;
     }
 
-    public void setTempoAtiv(Long TempoAtiv) {
+    public void setTempoAtiv(String TempoAtiv) {
         this.TempoAtiv = TempoAtiv;
     }
 
-   
+    public String getMemoriaHard() {
+        return memoriaHard;
+    }
+
+    public void setMemoriaHard(String memoriaHard) {
+        this.memoriaHard = memoriaHard;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getDt() {
+        return Dt;
+    }
+
+    public void setDt(String Dt) {
+        this.Dt = Dt;
+    }
+
+    
 }
