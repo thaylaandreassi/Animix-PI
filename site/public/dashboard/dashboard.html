@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="dashboard.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/simpleheat.js"></script>
+    <script src="demo/data.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body onload="obterdados(1), obterDadosGrafico(1)">
@@ -174,25 +178,16 @@
                         <div class="mapa">
                             <canvas id="canvas" class="heatt" width=460 height=450></canvas>
                             <p id="budget">Renderização: . . .</p>
-                            <div class="fim2">
-
-                            </div>
+                            <div class="fim2"></div>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
-            </header>
-            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        </div>
+    </main>
 </body>
 
 </html>
-
-
-
 <script>
     var rangeSlider = document.getElementById("iptRange");
     var rangeBullet = document.getElementById("rs-bullet");
@@ -205,10 +200,6 @@
         rangeBullet.style.left = (bulletPosition * 578) + "px";
     }
 
-</script>
-
-
-<script>
     // pode colocar isso em qualquer lugar msm
     function kk2() {
 
@@ -296,9 +287,6 @@
     }
                 // Não esqueça de linkar os dos src's abaixo, sendo eles "simpleheat.js e "demo/data"
 </script>
-
-<script src="js/simpleheat.js"></script>
-<script src="demo/data.js"></script>
 <script>
 
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
@@ -325,10 +313,7 @@
         frame = frame || window.requestAnimationFrame(draw);
     };
 
-
-
 </script>
-
 <script>
     localStorage.setItem('theme', 'light');
     var idMaquina = 1;
@@ -343,7 +328,6 @@
     const labels = [
 
     ];
-
 
     const data = {
         labels: labels,
@@ -433,8 +417,6 @@
         data: data5,
         options: {}
     };
-
-
 </script>
 <script>
     const myChart = new Chart(
@@ -591,5 +573,4 @@
             localStorage.setItem('theme', 'light')
         }
     });
-
 </script>
