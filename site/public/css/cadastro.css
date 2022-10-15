@@ -7,155 +7,150 @@
   --Lobster: "lobster", cursive;
   --light-black: #2e2c2caf;
   --bggradient: linear-gradient(to right, #0C050C, #4E184C, #78205E);
-  --bggradient2: linear-gradient(180deg, rgba(16,16,16,1) 10%, rgba(78,24,76,1) 50%, #78205e 100%);
+  --bggradient2: linear-gradient(180deg, rgba(16, 16, 16, 1) 10%, rgba(78, 24, 76, 1) 50%, #78205e 100%);
   --light-gray: rgba(255, 255, 255, 0.877);
 }
 
-*{
-    font-family: "Sniglet", cursive;
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-  }
- header img {
-  width: 23%;
-  margin-top: -70px;
-  /* margin-left: 310px; */
- }
-  .container {
-    position: absolute;
-    max-width: 800px;
-    height: 500px;
-    margin: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--bggradient);
-  } 
-  .right-container {
-    position: relative;
-    background-image: linear-gradient(to right, #4E184C, #78205E);
-    border-radius: 25px;
-    height: 100%;
-    padding: 25px;
-    color: rgb(192, 192, 192);
-    font-size: 12px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+* {
+  font-family: "Sniglet", cursive;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .left-container {
-    position: relative;
-    background: #fff;
-    border-radius: 25px;
-    height: 100%;
-    padding: 25px;
-    padding-left: 50px;
-  }
-  .left-container header {
-    color: blueviolet;
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-  .row{
+header img {
+  width: 120px;
+}
+
+main {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.form-container {
+  height: 500px;
+  width: 1100px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+}
+
+.left {
   height: 100%;
-  } 
-  .container-card {
-    position: relative;
-    background: #fff;
-    height: 100%;
-    border-radius: 25px;
-    -webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
-    -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
-    box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
-  } 
-  .box {
-    position: relative;
-    margin: 20px;
-    margin-bottom: 100px;
-  } 
-  .left-container .myInput {
-    width: 230px;
-    border-radius: 25px;
-    padding: 10px;
-    padding-left: 50px;
-    border: none;
-    -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-    -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-    box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-  }
-  .left-container .myInput:focus {
-    outline: none;
-  } 
-  .myForm {
-    position: relative;
-    margin-top: 50px;
-  } 
-  .left-container .butt {
-    cursor: pointer;
-    background: linear-gradient(45deg, #bb36fd, #9b00e8);
-    color: #fff;
-    width: 230px;
-    border: none;
-    border-radius: 25px;
-    padding: 10px;
-    -webkit-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
-    -moz-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
-    box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
-  } 
-  .left-container .butt:hover {
-    background: linear-gradient(45deg, #c85bff, #b726ff);
-  }
-  .left-container .butt:focus {
-    outline: none;
-  } 
-  .left-container .fas {
-    position: relative;
-    color: #bb36fd;
-    left: 36px;
-  } 
-  .butt_out {
-    cursor: pointer;
-    background: transparent;
-    color: #fff;
-    width: 120px;
-    border: 2px solid#fff;
-    border-radius: 25px;
-    padding: 10px;
-    -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-    -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-    box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-  } 
-  .butt_out:hover {
-    border: 2px solid#eecbff;
-  } 
-  .butt_out:focus {
-    outline: none;
-  }
-  
-  .right-container img {
-    width: 70%;
-    margin-left: 100px;
-  }
-  .right-container a {
-    text-decoration: none;
-     color: brown;
+  width: 800px;
+  border-radius: 24px 0px 0px 24px;
+  display: flex;
+  justify-content: center;
+}
 
-  }
-  .right-container p {
-    color: #fbf3ff;
-    font-size: 1rem;
-  }
-  .loading{
-    display: none;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-    font-size: 24px;
-  }
+.row {
+  height: 100%;
+  width: 50%;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+}
 
+.row {
+  height: 100%;
+  width: 50%;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+}
 
-  
+.right {
+  height: 100%;
+  width: 300px;
+  background-image: linear-gradient(to right, #4E184C, #78205E);
+  border-radius: 0px 24px 24px 0px;
+}
+
+.left .myInput {
+  width: 230px;
+  border-radius: 25px;
+  padding: 10px;
+  padding-left: 50px;
+  border: none;
+  -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+}
+
+.left .myInput:focus {
+  outline: none;
+}
+
+.left .fas {
+  color: #bb36fd;
+}
+
+.myForm {
+  position: relative;
+  margin-top: 50px;
+}
+.left .butt {
+  cursor: pointer;
+  background: linear-gradient(45deg, #bb36fd, #9b00e8);
+  color: #fff;
+  width: 230px;
+  height: 50px;
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  -webkit-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+} 
+.left .butt:hover {
+  background: linear-gradient(45deg, #c85bff, #b726ff);
+}
+.left .butt:focus {
+  outline: none;
+} 
+
+.right {
+  display: flex;
+  justify-content: center;
+}
+.right img {
+  width: 100%;
+}
+.right a {
+  text-decoration: none;
+}
+.right h4 {
+  color: #fbf3ff;
+  font-size: 1.3rem;
+  padding-bottom: 24px;
+  margin-left: 10px;
+}
+.box {
+  position: relative;
+  margin: 20px;
+  margin-bottom: 100px;
+} 
+.row h2 {
+  color: blueviolet;
+}
+.butt_out {
+  cursor: pointer;
+  background: transparent;
+  color: #fff;
+  width: 120px;
+  border: 2px solid#fff;
+  border-radius: 25px;
+  padding: 10px;
+  -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+} 
+.butt_out:hover {
+  border: 2px solid#eecbff;
+} 
+.butt_out:focus {
+  outline: none;
+}

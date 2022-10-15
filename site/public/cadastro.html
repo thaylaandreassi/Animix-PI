@@ -11,66 +11,72 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="css/cadastro.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <script src="js/funcoes.js"></script>
     <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-        <div class="container">
-            <header>
-                    <a href="index.html"><img src="assets/animix-logo-preto.svg" alt=""></a>
-              </header>
-            <div class="container-card">
+    <header>
+        <a href="index.html"><img src="assets/animix-logo-preto.svg" alt=""></a>
+    </header>
+    <main>
+        <div class="form-container">
+            <div class="left">
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="left-container">
-                            <div class="myForm text-center">
-                                <header>Cria uma nova conta</header>
-                                <div class="form-group">
-                                    <i class="fas fa-user"></i>
-                                    <input class="myInput" type="text" placeholder="Nome de usuário" id="username_ipt">
-                                </div>
-                                <div class="form-group">
-                                    <i class="fas fa-envelope"></i>
-                                    <input class="myInput" placeholder="Email" type="text" id="email_ipt">
-                                </div>
-                                <div class="form-group">
-                                    <i class="fas fa-lock"></i>
-                                    <input class="myInput" type="password" id="password_ipt" placeholder="Senha">
-                                </div>
-                                <div class="form-group">
-                                    <i class="fas fa-lock"></i>
-                                    <input class="myInput" type="password" id="password_confirm_ipt" placeholder="Senha">
-                                </div>
-                                <button onclick="cadastrar()" class="butt"> CRIAR CONTA </button>
-                                
-                            </div>
-                            <div id="loading" class="loading">
-                                <i class="fa-solid fa-spinner fa-spin"></i>
-                            </div>
-                        </div>
+                    <h2>Crie sua conta </h2>
+                    <div class="form-group">
+                        <i class="fas fa-solid fa-building"></i>
+                        <input class="myInput" placeholder="Nome da empresa" type="text" id="name_ipt" required>
                     </div>
-                    <div class="col-md-6">
-                        <div class="right-container">
-                            <img src="https://media1.giphy.com/media/yYslOlck6ev86URDJR/giphy.gif?cid=790b76118f637b064cfa672b38371082b9215d8db3beb28c&rid=giphy.gif&ct=s"
-                                alt="">
-                            <div class="box">       
-                            </div>
-                            <p>Já é cadastrado? Faça o Login</p> 
-                            <a href="login.html"><button type="button" class="butt_out">Login</button></a>
-                        </div>
+                    <div class="form-group">
+                        <i class="fas fa-solid fa-id-card"></i>
+                        <input class="myInput" type="text" id="cnpj_ipt" placeholder="CNPJ" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-envelope"></i>
+                        <input class="myInput" placeholder="Email" type="text" id="email_ipt" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-solid fa-location-dot"></i>
+                        <input class="myInput" type="text" id="logradouro_ipt" placeholder="Logradouro" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <i class="fas fa-solid fa-phone"></i>
+                        <input class="myInput" placeholder="Telefone" type="text" id="telefone_ipt" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input class="myInput" type="password" id="password_ipt" placeholder="Senha" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input class="myInput" type="password" id="password_confirm_ipt" placeholder="Confirme sua senha" required>
+                    </div>
+                    <input onclick="cadastrar()" type="submit" class="butt" value="CADASTRAR">
+                </div>
+            </div>
+            <div class="right">
+                <div class="row">
+                    <img src="assets/a.png" alt="">
+                    <div class="box">
+                    <h4>Ja possui cadastro?</h4>
+                        <a href="login.html"><button type="button" class="butt_out">Entre</button></a>
                     </div>
                 </div>
             </div>
         </div>
+    </main>
+
 </body>
 
 </html>
@@ -80,12 +86,16 @@
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var usuarioVar = username_ipt.value;
+        
+        var nomeEmpresa = name_ipt.value;
+        var cnpj = cnpj_ipt.value;
         var emailVar = email_ipt.value;
+        var logradouro = logradouro_ipt.value;
+        var telefone = telefone_ipt.value;
         var senhaVar = password_ipt.value;
         var confirmacaoSenhaVar = password_confirm_ipt.value;
 
-        if (usuarioVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        if (nomeEmpresa == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
             return false;
         }
         else {
@@ -100,7 +110,10 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                usuarioServer: usuarioVar,
+                nomeServer: nomeEmpresa,
+                cnpjServer: cnpj,
+                logradouroServer: logradouro,
+                telefoneServer: telefone,
                 emailServer: emailVar,
                 senhaServer: senhaVar
             })
@@ -109,13 +122,13 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-             var divLoad = document.getElementById('loading');
-             divLoad.style.display = 'flex';
+                var divLoad = document.getElementById('loading');
+                divLoad.style.display = 'flex';
                 setTimeout(() => {
                     window.location = "login.html";
                 }, 2000)
                 divLoad.style.display = 'none';
-                
+
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }

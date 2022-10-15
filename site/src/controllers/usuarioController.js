@@ -62,12 +62,15 @@ function entrar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var usuario = req.body.usuarioServer;
+    var nome = req.body.nomeServer;
+    var telefone = req.body.telefoneServer;
+    var logradouro = req.body.logradouroServer;
+    var cnpj = req.body.cnpjServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
     // Faça as validações dos valores
-    if (usuario == undefined) {
+    if (nome == undefined) {
         res.status(400).send("Seu usuario está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -76,7 +79,7 @@ function cadastrar(req, res) {
     } else {
         
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(usuario, email, senha)
+        usuarioModel.cadastrar(nome, telefone, logradouro, cnpj, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
