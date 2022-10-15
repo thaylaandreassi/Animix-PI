@@ -20,14 +20,14 @@ function entrar(email, senha) {
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrar(nome, telefone, logradouro, cnpj, email, senha) {
-    
-    
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO studio (nomeEmpresa, email, senha, logradouro, telefone, CNPJ ) VALUES ('${nome}', '${email}', '${senha}', '${logradouro}', '${telefone}', '${cnpj}');
-    `;
+    INSERT INTO studio (nomeEmpresa, email, senha, logradouro, telefone, CNPJ ) VALUES ('${nome}', '${email}', '${senha}', '${logradouro}', '${telefone}', '${cnpj}');`;
     console.log("Executando a instrução SQL: \n" + instrucao);
+    cadastrarAdmin(nome, email, senha)
+    return database.executar(instrucao);
+}
+function cadastrarAdmin(nome, email, senha) {
+    var instrucao = `INSERT INTO funcionario (cargo, nome, email, senha)VALUES ('Admin', '${nome}', '${email}', '${senha}');`
     return database.executar(instrucao);
 }
 
