@@ -128,13 +128,11 @@ padding-left: 5vmin;
 
 }
 
-.col-md-5{
+.col-md-5 {
   background-image: url(placuda2.png);
   background-repeat: no-repeat;
-background-size: 100%;
+  background-size: 50%;
   margin-right: 5vmin;
-padding-bottom: 70vmin;
-
 }
 .txtp{
 height: 5%;

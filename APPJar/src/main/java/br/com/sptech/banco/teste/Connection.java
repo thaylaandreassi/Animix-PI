@@ -27,7 +27,7 @@ public class Connection {
         
         datasource.setUsername("root");
         
-        datasource.setPassword("@");
+        datasource.setPassword("blueprotocol");
         
         connection = new JdbcTemplate(datasource);
     }

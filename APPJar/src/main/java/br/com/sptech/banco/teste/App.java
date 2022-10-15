@@ -24,14 +24,17 @@ import java.util.concurrent.TimeUnit;
  */
 public class App {
     public static void main(String[] args) throws InterruptedException {
-        Looca looca = new Looca();
-        TestDatabase test = new TestDatabase();
-        
-        for (int i = 0; i < 50; i++) {
-            TimeUnit.SECONDS.sleep(1);
-            test.Execut();
+Login log = new Login();
+log.show();
+       Looca looca = new Looca();
+//       TestDatabase test = new TestDatabase();
+//        
+//        for (int i = 0; i < 50; i++) {
+//            TimeUnit.SECONDS.sleep(1);
+//            test.Execut();
+//    }
+
     }
-}
         //System.out.println(looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel());        
         //System.out.println(looca.getGrupoDeProcessos().getProcessos().get(0).getUsoCpu());        
         //System.out.println(looca.getGrupoDeProcessos().getProcessos().get(0).getBytesUtilizados());
