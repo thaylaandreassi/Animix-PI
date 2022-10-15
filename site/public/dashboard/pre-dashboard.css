@@ -159,7 +159,7 @@ body {
     line-height: 50px;
     font-size: 20px;
     border-radius: 12px;
-    margin-bottom: -250px;
+    margin-bottom: -180px;
     text-align: center;
 }
 
@@ -210,6 +210,7 @@ main {
     flex-direction: column;
     justify-content: space-evenly;
     transition: all 600ms;
+    color: var(--font-color-preta);
 }
 
 .card:hover {
