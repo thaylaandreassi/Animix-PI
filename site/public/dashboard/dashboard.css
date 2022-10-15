@@ -249,7 +249,7 @@ main {
         -6px -6px 16px var(--bottom-shadow);
     margin-right: 180px;
     transition: all 600ms;
-    padding: 10px;
+    padding: 24px;
 }
 
 .quick-access .top {
@@ -259,7 +259,10 @@ main {
     flex-direction: row;
     justify-content: space-evenly;
 }
-
+.options {
+    margin-left: 25%;
+    margin-bottom: 12px;
+}
 .quick-access .bottom {
     height: 50%;
     width: 100%;
@@ -450,7 +453,6 @@ main {
 
 .iptRange {
     margin-top: 30vh;
-
 }
 
 .iptRange {
@@ -517,10 +519,13 @@ main {
 
 #budget {
     margin-top: -2.5vmin;
+    color: var(--font-color-preta);
+    display: flex;
+    justify-content: center;
 }
 
 .placa1 {
-    background-image: url(placuda2.png);
+    background-image: url(assets/placuda2.png);
     background-repeat: no-repeat;
     background-size: 95%;
     margin-top: -15px;
@@ -530,5 +535,4 @@ main {
 .heatt {
     width: 100%;
     height: 100%;
-
 }
