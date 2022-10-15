@@ -4,9 +4,7 @@ import com.github.britooo.looca.api.core.Looca;
 import oshi.SystemInfo;
 import oshi.hardware.HardwareAbstractionLayer;
 import com.github.britooo.looca.api.group.memoria.Memoria;
-import com.github.britooo.looca.api.group.processos.Processo;
 import com.github.britooo.looca.api.group.processos.ProcessoGrupo;
-//import com.github.britooo.looca.api.group.processos.ProcessoGrupo;
 import com.github.britooo.looca.api.group.sistema.Sistema;
 import com.github.britooo.looca.api.group.temperatura.Temperatura;
 import com.github.britooo.looca.api.util.Conversor;
@@ -40,9 +38,7 @@ public class TestDatabase {
         
         
         // PorcentCPU e BytesEmEscrita:
-        
-        ProcessoGrupo processo = new ProcessoGrupo();
-        
+ProcessoGrupo processo = new ProcessoGrupo();
         
                  Double porcentCPU = 0.0;
                  

@@ -23,16 +23,20 @@ import java.util.concurrent.TimeUnit;
  * @author aluno
  */
 public class App {
+    public void exec() throws InterruptedException{
+    Looca looca = new Looca();
+       TestDatabase test = new TestDatabase();
+        
+        for (int i = 0; i < 50; i++) {
+            TimeUnit.SECONDS.sleep(1);
+            test.Execut();
+    }
+    
+    }
     public static void main(String[] args) throws InterruptedException {
 Login log = new Login();
 log.show();
-       Looca looca = new Looca();
-//       TestDatabase test = new TestDatabase();
-//        
-//        for (int i = 0; i < 50; i++) {
-//            TimeUnit.SECONDS.sleep(1);
-//            test.Execut();
-//    }
+      
 
     }
         //System.out.println(looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel());        
