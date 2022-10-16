@@ -224,21 +224,23 @@ public class Login extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/animix?useSSL=false", "root", "blueprotocol");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/animix?useSSL=false", "root", "@");
             String username = edtUsername.getText();
             String password = edtPassword.getText();
             Statement stm = con.createStatement();
             String login = "select * from login where username='" + username + "' and Passwordd='" + password + "'";
             ResultSet rs = stm.executeQuery(login);
-
+            
             if (rs.next()) {
                 dispose();
                 HomePage hpage = new HomePage();
                 hpage.show();
+
             } else {
                 JOptionPane.showMessageDialog(this, "Login ou senha estão incorretos..");
                 edtUsername.setText("");
                 edtPassword.setText("");
+
             }
             con.close();
         } catch (Exception e) {
@@ -248,19 +250,19 @@ public class Login extends javax.swing.JFrame {
 
     private void CadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroActionPerformed
 
-     	Desktop desktop = java.awt.Desktop.getDesktop();
-		try {
-			//specify the protocol along with the URL
-			URI oURL = new URI(
-					"https://www.google.com");
-			desktop.browse(oURL);
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException ex) {  
+        Desktop desktop = java.awt.Desktop.getDesktop();
+        try {
+            //specify the protocol along with the URL
+            URI oURL = new URI(
+                    "https://www.google.com");
+            desktop.browse(oURL);
+        } catch (URISyntaxException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }  
-    
+        }
+
 
     }//GEN-LAST:event_CadastroActionPerformed
 

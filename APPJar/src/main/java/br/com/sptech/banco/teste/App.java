@@ -27,13 +27,14 @@ public class App {
     Looca looca = new Looca();
        TestDatabase test = new TestDatabase();
         
-        for (int i = 0; i < 50; i++) {
-            TimeUnit.SECONDS.sleep(1);
+        for (int i = 0; i < 1; i++) {
+            TimeUnit.SECONDS.sleep(0);
             test.Execut();
-    }
+    
+        }
     
     }
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
 Login log = new Login();
 log.show();
       
