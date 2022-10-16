@@ -30,10 +30,11 @@ public class App {
         for (int i = 0; i < 1; i++) {
             TimeUnit.SECONDS.sleep(0);
             test.Execut();
-    }
+    
+        }
     
     }
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
 Login log = new Login();
 log.show();
       

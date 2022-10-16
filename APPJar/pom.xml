@@ -23,6 +23,7 @@
                     <archive>
                         <manifest>
                             <mainClass>br.com.sptech.banco.teste.App</mainClass> 
+
                         </manifest>
                     </archive>
                 </configuration>
