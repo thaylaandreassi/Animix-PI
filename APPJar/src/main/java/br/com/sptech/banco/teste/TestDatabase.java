@@ -67,10 +67,7 @@ public class TestDatabase {
 
         // Exibição
         for (Dados dados : onlyFireType) {
-            System.out.println("temperatura: \n" + dados.getTemperaturaHard()
-                    + "\n Porcentagem CPU: \n" + dados.getPorcentCPU()
-                    + "\n Bytes Escritos no Disco: \n" + dados.getPorcentdiscos()
-                    + "\n Tempo de Atividade: \n" + dados.getTempoAtiv()
+            System.out.println("\n Tempo de Atividade: \n" + dados.getTempoAtiv()
                     + "\n Memoria em Uso: " + dados.getMemoriaHard()
                     + "\n Data: " + dados.getDt()
                     + "\n Hora: " + dados.getHora()

@@ -10,9 +10,6 @@ package br.com.sptech.banco.teste;
  */
 public class Dados {
     private Integer idDados;
-    private Double temperaturaHard;
-    private Double PorcentCPU;
-    private Long Porcentdiscos;
     private String TempoAtiv;
     private String memoriaHard;
     private String hora;
@@ -24,30 +21,6 @@ public class Dados {
 
     public void setIdDados(Integer idDados) {
         this.idDados = idDados;
-    }
-
-    public Double getTemperaturaHard() {
-        return temperaturaHard;
-    }
-
-    public void setTemperaturaHard(Double temperaturaHard) {
-        this.temperaturaHard = temperaturaHard;
-    }
-
-    public Double getPorcentCPU() {
-        return PorcentCPU;
-    }
-
-    public void setPorcentCPU(Double PorcentCPU) {
-        this.PorcentCPU = PorcentCPU;
-    }
-
-    public Long getPorcentdiscos() {
-        return Porcentdiscos;
-    }
-
-    public void setPorcentdiscos(Long Porcentdiscos) {
-        this.Porcentdiscos = Porcentdiscos;
     }
 
     public String getTempoAtiv() {
@@ -82,5 +55,6 @@ public class Dados {
         this.Dt = Dt;
     }
 
+    
     
 }
