@@ -40,7 +40,7 @@ public class TestDatabase {
         // PorcentCPU e BytesEmEscrita:
 ProcessoGrupo processo = new ProcessoGrupo();
         
-                 Double porcentCPU = 0.0;
+                    Double porcentCPU = 0.0;
                  
                  Long porcentDisco = null;
         

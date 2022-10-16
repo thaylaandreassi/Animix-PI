@@ -235,6 +235,8 @@ public class Login extends javax.swing.JFrame {
                 dispose();
                 HomePage hpage = new HomePage();
                 hpage.show();
+            App execc = new App();
+            execc.exec();
             } else {
                 JOptionPane.showMessageDialog(this, "Login ou senha estão incorretos..");
                 edtUsername.setText("");
