@@ -224,7 +224,7 @@ public class Login extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/animix?useSSL=false", "root", "Drifttrike46@");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/animix?useSSL=false", "root", "@");
             String username = edtUsername.getText();
             String password = edtPassword.getText();
             Statement stm = con.createStatement();
