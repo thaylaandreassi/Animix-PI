@@ -33,23 +33,16 @@ body {
 
 }
 
-.sidebar .logo_content .logo_nome {
-    color: #fff;
+.logo_content .logo img{
     display: flex;
-    height: 50px;
-    width: 100%;
     align-items: center;
     opacity: 0;
     pointer-events: none;
     transition: all 0.5s ease;
+    height: 100px;
+    width: 100px;
 }
-
-.logo_content .logo_nome i {
-    font-size: 20px;
-    font-weight: 400;
-}
-
-.sidebar.active .logo_content .logo_nome {
+.sidebar.active .logo_content img {
     opacity: 1;
     pointer-events: none;
 }
@@ -160,7 +153,7 @@ body {
     line-height: 50px;
     font-size: 20px;
     border-radius: 12px;
-    margin-bottom: -180px;
+    margin-bottom: -130px;
     text-align: center;
 
 }
@@ -381,7 +374,7 @@ main {
     box-shadow: 6px 6px 16px var(--top-shadow),
         -6px -6px 16px var(--bottom-shadow);
     height: 250px;
-    width: 30%;
+    width: 40%;
     border-radius: 12px;
     display: flex;
     justify-content: center;

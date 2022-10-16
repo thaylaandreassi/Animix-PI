@@ -17,18 +17,17 @@
     padding:0;
     box-sizing:border-box;
   }
- header img {
-  width: 23%;
-  margin-top: -70px;
-  /* margin-left: 310px; */
- }
+  header img {
+    width: 120px;
+  }
   .container {
     position: absolute;
     max-width: 800px;
     height: 500px;
     margin: auto;
-    top: 50%;
+    top: 55%;
     left: 50%;
+
     transform: translate(-50%, -50%);
     background-color: var(--bggradient);
   } 

@@ -37,6 +37,14 @@ main {
   display: flex;
   flex-direction: row;
 }
+.loading{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-left: -120px;
+  margin-top: 40px;
+  font-size: 24px;
+}
 
 .left {
   height: 100%;

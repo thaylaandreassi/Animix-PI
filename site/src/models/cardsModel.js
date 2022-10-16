@@ -36,13 +36,11 @@ function buscarMedidasEmTempoReal(idMaquina) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        CONVERT(varchar, momento, 108) as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc`;
+        instrucaoSql = `select max(temperatura) as temperatura, 
+        max(usoCPU) as processador,
+        max(usoDisco) as disco,
+        max(usoMemoria) as memoria
+          from dados where idMaquina = ${idMaquina};`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select max(temperatura) as temperatura, 
