@@ -62,11 +62,11 @@ public class TestDatabase {
                 sistemas, memorias, hora, data);
 
         // Retorno do Banco de dados
-        List<Dados> onlyFireType = con.query("SELECT * FROM Dados",
-                new BeanPropertyRowMapper(Dados.class));
+        List<dadosJar> onlyFireType = con.query("SELECT * FROM Dados",
+                new BeanPropertyRowMapper(dadosJar.class));
 
         // Exibição
-        for (Dados dados : onlyFireType) {
+        for (dadosJar dados : onlyFireType) {
             System.out.println("\n Tempo de Atividade: \n" + dados.getTempoAtiv()
                     + "\n Memoria em Uso: " + dados.getMemoriaHard()
                     + "\n Data: " + dados.getDt()

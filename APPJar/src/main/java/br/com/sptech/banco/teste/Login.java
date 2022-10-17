@@ -223,12 +223,17 @@ public class Login extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/animix?useSSL=false", "root", "@");
+            try {
+                DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());;
+            } catch (java.sql.SQLException e) {
+
+            }
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:sqlserver://animix.database.windows.net/animix?useSSL=false", "admin-1adsb-grupo07", "#Gfgrupo7");
             String username = edtUsername.getText();
             String password = edtPassword.getText();
             Statement stm = con.createStatement();
-            String login = "select * from login where username='" + username + "' and Passwordd='" + password + "'";
+            String login = "select * from funcionario where email='" + username + "' and senha='" + password + "'";
             ResultSet rs = stm.executeQuery(login);
             
             if (rs.next()) {
