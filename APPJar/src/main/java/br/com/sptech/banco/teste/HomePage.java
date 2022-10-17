@@ -223,7 +223,7 @@ public class HomePage extends javax.swing.JFrame {
         } catch (Exception e) {
 
         }
-
+proce01.setText("dsada");
     }//GEN-LAST:event_maq1ActionPerformed
 
     /**
