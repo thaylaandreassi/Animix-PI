@@ -8,14 +8,13 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import java.util.List;
 
 /**
  *
@@ -222,21 +221,13 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_edtUsernameActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        try {
-            try {
-                DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());;
-            } catch (java.sql.SQLException e) {
-
-            }
-            //Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:sqlserver://animix.database.windows.net/animix?useSSL=false", "admin-1adsb-grupo07", "#Gfgrupo7");
+      
+            Connection connection = new Connection();
             String username = edtUsername.getText();
             String password = edtPassword.getText();
-            Statement stm = con.createStatement();
-            String login = "select * from funcionario where email='" + username + "' and senha='" + password + "'";
-            ResultSet rs = stm.executeQuery(login);
-            
-            if (rs.next()) {
+            List<Usuario> usuario = connection.getConnection().query("select * from funcionario where email = '"+ username +"' and senha = '" + password +"'",
+                    new BeanPropertyRowMapper(Usuario.class));
+            if (!usuario.isEmpty()) {
                 dispose();
                 HomePage hpage = new HomePage();
                 hpage.show();
@@ -247,10 +238,6 @@ public class Login extends javax.swing.JFrame {
                 edtPassword.setText("");
 
             }
-            con.close();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }//GEN-LAST:event_loginActionPerformed
 
     private void CadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroActionPerformed
