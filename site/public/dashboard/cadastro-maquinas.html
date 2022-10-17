@@ -20,7 +20,7 @@
         <div class="sidebar">
             <div class="logo_content">
                 <div class="logo">
-                    <div class="logo_nome">Animix</div>
+                    <img src="../assets/logo-animix-transparente.png" alt="">
                 </div>
                 <i class='bx bx-menu' id="btn"></i>
             </div>
@@ -64,7 +64,7 @@
                 </li>
                 <li id="toggle">
                     <a href="#">
-                        <i class="fa-solid fa-toggle-off"></i>
+                        <i class="fa-solid fa-circle-half-stroke"></i>
                         <span class="links_name">Modo escuro</span>
                     </a>
                     <span class="tooltip">Modo escuro</span>
@@ -231,12 +231,8 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                var divLoad = document.getElementById('loading');
-                divLoad.style.display = 'flex';
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, 2000)
-                divLoad.style.display = 'none';
+                alert('Maquina cadastrada com sucesso!')
+                    window.location = "pre-dashboard.html";
 
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");

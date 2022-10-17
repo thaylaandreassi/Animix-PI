@@ -12,57 +12,58 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="css/login.css">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-        <div class="container">
-            <header>
-            <a href="index.html"><img src="assets/animix-logo-preto.svg" alt=""></a>
-            </header>
-            <div class="container-card">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="right-container">
-                            <img src="assets/b.png"alt="">
-                            <div class="box">
-                            </div>
-                            <p>Ainda não é cadastrado?</p> 
-                            <a href="cadastro.html"><button type="button" class="butt_out">Cadastre-se</button></a>
+    <header>
+        <a href="index.html"><img src="assets/animix-logo-preto.svg" alt=""></a>
+    </header>
+    <div class="container">
+        <div class="container-card">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="right-container">
+                        <img src="assets/b.png" alt="">
+                        <div class="box">
                         </div>
+                        <p>Ainda não é cadastrado?</p>
+                        <a href="cadastro.html"><button type="button" class="butt_out">Cadastre-se</button></a>
                     </div>
-                    <div class="col-md-6">
-                        <div class="left-container">
-                            <div class="myForm text-center">
-                                <header>Entre com sua conta</header>
-                                <div class="form-group">
-                                    <i class="fas fa-envelope"></i>
-                                    <input class="myInput" placeholder="Email" type="text" id="email_ipt" required>
-                                </div>
-                                <div class="form-group">
-                                    <i class="fas fa-lock"></i>
-                                    <input class="myInput" type="password" id="password_ipt" placeholder="Senha" required>
-                                </div>
-                                <input onclick="entrar()" type="submit" class="butt" value="ENTRAR">
-                                <div id="loading" class="loading">
-                                    <i class="fa-solid fa-spinner fa-spin"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
                 </div>
+                <div class="col-md-6">
+                    <div class="left-container">
+                        <div class="myForm text-center">
+                            <header>Entre com sua conta</header>
+                            <div class="form-group">
+                                <i class="fas fa-envelope"></i>
+                                <input class="myInput" placeholder="Email" type="text" id="email_ipt" required>
+                            </div>
+                            <div class="form-group">
+                                <i class="fas fa-lock"></i>
+                                <input class="myInput" type="password" id="password_ipt" placeholder="Senha" required>
+                            </div>
+                            <input onclick="entrar()" type="submit" class="butt" value="ENTRAR">
+                            <div id="loading" class="loading">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+    </div>
 </body>
+
 </html>
 <script>
     function entrar() {
@@ -104,13 +105,12 @@
                     sessionStorage.ID_USUARIO = json.id;
                     var divLoad = document.getElementById('loading');
                     divLoad.style.display = 'flex';
-
                     setTimeout(function () {
-                        window.location = "inovacao-demo.html";
-                    }, 1000); // apenas para exibir o loading
+                        window.location = "dashboard/pre-dashboard.html";
+                    }, 1000); 
+                    divLoad.style.display = 'none';
                 });
-                divLoad.style.display = 'none';
-
+                
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");

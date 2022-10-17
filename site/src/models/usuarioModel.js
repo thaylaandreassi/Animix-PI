@@ -12,7 +12,7 @@ function listar() {
 function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
-        SELECT * FROM studio WHERE email = '${email}' AND senha = '${senha}';
+        SELECT * FROM funcionario WHERE email = '${email}' AND senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -23,11 +23,12 @@ function cadastrar(nome, telefone, logradouro, cnpj, email, senha) {
     var instrucao = `
     INSERT INTO studio (nomeEmpresa, email, senha, logradouro, telefone, CNPJ ) VALUES ('${nome}', '${email}', '${senha}', '${logradouro}', '${telefone}', '${cnpj}');`;
     console.log("Executando a instrução SQL: \n" + instrucao);
-    cadastrarAdmin(nome, email, senha)
-    return database.executar(instrucao);
+    database.executar(instrucao);
+    var fkStudio = 1;
+    cadastrarAdmin(nome, email, senha, fkStudio);
 }
-function cadastrarAdmin(nome, email, senha) {
-    var instrucao = `INSERT INTO funcionario (cargo, nome, email, senha)VALUES ('Admin', '${nome}', '${email}', '${senha}');`
+function cadastrarAdmin(nome, email, senha, fkStudio) {
+    var instrucao = `INSERT INTO funcionario (cargo, nome, email, senha, fkStudio)VALUES ('Admin', '${nome}', '${email}', '${senha}', '${fkStudio}');`
     return database.executar(instrucao);
 }
 

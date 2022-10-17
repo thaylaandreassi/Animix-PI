@@ -1,8 +1,5 @@
 create database animix;
-
 use animix;
-
-
 create table studio(
 	idStudio int primary key auto_increment,
     nomeEmpresa varchar(45),

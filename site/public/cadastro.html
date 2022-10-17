@@ -60,16 +60,20 @@
                     </div>
                     <div class="form-group">
                         <i class="fas fa-lock"></i>
-                        <input class="myInput" type="password" id="password_confirm_ipt" placeholder="Confirme sua senha" required>
+                        <input class="myInput" type="password" id="password_confirm_ipt"
+                            placeholder="Confirme sua senha" required>
                     </div>
                     <input onclick="cadastrar()" type="submit" class="butt" value="CADASTRAR">
+                    <div id="loading" class="loading">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                    </div>
                 </div>
             </div>
             <div class="right">
                 <div class="row">
                     <img src="assets/a.png" alt="">
                     <div class="box">
-                    <h4>Ja possui cadastro?</h4>
+                        <h4>Ja possui cadastro?</h4>
                         <a href="login.html"><button type="button" class="butt_out">Entre</button></a>
                     </div>
                 </div>
@@ -86,7 +90,7 @@
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        
+
         var nomeEmpresa = name_ipt.value;
         var cnpj = cnpj_ipt.value;
         var emailVar = email_ipt.value;
@@ -122,13 +126,19 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                setTimeout(() => {
+                var divLoad = document.getElementById('loading');
+                divLoad.style.display = 'flex';
+                setTimeout(function () {
                     window.location = "login.html";
-                }, 2000)
+                }, 1000);
                 divLoad.style.display = 'none';
-
             } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
+                var divLoad = document.getElementById('loading');
+                divLoad.style.display = 'flex';
+                setTimeout(function () {
+                    window.location = "login.html";
+                }, 1000);
+                divLoad.style.display = 'none';
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
