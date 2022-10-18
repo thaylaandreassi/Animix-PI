@@ -28,13 +28,7 @@ public class Connection {
         datasource.setPassword("#Gfgrupo7");
         
         connection = new JdbcTemplate(datasource);
-        
-        
-        
-        
-        
-        
-        
+       
         //Class.forName("com.mysql.cj.jdbc.Driver");
         //Connection con = DriverManager.getConnection("jdbc:mysql://localhost/animix?useSSL=false", "root", "@");
         //datasource.setUrl("jdbc:mysql://localhost/animix");

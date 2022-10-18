@@ -40,16 +40,11 @@ public class App {
         
         Looca looca = new Looca();
         TestDatabase test = new TestDatabase();
-
-        
-
     }
 
     public static void main(String[] args) {
-        TestDatabase test = new TestDatabase();
         Login log = new Login();
         log.show();
-        test.Execut();
     }
     
     
