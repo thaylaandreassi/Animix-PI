@@ -57,13 +57,20 @@ public class TestDatabase {
         String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
 
         // Momento de Subida no banco
-        String insertStatement = "INSERT INTO dados VALUES (null,?,?,?,?)";
-        con.update(insertStatement, 
-                sistemas, memorias, hora, data);
+        
+        //String insertStatement = "INSERT INTO dadosJar VALUES (1,null, null, null,null)";
+        //con.update("1", sistemas, memorias, hora, data);
+        
+        con.execute("INSERT INTO dadosJar VALUES (1,'"+ sistemas +"','" + memorias +"','" + data +"','" + hora + "')");
+        
+        //con.execute("INSERT INTO dadosJar VALUES (1"," + sistema + "," + memorias + "," + data +"," + hora);";
 
         // Retorno do Banco de dados
-        List<dadosJar> onlyFireType = con.query("SELECT * FROM Dados",
+        List<dadosJar> onlyFireType = con.query("SELECT * FROM dadosJar",
                 new BeanPropertyRowMapper(dadosJar.class));
+        
+        //System.out.println(insertStatement);
+        //System.out.println(onlyFireType);
 
         // Exibição
         for (dadosJar dados : onlyFireType) {

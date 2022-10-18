@@ -219,11 +219,13 @@ public class HomePage extends javax.swing.JFrame {
     private void maq1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maq1ActionPerformed
         try {
             App execc = new App();
+            TestDatabase test = new TestDatabase();
             execc.exec();
+            test.Execut();
         } catch (Exception e) {
 
         }
-
+proce01.setText("dsada");
     }//GEN-LAST:event_maq1ActionPerformed
 
     /**
