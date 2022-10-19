@@ -4,6 +4,8 @@
  */
 package br.com.sptech.banco.teste;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  *
  * @author Aegis
@@ -221,7 +223,10 @@ public class HomePage extends javax.swing.JFrame {
             App execc = new App();
             TestDatabase test = new TestDatabase();
             execc.exec();
-            test.Execut();
+            for (int i = 0; i < 10; i++) {
+                test.Execut();
+            }
+            
         } catch (Exception e) {
 
         }

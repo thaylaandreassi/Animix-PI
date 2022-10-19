@@ -74,10 +74,12 @@ public class TestDatabase {
 
         // Exibição
         for (dadosJar dados : onlyFireType) {
-            System.out.println("\n Tempo de Atividade: \n" + dados.getTempoAtiv()
+            System.out.println("DADOS SELECIONADOS DO BANCO: "
+                    + "\n Tempo de Atividade: \n" + dados.getTempoAtiv()
                     + "\n Memoria em Uso: " + dados.getMemoriaHard()
                     + "\n Data: " + dados.getDt()
                     + "\n Hora: " + dados.getHora()
+                    + "\n \n"
             );
         }
     }

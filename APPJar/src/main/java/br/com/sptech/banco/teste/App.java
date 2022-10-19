@@ -5,6 +5,16 @@
 package br.com.sptech.banco.teste;
 
 import com.github.britooo.looca.api.core.Looca;
+import com.github.britooo.looca.api.group.discos.DiscoGrupo;
+import com.github.britooo.looca.api.group.memoria.Memoria;
+import com.github.britooo.looca.api.group.processador.Processador;
+import com.github.britooo.looca.api.group.processos.ProcessoGrupo;
+import com.github.britooo.looca.api.group.servicos.ServicoGrupo;
+import com.github.britooo.looca.api.group.sistema.Sistema;
+import com.github.britooo.looca.api.group.temperatura.Temperatura;
+import com.github.britooo.looca.api.util.Conversor;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,47 +30,73 @@ public class App {
        
     public void exec() throws InterruptedException {
          
-        
         Connection connectionn = new Connection();
-        
         BasicDataSource datasource = new BasicDataSource();
-        
-        datasource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        
-        
-        datasource.setUrl("jdbc:sqlserver://animix.database.windows.net:1433;database=animix;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;");
-        
-        
-        datasource.setUsername("admin-1adsb-grupo07");
-        
-        datasource.setPassword("#Gfgrupo7");
-        
         connection = new JdbcTemplate(datasource);
-        
         
         Looca looca = new Looca();
         TestDatabase test = new TestDatabase();
     }
 
     public static void main(String[] args) {
+        Looca looca = new Looca();
         Login log = new Login();
         log.show();
+        
+        
+        
+        
+        
+        // Uso da API
+        
+        
+        Conversor conversor = new Conversor();
+        Sistema sistema = new Sistema();
+        String sistemas = null;
+        sistemas = conversor.formatarSegundosDecorridos(sistema.getTempoDeAtividade());
+        
+        Memoria memoria = new Memoria();
+        String memorias = null;
+        memorias = conversor.formatarBytes(memoria.getEmUso());
+        
+        Date dataHoraAtual = new Date();
+        String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
+        String Dt = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
+        
+        Processador processador = new Processador();
+        Temperatura temperatura = new Temperatura();
+        DiscoGrupo disco = new DiscoGrupo();
+        ServicoGrupo servicos = new ServicoGrupo();
+        ProcessoGrupo processos = new ProcessoGrupo();
+        
+        
+        
+        System.out.println("USO DA API:"
+                + "\n Tempo de Atividade: \n" + sistemas
+                    + "\n Memoria em Uso: " + memorias
+                    + "\n Data: " + data
+                    + "\n Hora: " + Dt
+                    + "\n Frabicante do processador: " + processador.getFabricante()
+                    + "\n Frequência: " + processador.getFrequencia()
+                    + "\n Identificador: " + processador.getIdentificador()
+                    + "\n Microarquitetura: " + processador.getMicroarquitetura()
+                    + "\n Nome processador: " + processador.getNome()
+                    + "\n Número de CPUs Físicas: " + processador.getNumeroCpusFisicas()
+                    + "\n Número de CPUs Lógicas:" + processador.getNumeroCpusLogicas()
+                    + "\n Número de Pacotes Físicos: " + processador.getNumeroPacotesFisicos()
+                    + "\n Uso processador: " + processador.getUso()
+                    + "\n Temperatura: " + temperatura.getTemperatura()
+                    + "\n Lista detalhes Disco: " + disco.getDiscos()
+                    + "\n Serviços: " + servicos.getServicos() 
+                                      + servicos.getServicosAtivos()
+                                      + servicos.getServicosInativos()
+                    + "\n Detalhes processos: " + processos.getProcessos()
+                );
+        
     }
     
     
     public JdbcTemplate getConnection() {
         return connection;
     }
-    
-    
-    
-    //System.out.println(looca.getGrupoDeDiscos().getVolumes().get(0).getDisponivel());        
-    //System.out.println(looca.getGrupoDeProcessos().getProcessos().get(0).getUsoCpu());        
-    //System.out.println(looca.getGrupoDeProcessos().getProcessos().get(0).getBytesUtilizados());
-
-    //System.out.println(looca.getGrupoDeServicos().getServicos());
-    //System.out.println(looca.getMemoria());
-    //System.out.println(looca.getProcessador().getNumeroCpusFisicas());
-    //System.out.println(looca.getSistema().getTempoDeAtividade());
-    //System.out.println(looca.getTemperatura().getTemperatura());
 }
