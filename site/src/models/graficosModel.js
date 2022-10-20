@@ -13,7 +13,7 @@ function buscarUltimasMedidas(idMaquina, limite_linhas) {
                         horaCaptura,
                         FORMAT(horaCaptura, 'HH:mm:ss') as momento_grafico
                     from dados
-                    where idMaquina = ${idMaquina}
+                    where fkMaquina = ${idMaquina}
                     order by idDados desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select temperatura as temperatura, 
@@ -21,7 +21,7 @@ function buscarUltimasMedidas(idMaquina, limite_linhas) {
         porcentDisco as disco,
         porcentMemoria as memoria,
         time_format(horaCaptura, '%h:%m:%s') as momento_grafico
-          from dados where idMaquina = ${idMaquina}
+          from dados where fkMaquina = ${idMaquina}
                     order by idDados desc limit ${limite_linhas}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -43,8 +43,8 @@ function buscarMedidasEmTempoReal(idMaquina) {
         usoDisco as disco,
         usoMemoria as memoria,
                         CONVERT(varchar, horaCaptura, 108) as momento_grafico, 
-                        idMaquina 
-                        from dados where idMaquina = ${idMaquina} 
+                        fkMaquina 
+                        from dados where fkMaquina = ${idMaquina} 
                     order by idDados desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
@@ -53,7 +53,7 @@ function buscarMedidasEmTempoReal(idMaquina) {
         porcentDisco as disco,
         porcentMemoria as memoria,
         time_format(horaCaptura, '%h:%m:%s') as momento_grafico
-          from dados where idMaquina = ${idMaquina}`;
+          from dados where fkMaquina = ${idMaquina}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return

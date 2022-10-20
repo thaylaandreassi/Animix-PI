@@ -25,8 +25,9 @@ function cadastrar(nome, telefone, logradouro, cnpj, email, senha) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     database.executar(instrucao);
     var fkStudio = 1;
-    cadastrarAdmin(nome, email, senha, fkStudio);
+    cadastrarAdmin(nome, email, senha, fkStudio)
 }
+
 function cadastrarAdmin(nome, email, senha, fkStudio) {
     var instrucao = `INSERT INTO funcionario (cargo, nome, email, senha, fkStudio)VALUES ('Admin', '${nome}', '${email}', '${senha}', '${fkStudio}');`
     return database.executar(instrucao);
@@ -36,4 +37,5 @@ module.exports = {
     entrar,
     cadastrar,
     listar,
+    cadastrarAdmin
 };

@@ -40,14 +40,14 @@ function buscarMedidasEmTempoReal(idMaquina) {
         max(usoCPU) as processador,
         max(usoDisco) as disco,
         max(usoMemoria) as memoria
-          from dados where idMaquina = ${idMaquina};`;
+          from dados where fkMaquina = ${idMaquina};`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select max(temperatura) as temperatura, 
         max(porcentCPU) as processador,
         max(porcentDisco) as disco,
         max(porcentMemoria) as memoria
-          from dados where idMaquina = ${idMaquina};`;
+          from dados where fkMaquina = ${idMaquina};`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
