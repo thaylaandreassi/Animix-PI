@@ -1,18 +1,18 @@
 #!/bin/bash
-sudo apt upgrade && sudo apt update 
-java -version
-if [ $? -eq 0 ];
-then
-echo "java instalado"
-else
-echo "java nao instalado"
-echo "gostaria de instalar o java? (s/n)"
-read inst
-if [ \"$inst\" == \"s\" ];
-then
-sudo apt install default-jre -y
-fi
-fi
+# sudo apt upgrade && sudo apt update 
+# java -version
+# if [ $? -eq 0 ];
+# then
+# echo "java instalado"
+# else
+# echo "java nao instalado"
+# echo "gostaria de instalar o java? (s/n)"
+# read inst
+# if [ \"$inst\" == \"s\" ];
+# then
+# sudo apt install default-jre -y
+# fi
+# fi
 
 sudo apt install docker.io 
 
