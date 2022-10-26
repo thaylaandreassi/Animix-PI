@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 # sudo apt upgrade && sudo apt update 
 # java -version
 # if [ $? -eq 0 ];
@@ -13,15 +13,10 @@
 # sudo apt install default-jre -y
 # fi
 # fi
-
 sudo apt install docker.io 
-
 sudo systemctl start docker
-
 sudo systemctl enable docker
-
 sudo docket pull mysql:5.7
-
 sudo docker run -d -p 3306:3306 --name ConteinerDB -e "MYSQL_DATABASE=Animix"-e"MYSQL_ROOT_PASSWORD=Animix" mysql:5.7
 
 sudo docker ps -a
