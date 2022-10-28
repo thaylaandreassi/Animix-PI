@@ -26,14 +26,20 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class App {
     
     private JdbcTemplate connection;
+    private JdbcTemplate connectionMySql;
     
        
     public void exec() throws InterruptedException {
          
-        Connection connectionn = new Connection();
-        BasicDataSource datasource = new BasicDataSource();
-        connection = new JdbcTemplate(datasource);
+        Connection connectionn = new Connection();        
+        ConnectionMySqlLocal connectionnLocal = new ConnectionMySqlLocal();
         
+        BasicDataSource datasource = new BasicDataSource();
+        BasicDataSource datasourceMySql = new BasicDataSource();
+        
+        connection = new JdbcTemplate(datasource);        
+        connectionMySql = new JdbcTemplate(datasourceMySql);
+
         Looca looca = new Looca();
         TestDatabase test = new TestDatabase();
     }
@@ -71,28 +77,32 @@ public class App {
         
         
         
-        System.out.println("USO DA API:"
-                + "\n Tempo de Atividade: \n" + sistemas
-                    + "\n Memoria em Uso: " + memorias
-                    + "\n Data: " + data
-                    + "\n Hora: " + Dt
-                    + "\n Frabicante do processador: " + processador.getFabricante()
-                    + "\n Frequência: " + processador.getFrequencia()
-                    + "\n Identificador: " + processador.getIdentificador()
-                    + "\n Microarquitetura: " + processador.getMicroarquitetura()
-                    + "\n Nome processador: " + processador.getNome()
-                    + "\n Número de CPUs Físicas: " + processador.getNumeroCpusFisicas()
-                    + "\n Número de CPUs Lógicas:" + processador.getNumeroCpusLogicas()
-                    + "\n Número de Pacotes Físicos: " + processador.getNumeroPacotesFisicos()
-                    + "\n Uso processador: " + processador.getUso()
-                    + "\n Temperatura: " + temperatura.getTemperatura()
-                    + "\n Lista detalhes Disco: " + disco.getDiscos()
-                    + "\n Serviços: " + servicos.getServicos() 
-                                      + servicos.getServicosAtivos()
-                                      + servicos.getServicosInativos()
-                    + "\n Detalhes processos: " + processos.getProcessos()
-                );
+        //System.out.println("USO DA API:"
+               // + "\n Tempo de Atividade: \n" + sistemas
+              //    + "\n Memoria em Uso: " + memorias
+              //      + "\n Data: " + data
+              //      + "\n Hora: " + Dt
+              //      + "\n Frabicante do processador: " + processador.getFabricante()
+              //      + "\n Frequência: " + processador.getFrequencia()
+              //      + "\n Identificador: " + processador.getIdentificador()
+              //      + "\n Microarquitetura: " + processador.getMicroarquitetura()
+              //      + "\n Nome processador: " + processador.getNome()
+              //      + "\n Número de CPUs Físicas: " + processador.getNumeroCpusFisicas()
+              //      + "\n Número de CPUs Lógicas:" + processador.getNumeroCpusLogicas()
+              //      + "\n Número de Pacotes Físicos: " + processador.getNumeroPacotesFisicos()
+              //      + "\n Uso processador: " + processador.getUso()
+              //      + "\n Temperatura: " + temperatura.getTemperatura()
+              //      + "\n Lista detalhes Disco: " + disco.getDiscos()
+              //      + "\n Serviços: " + servicos.getServicos() 
+              //                        + servicos.getServicosAtivos()
+             //                         + servicos.getServicosInativos()
+             //       + "\n Detalhes processos: " + processos.getProcessos()
+              //  );
         
+    }
+
+    public JdbcTemplate getConnectionMySql() {
+        return connectionMySql;
     }
     
     

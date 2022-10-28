@@ -223,6 +223,7 @@ public class Login extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
       
             Connection connection = new Connection();
+            ConnectionMySqlLocal conLocal = new ConnectionMySqlLocal();
             String username = edtUsername.getText();
             String password = edtPassword.getText();
             List<Usuario> usuario = connection.getConnection().query("select * from funcionario where email = '"+ username +"' and senha = '" + password +"'",

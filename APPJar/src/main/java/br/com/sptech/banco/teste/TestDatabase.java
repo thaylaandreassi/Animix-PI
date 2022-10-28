@@ -22,7 +22,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class TestDatabase {
 
     Connection connection = new Connection();
+    ConnectionMySqlLocal ConnectionMySqlLocal = new ConnectionMySqlLocal();
     JdbcTemplate con = connection.getConnection();
+    JdbcTemplate conLocal = ConnectionMySqlLocal.getConnectionMySql();
     Looca looca = new Looca();
     Conversor conversor = new Conversor();
 
@@ -55,22 +57,22 @@ public class TestDatabase {
         //Date Time
         String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
         String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
-
-        // Momento de Subida no banco
-        
-        //String insertStatement = "INSERT INTO dadosJar VALUES (1,null, null, null,null)";
-        //con.update("1", sistemas, memorias, hora, data);
+        // Momento de Subida no banco Azure
         
         con.execute("INSERT INTO dadosJar VALUES (1,'"+ sistemas +"','" + memorias +"','" + data +"','" + hora + "')");
+        System.out.println("Passei Aqui!!!");
         
-        //con.execute("INSERT INTO dadosJar VALUES (1"," + sistema + "," + memorias + "," + data +"," + hora);";
+        // Momento de Subida no banco Local
+        System.out.println("Se essa msg apareceu, ainda não passei no Local");
+        String insertStatement = "INSERT INTO dadosJar VALUES (1,sistemas, sistemas, hora, data)";
+        //conLocal.update(insertStatement, sistemas, memorias, hora, data);
+        //conLocal.execute("INSERT INTO dadosJar VALUES (sistemas, sistemas, hora, data)");
+        System.out.println("Se essa msg apareceu, já passei por aqui");
 
         // Retorno do Banco de dados
         List<dadosJar> onlyFireType = con.query("SELECT * FROM dadosJar",
                 new BeanPropertyRowMapper(dadosJar.class));
         
-        //System.out.println(insertStatement);
-        //System.out.println(onlyFireType);
 
         // Exibição
         for (dadosJar dados : onlyFireType) {
