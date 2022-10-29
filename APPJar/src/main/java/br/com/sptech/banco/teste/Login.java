@@ -221,24 +221,25 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_edtUsernameActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-      
-            Connection connection = new Connection();
-            ConnectionMySqlLocal conLocal = new ConnectionMySqlLocal();
-            String username = edtUsername.getText();
-            String password = edtPassword.getText();
-            List<Usuario> usuario = connection.getConnection().query("select * from funcionario where email = '"+ username +"' and senha = '" + password +"'",
-                    new BeanPropertyRowMapper(Usuario.class));
-            if (!usuario.isEmpty()) {
-                dispose();
-                HomePage hpage = new HomePage();
-                hpage.show();
 
-            } else {
-                JOptionPane.showMessageDialog(this, "Login ou senha estão incorretos..");
-                edtUsername.setText("");
-                edtPassword.setText("");
+        Connection connection = new Connection();
+        ConnectionMySqlLocal connection2 = new ConnectionMySqlLocal();
 
-            }
+        String username = edtUsername.getText();
+        String password = edtPassword.getText();
+        List<Usuario> usuario = connection.getConnection().query("select * from funcionario where email = '" + username + "' and senha = '" + password + "'",
+                new BeanPropertyRowMapper(Usuario.class));
+        if (!usuario.isEmpty()) {
+            dispose();
+            HomePage hpage = new HomePage();
+            hpage.show();
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Login ou senha estão incorretos..");
+            edtUsername.setText("");
+            edtPassword.setText("");
+
+        }
     }//GEN-LAST:event_loginActionPerformed
 
     private void CadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroActionPerformed

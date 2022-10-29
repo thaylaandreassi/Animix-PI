@@ -24,90 +24,82 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * @author aluno
  */
 public class App {
-    
+
     private JdbcTemplate connection;
     private JdbcTemplate connectionMySql;
-    
-       
+
     public void exec() throws InterruptedException {
-         
-        Connection connectionn = new Connection();        
-        ConnectionMySqlLocal connectionnLocal = new ConnectionMySqlLocal();
-        
+
+        Connection connectionn = new Connection();
         BasicDataSource datasource = new BasicDataSource();
-        BasicDataSource datasourceMySql = new BasicDataSource();
-        
-        connection = new JdbcTemplate(datasource);        
-        connectionMySql = new JdbcTemplate(datasourceMySql);
+        connection = new JdbcTemplate(datasource);
 
         Looca looca = new Looca();
         TestDatabase test = new TestDatabase();
     }
+ public void exec2() throws InterruptedException {
 
+        ConnectionMySqlLocal connectionnLocal = new ConnectionMySqlLocal();
+        BasicDataSource datasourceMySql = new BasicDataSource();
+        connectionMySql = new JdbcTemplate(datasourceMySql);
+
+        Looca looca = new Looca();
+        TestDatabase2 test2 = new TestDatabase2();
+    }
     public static void main(String[] args) {
         Looca looca = new Looca();
         Login log = new Login();
         log.show();
-        
-        
-        
-        
-        
+
         // Uso da API
-        
-        
         Conversor conversor = new Conversor();
         Sistema sistema = new Sistema();
         String sistemas = null;
         sistemas = conversor.formatarSegundosDecorridos(sistema.getTempoDeAtividade());
-        
+
         Memoria memoria = new Memoria();
         String memorias = null;
         memorias = conversor.formatarBytes(memoria.getEmUso());
-        
+
         Date dataHoraAtual = new Date();
         String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
         String Dt = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
-        
+
         Processador processador = new Processador();
         Temperatura temperatura = new Temperatura();
         DiscoGrupo disco = new DiscoGrupo();
         ServicoGrupo servicos = new ServicoGrupo();
         ProcessoGrupo processos = new ProcessoGrupo();
-        
-        
-        
+
         //System.out.println("USO DA API:"
-               // + "\n Tempo de Atividade: \n" + sistemas
-              //    + "\n Memoria em Uso: " + memorias
-              //      + "\n Data: " + data
-              //      + "\n Hora: " + Dt
-              //      + "\n Frabicante do processador: " + processador.getFabricante()
-              //      + "\n Frequência: " + processador.getFrequencia()
-              //      + "\n Identificador: " + processador.getIdentificador()
-              //      + "\n Microarquitetura: " + processador.getMicroarquitetura()
-              //      + "\n Nome processador: " + processador.getNome()
-              //      + "\n Número de CPUs Físicas: " + processador.getNumeroCpusFisicas()
-              //      + "\n Número de CPUs Lógicas:" + processador.getNumeroCpusLogicas()
-              //      + "\n Número de Pacotes Físicos: " + processador.getNumeroPacotesFisicos()
-              //      + "\n Uso processador: " + processador.getUso()
-              //      + "\n Temperatura: " + temperatura.getTemperatura()
-              //      + "\n Lista detalhes Disco: " + disco.getDiscos()
-              //      + "\n Serviços: " + servicos.getServicos() 
-              //                        + servicos.getServicosAtivos()
-             //                         + servicos.getServicosInativos()
-             //       + "\n Detalhes processos: " + processos.getProcessos()
-              //  );
-        
+        // + "\n Tempo de Atividade: \n" + sistemas
+        //    + "\n Memoria em Uso: " + memorias
+        //      + "\n Data: " + data
+        //      + "\n Hora: " + Dt
+        //      + "\n Frabicante do processador: " + processador.getFabricante()
+        //      + "\n Frequência: " + processador.getFrequencia()
+        //      + "\n Identificador: " + processador.getIdentificador()
+        //      + "\n Microarquitetura: " + processador.getMicroarquitetura()
+        //      + "\n Nome processador: " + processador.getNome()
+        //      + "\n Número de CPUs Físicas: " + processador.getNumeroCpusFisicas()
+        //      + "\n Número de CPUs Lógicas:" + processador.getNumeroCpusLogicas()
+        //      + "\n Número de Pacotes Físicos: " + processador.getNumeroPacotesFisicos()
+        //      + "\n Uso processador: " + processador.getUso()
+        //      + "\n Temperatura: " + temperatura.getTemperatura()
+        //      + "\n Lista detalhes Disco: " + disco.getDiscos()
+        //      + "\n Serviços: " + servicos.getServicos() 
+        //                        + servicos.getServicosAtivos()
+        //                         + servicos.getServicosInativos()
+        //       + "\n Detalhes processos: " + processos.getProcessos()
+        //  );
+    }
+
+    public JdbcTemplate getConnection() {
+        return connection;
     }
 
     public JdbcTemplate getConnectionMySql() {
         return connectionMySql;
-    }
-    
-    
-    public JdbcTemplate getConnection() {
-        return connection;
     }
 
     String getTempoAtiv() {

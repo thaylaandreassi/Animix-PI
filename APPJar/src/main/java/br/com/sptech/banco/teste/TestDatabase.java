@@ -21,28 +21,21 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class TestDatabase {
 
-    Connection connection = new Connection();
-    ConnectionMySqlLocal ConnectionMySqlLocal = new ConnectionMySqlLocal();
-    JdbcTemplate con = connection.getConnection();
-    JdbcTemplate conLocal = ConnectionMySqlLocal.getConnectionMySql();
-    Looca looca = new Looca();
-    Conversor conversor = new Conversor();
-
     public void Execut() {
+        Connection connection = new Connection();
+        JdbcTemplate con = connection.getConnection();
+        Looca looca = new Looca();
+        Conversor conversor = new Conversor();
         Date dataHoraAtual = new Date();
         // Temperatura:
 
-       
-
         // PorcentCPU e BytesEmEscrita:
-
         Double porcentCPU = 0.0;
 
         Long porcentDisco = null;
 
 //        porcentCPU = looca.getGrupoDeProcessos().getProcessos().get(0).getUsoCpu();
 //        porcentDisco = looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho();
-
         // TempoAtiv
         Sistema sistema = new Sistema();
 
@@ -58,21 +51,21 @@ public class TestDatabase {
         String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
         String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
         // Momento de Subida no banco Azure
-        
-        con.execute("INSERT INTO dadosJar VALUES (1,'"+ sistemas +"','" + memorias +"','" + data +"','" + hora + "')");
+
+        con.execute("INSERT INTO dadosJar VALUES (1,'" + sistemas + "','" + memorias + "','" + data + "','" + hora + "')");
         System.out.println("Passei Aqui!!!");
-        
+
         // Momento de Subida no banco Local
-        System.out.println("Se essa msg apareceu, ainda não passei no Local");
-        String insertStatement = "INSERT INTO dadosJar VALUES (1,sistemas, sistemas, hora, data)";
-        //conLocal.update(insertStatement, sistemas, memorias, hora, data);
-        //conLocal.execute("INSERT INTO dadosJar VALUES (sistemas, sistemas, hora, data)");
-        System.out.println("Se essa msg apareceu, já passei por aqui");
+//        System.out.println("Se essa msg apareceu, ainda não passei no Local");
+//        String insertStatement = "INSERT INTO dados VALUES (null,?,?,?,?)";
+//        conLocal.update(insertStatement,
+//                sistemas, memorias, hora, data);
+//        conLocal.execute("INSERT INTO dadosJar VALUES (sistemas, memorias, hora, data)");
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
         // Retorno do Banco de dados
         List<dadosJar> onlyFireType = con.query("SELECT * FROM dadosJar",
                 new BeanPropertyRowMapper(dadosJar.class));
-        
 
         // Exibição
         for (dadosJar dados : onlyFireType) {

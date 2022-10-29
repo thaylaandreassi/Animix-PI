@@ -18,14 +18,16 @@ public class ConnectionMySqlLocal {
         BasicDataSource datasourceMySql = new BasicDataSource();
     
         datasourceMySql.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        datasourceMySql.setUrl("jdbc:mysql://localhost:3306/Animix");
+        datasourceMySql.setUrl("jdbc:mysql://localhost/animix");
         datasourceMySql.setUsername("root");
-        datasourceMySql.setPassword("driftrike46@");
-        
-        connectionMySql = new JdbcTemplate(datasourceMySql);
+        datasourceMySql.setPassword("blueprotocol");
+            connectionMySql = new JdbcTemplate(datasourceMySql);
+
     } 
 
     public JdbcTemplate getConnectionMySql() {
         return connectionMySql;
     }
+    
+    
 }

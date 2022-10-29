@@ -195,14 +195,23 @@ public class HomePage extends javax.swing.JFrame {
 
         try {
             App execc = new App();
+            App execc2 = new App();
+
             TestDatabase test = new TestDatabase();
+            TestDatabase2 test2 = new TestDatabase2();
+
             execc.exec();
+            execc2.exec2();
+
             for (int i = 0; i < 10; i++) {
                 test.Execut();
-
+                test2.Execut2();
             }
             Connection connection = new Connection();
             JdbcTemplate con = connection.getConnection();
+            ConnectionMySqlLocal connection2 = new ConnectionMySqlLocal();
+                        JdbcTemplate con2 = connection2.getConnectionMySql();
+
             con.query("SELECT * FROM dadosJar",
                     new BeanPropertyRowMapper(dadosJar.class));
             List<dadosJar> onlyFireType = con.query("SELECT * FROM dadosJar",
@@ -212,7 +221,7 @@ public class HomePage extends javax.swing.JFrame {
                 proce01.setText("\n Tempo de Atividade: " + dados.getTempoAtiv());
                 proce2.setText("\n Memória Ram utilizada: " + dados.getMemoriaHard());
                 proce3.setText("\n Data e hora dos processos: " + dados.getHora() + " " + dados.getDt());
-                
+
             }
         } catch (Exception e) {
 
