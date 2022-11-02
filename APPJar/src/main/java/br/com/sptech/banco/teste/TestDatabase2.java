@@ -55,7 +55,7 @@ public class TestDatabase2 {
      
 
         // Momento de Subida no banco Local
-        String insertStatement = "INSERT INTO dadosJar VALUES (null,?,?,?,?)";
+        String insertStatement = "INSERT INTO dadosJarLocal VALUES (null,?,?,?,?)";
                 System.out.println("Se essa msg apareceu, ainda não passei no Local");
 
         con.update(insertStatement,
