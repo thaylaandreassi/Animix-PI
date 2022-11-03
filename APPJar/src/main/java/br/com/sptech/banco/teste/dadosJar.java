@@ -9,9 +9,12 @@ package br.com.sptech.banco.teste;
  * @author Eduardo
  */
 public class dadosJar {
-    private Integer idDados;
-    private String TempoAtiv;
-    private String memoriaHard;
+   private Integer idDados;
+    private Long TempoAtiv;
+    private Double temperaturaPc;
+    private Long discoPc;
+    private Double processador;
+    private Long memoriaHard;
     private String hora;
     private String Dt;
 
@@ -23,19 +26,43 @@ public class dadosJar {
         this.idDados = idDados;
     }
 
-    public String getTempoAtiv() {
+    public Long getTempoAtiv() {
         return TempoAtiv;
     }
 
-    public void setTempoAtiv(String TempoAtiv) {
+    public void setTempoAtiv(Long TempoAtiv) {
         this.TempoAtiv = TempoAtiv;
     }
 
-    public String getMemoriaHard() {
+    public Double getTemperaturaPc() {
+        return temperaturaPc;
+    }
+
+    public void setTemperaturaPc(Double temperaturaPc) {
+        this.temperaturaPc = temperaturaPc;
+    }
+
+    public Long getDiscoPc() {
+        return discoPc;
+    }
+
+    public void setDiscoPc(Long discoPc) {
+        this.discoPc = discoPc;
+    }
+
+    public Double getProcessador() {
+        return processador;
+    }
+
+    public void setProcessador(Double processador) {
+        this.processador = processador;
+    }
+
+    public Long getMemoriaHard() {
         return memoriaHard;
     }
 
-    public void setMemoriaHard(String memoriaHard) {
+    public void setMemoriaHard(Long memoriaHard) {
         this.memoriaHard = memoriaHard;
     }
 
@@ -55,6 +82,5 @@ public class dadosJar {
         this.Dt = Dt;
     }
 
-    
     
 }

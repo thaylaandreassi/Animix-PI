@@ -1,9 +1,11 @@
 package br.com.sptech.banco.teste;
 
 import com.github.britooo.looca.api.core.Looca;
+import com.github.britooo.looca.api.group.discos.DiscoGrupo;
 import oshi.SystemInfo;
 import oshi.hardware.HardwareAbstractionLayer;
 import com.github.britooo.looca.api.group.memoria.Memoria;
+import com.github.britooo.looca.api.group.processador.Processador;
 import com.github.britooo.looca.api.group.sistema.Sistema;
 import com.github.britooo.looca.api.group.temperatura.Temperatura;
 import com.github.britooo.looca.api.util.Conversor;
@@ -27,56 +29,45 @@ public class TestDatabase {
         Looca looca = new Looca();
         Conversor conversor = new Conversor();
         Date dataHoraAtual = new Date();
-        // Temperatura:
-
-        // PorcentCPU e BytesEmEscrita:
-        Double porcentCPU = 0.0;
-
-        Long porcentDisco = null;
-
-//        porcentCPU = looca.getGrupoDeProcessos().getProcessos().get(0).getUsoCpu();
-//        porcentDisco = looca.getGrupoDeDiscos().getDiscos().get(0).getTamanho();
+       
         // TempoAtiv
         Sistema sistema = new Sistema();
-
-        String sistemas = null;
-        sistemas = conversor.formatarSegundosDecorridos(sistema.getTempoDeAtividade());
+        Long sistemas = sistema.getTempoDeAtividade();
+       
+        // Temperatura:
+       
+        Temperatura temperatura = new Temperatura();
+        Double temperaturaPC = temperatura.getTemperatura();
+         
+        // Disco
+       
+        DiscoGrupo disco = new DiscoGrupo();
+        Long discoPC = disco.getDiscos().get(0).getBytesDeEscritas();
+       
+        // Processador
+       
+        Processador processadors = new Processador();
+        Double processador = processadors.getUso();
+       
+        // Memória
 
         Memoria memoria = new Memoria();
-
-        String memorias = null;
-        memorias = Conversor.formatarBytes(memoria.getEmUso());
+        Long memoriaHard = memoria.getEmUso();
 
         //Date Time
         String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
-        String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
+        String Dt = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
+       
         // Momento de Subida no banco Azure
 
-        con.execute("INSERT INTO dadosJar VALUES (1,'" + sistemas + "','" + memorias + "','" + data + "','" + hora + "')");
-        System.out.println("Passei Aqui!!!");
-
-        // Momento de Subida no banco Local
-//        System.out.println("Se essa msg apareceu, ainda não passei no Local");
-//        String insertStatement = "INSERT INTO dados VALUES (null,?,?,?,?)";
-//        conLocal.update(insertStatement,
-//                sistemas, memorias, hora, data);
-//        conLocal.execute("INSERT INTO dadosJar VALUES (sistemas, memorias, hora, data)");
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-
-        // Retorno do Banco de dados
-        List<dadosJar> onlyFireType = con.query("SELECT * FROM dadosJar",
-                new BeanPropertyRowMapper(dadosJar.class));
-
-        // Exibição
-        for (dadosJar dados : onlyFireType) {
-            System.out.println("DADOS SELECIONADOS DO BANCO: "
-                    + "\n Tempo de Atividade: \n" + dados.getTempoAtiv()
-                    + "\n Memoria em Uso: " + dados.getMemoriaHard()
-                    + "\n Data: " + dados.getDt()
-                    + "\n Hora: " + dados.getHora()
-                    + "\n \n"
-            );
-        }
+        
+        System.out.println("Ainda falta subir");
+        
+        con.execute("INSERT INTO dadosJar VALUES (1,'" + sistemas + "','"
+                + temperaturaPC + "','" + discoPC + "','" + processador +
+                "','" + memoriaHard + "','" + data + "','" + Dt + "')");
+       
+        System.out.println("Subiu");
     }
 
     String getTempoAtiv() {
