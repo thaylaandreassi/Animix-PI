@@ -60,10 +60,9 @@ public class TestDatabase {
        
         // Momento de Subida no banco Azure
 
-        
         System.out.println("Ainda falta subir");
         
-        con.execute("INSERT INTO dadosJar VALUES (1,'" + sistemas + "','"
+        con.execute("INSERT INTO dadosJar VALUES (null,'" + sistemas + "','"
                 + temperaturaPC + "','" + discoPC + "','" + processador +
                 "','" + memoriaHard + "','" + data + "','" + Dt + "')");
        

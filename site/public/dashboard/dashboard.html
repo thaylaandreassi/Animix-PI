@@ -496,7 +496,7 @@
             data4.datasets[0].data.push(registro.temperatura);
         }
 
-        setTimeout(() => atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 2000);
+        setTimeout(() => atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 3000);
     }
 
     function atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5) {
@@ -540,7 +540,7 @@
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 5000);
             }
         })
             .catch(function (error) {

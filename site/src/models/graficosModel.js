@@ -6,15 +6,15 @@ function buscarUltimasMedidas(idMaquina, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top ${limite_linhas}
-        temperatura as temperatura, 
+        tempratura as temperatura, 
         usoCpu as processador,
-        usoDisco as disco,
+        porcentDisco as disco,
         usoMemoria as memoria,
-                        horaCaptura,
-                        FORMAT(horaCaptura, 'HH:mm:ss') as momento_grafico
+                        momento,
+                        FORMAT(momento, 'HH:mm:ss') as momento_grafico
                     from dados
                     where fkMaquina = ${idMaquina}
-                    order by idDados desc`;
+                    order by idDado desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select temperatura as temperatura, 
         porcentCPU as processador,
@@ -38,14 +38,14 @@ function buscarMedidasEmTempoReal(idMaquina) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top 1
-        temperatura as temperatura, 
+        tempratura as temperatura, 
         usoCpu as processador,
-        usoDisco as disco,
+        porcentDisco as disco,
         usoMemoria as memoria,
-                        CONVERT(varchar, horaCaptura, 108) as momento_grafico, 
+                        CONVERT(varchar, momento, 108) as momento_grafico, 
                         fkMaquina 
                         from dados where fkMaquina = ${idMaquina} 
-                    order by idDados desc`;
+                    order by idDado desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select temperatura as temperatura, 
