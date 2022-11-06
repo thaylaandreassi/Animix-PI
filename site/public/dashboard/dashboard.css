@@ -307,25 +307,29 @@ main {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
     color: var(--font-color-preta);
 }
 
 .kpi-card {
     background-color: var(--background_color-card);
-    box-shadow: 6px 6px 16px var(--top-shadow),
-        -6px -6px 16px var(--bottom-shadow);
-    height: 110px;
-    width: 220px;
+     box-shadow: 0px 0px 5px var(--top-shadow),
+        0px 0px 5px var(--bottom-shadow); 
+    height: 90px;
+    width: 180px;
     margin-right: 20px;
     border-radius: 12px;
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 10px;
     align-items: center;
     justify-content: center;
     transition: all 600ms;
+    margin-left: 1px;
+}
+
+.kpi-card h1 {
+    font-size: 1.5em;
 }
 
 .mid-graphs {
@@ -401,8 +405,8 @@ main {
 }
 
 .kpi-card:hover {
-    box-shadow: -9px -9px 16px var(--top-shadow),
-        9px 9px 16px var(--bottom-shadow)
+    box-shadow: 0px 0px 5px var(--top-shadow),
+        0px 0px 5px var(--bottom-shadow)
 }
 
 .info-card:hover {

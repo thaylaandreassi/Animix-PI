@@ -39,7 +39,9 @@ function buscarMedidasEmTempoReal(idMaquina) {
         instrucaoSql = `select max(tempratura) as temperatura, 
         max(usoCpu) as processador,
         max(porcentDisco) as disco,
-        max(usoMemoria) as memoria
+        max(usoMemoria) as memoria,
+        max(qtdServicos) as servicos,
+        max(qtdProcessos) as processos
           from dados where fkMaquina = ${idMaquina};`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {

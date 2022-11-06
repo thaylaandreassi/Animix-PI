@@ -81,6 +81,20 @@
         <div class="charts-container">
             <div class="kpis">
                 <div class="kpi-card">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <div class="text-temp">
+                        <h5>Quantidade de processos</h5>
+                        <h1 id="qtdprocessos"></h1>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <i class="fa-solid fa-cubes-stacked"></i>
+                    <div class="text-temp">
+                        <h5>Quantidade de serviços</h5>
+                        <h1 id="qtdservicos"></h1>
+                    </div>
+                </div>
+                <div class="kpi-card">
                     <i class="fa-solid fa-temperature-arrow-up"></i>
                     <div class="text-temp">
                         <h5>Maior temperatura</h5>
@@ -446,6 +460,8 @@
         fetch(`/cards/tempo-real/${idMaquina}`)
             .then(resposta => {
                 var maiorTemp = document.getElementById('maiortemp');
+                var qtdProcessos = document.getElementById('qtdprocessos');
+                var qtdServicos = document.getElementById('qtdservicos');
                 var maiorDisco = document.getElementById('maiordisco');
                 var maiorProcessador = document.getElementById('maiorprocessador');
                 var maiorMemoria = document.getElementById('maiormemoria');
@@ -455,6 +471,8 @@
                         maiorDisco.innerHTML = resposta[0].disco + "%";
                         maiorMemoria.innerHTML = resposta[0].memoria + "%";
                         maiorTemp.innerHTML = resposta[0].temperatura + "°";
+                        qtdProcessos.innerHTML = resposta[0].processos;
+                        qtdServicos.innerHTML = resposta[0].servicos;
                     });
                 } else {
 
