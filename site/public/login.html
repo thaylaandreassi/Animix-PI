@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <title>Animix | Login</title>
-    <link rel="stylesheet" href="login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -20,110 +18,59 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="js/funcoes.js"></script>
     <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-    <header>
-        <a href="index.html"><img src="assets/animix-logo-preto.svg" alt=""></a>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-light py-3">
+            <div class="container">
+                <a href="index.html" class="navbar-brand">
+                    <img src="assets/animix-logo-preto.svg" alt="logo" width="150">
+                </a>
+            </div>
+        </nav>
     </header>
     <div class="container">
-        <div class="container-card">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="right-container">
-                        <img src="assets/b.png" alt="">
-                        <div class="box">
+        <div class="ctn row py-5 mt-4 align-items-center">
+            <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+                <img src="assets/minions.png" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-7 col-lg-6 ml-auto">
+                <h1 class="titulo">Acesse sua conta!</h1>
+                <form action="#">
+                    <div class="row">
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-envelope text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="phoneNumber" type="tel" name="phone" placeholder="Email"
+                                class="form-control bg-white border-md border-left-0 pl-3">
                         </div>
-                        <p>Ainda não é cadastrado?</p>
-                        <a href="cadastro.html"><button type="button" class="butt_out">Cadastre-se</button></a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="left-container">
-                        <div class="myForm text-center">
-                            <header>Entre com sua conta</header>
-                            <div class="form-group">
-                                <i class="fas fa-envelope"></i>
-                                <input class="myInput" placeholder="Email" type="text" id="email_ipt" required>
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-lock text-muted"></i>
+                                </span>
                             </div>
-                            <div class="form-group">
-                                <i class="fas fa-lock"></i>
-                                <input class="myInput" type="password" id="password_ipt" placeholder="Senha" required>
-                            </div>
-                            <input onclick="entrar()" type="submit" class="butt" value="ENTRAR">
-                            <div id="loading" class="loading">
-                                <i class="fa-solid fa-spinner fa-spin"></i>
-                            </div>
+                            <input id="phoneNumber" type="tel" name="phone" placeholder="Senha"
+                                class="form-control bg-white border-md border-left-0 pl-3">
+                        </div>
+                        <div class="form-group col-lg-12 mx-auto mb-0">
+                            <a href="#" class="cad-btn btn btn-primary btn-block">
+                                <span class="font-weight-bold">Entrar</span>
+                            </a>
+                        </div>
+                        <div class="text-center w-100">
+                            <p class="text-muted font-weight-bold">Não possui conta?<a href="cadastro.html"
+                                class="text-lg text-primary ml-2"  >Cadastre-se</a></p>
                         </div>
                     </div>
-                </div>
-
+                </form>
             </div>
         </div>
     </div>
 </body>
-
 </html>
-<script>
-    function entrar() {
-
-        var emailVar = email_ipt.value;
-        var senhaVar = password_ipt.value;
-
-        if (emailVar == "" || senhaVar == "") {
-            return false;
-        }
-        else {
-            setInterval(5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    var divLoad = document.getElementById('loading');
-                    divLoad.style.display = 'flex';
-                    setTimeout(function () {
-                        window.location = "dashboard/pre-dashboard.html";
-                    }, 1000); 
-                    divLoad.style.display = 'none';
-                });
-                
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
-</script>

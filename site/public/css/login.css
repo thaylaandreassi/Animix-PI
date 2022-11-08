@@ -1,180 +1,72 @@
 @import url("https://fonts.googleapis.com/css?family=Acme|Lobster|Patua+One|Rubik|Sniglet");
 
-:root {
-  --Sniglet-font: "Sniglet", cursive;
-  --Rubik: "Rubik", cursive;
-  --Patua: "Patua One", cursive;
-  --Lobster: "lobster", cursive;
-  --light-black: #2e2c2caf;
-  --bggradient: linear-gradient(to right, #0C050C, #4E184C, #78205E);
-  --bggradient2: linear-gradient(180deg, rgba(16, 16, 16, 1) 10%, rgba(78, 24, 76, 1) 50%, #78205e 100%);
-  --light-gray: rgba(255, 255, 255, 0.877);
+body {
+    min-height: 100vh;
+    font-family: "Sniglet", cursive;
 }
 
-* {
-  font-family: "Sniglet", cursive;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.form-control:not(select) {
+    padding: 1.5rem 0.5rem;
 }
 
-header img {
-  width: 120px;
+select.form-control {
+    height: 52px;
+    padding-left: 0.5rem;
 }
 
-.container {
-  position: absolute;
-  max-width: 800px;
-  height: 500px;
-  margin: auto;
-  top: 55%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-  background-color: var(--bggradient);
+.form-control::placeholder {
+    color: #ccc;
+    font-weight: bold;
+    font-size: 0.9rem;
 }
 
-.right-container {
-  position: relative;
-  background-image: linear-gradient(to right, #4E184C, #78205E);
-  border-radius: 25px;
-  height: 100%;
-  padding: 25px;
-  color: rgb(192, 192, 192);
-  font-size: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.form-control:focus {
+    box-shadow: none;
+    border-color: #bb36fd!important;
 }
 
-/* .right-container input {
-    margin-top: 40px;
-  } */
-.left-container {
-  position: relative;
-  background: #fff;
-  border-radius: 25px;
-  height: 100%;
-  padding: 25px;
-  padding-left: 50px;
+.border-md {
+    border-width: 2px;
 }
 
-.left-container header {
-  color: blueviolet;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 20px;
+.cad-btn {
+    background: linear-gradient(45deg, #bb36fd, #9b00e8);
+    border-color: #bb36fd;
 }
 
-.row {
-  height: 100%;
+.cad-btn:hover {
+    border-color: #bb36fd;
 }
 
-.container-card {
-  position: relative;
-  background: #fff;
-  height: 100%;
-  border-radius: 25px;
-  -webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+.container h1 {
+    color: #121212;
+}
+.container i {
+    color: #bb36fd!important;
 }
 
-.box {
-  position: relative;
-  margin: 20px;
-  margin-bottom: 100px;
+.text-lg {
+    color: #bb36fd!important;
 }
 
-.left-container .myInput {
-  width: 230px;
-  border-radius: 25px;
-  padding: 10px;
-  padding-left: 50px;
-  border: none;
-  -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+.ctn {
+    margin-top: -100px!important;
 }
 
-.left-container .myInput:focus {
-  outline: none;
+.titulo {
+    margin-left: 120px;
 }
 
-.myForm {
-  position: relative;
-  margin-top: 50px;
+@media (max-width: 500px)
+{
+    .titulo {
+        margin-left: 30px;
+    }
 }
 
-.left-container .butt {
-  cursor: pointer;
-  background: linear-gradient(45deg, #bb36fd, #9b00e8);
-  color: #fff;
-  width: 230px;
-  border: none;
-  border-radius: 25px;
-  padding: 10px;
-  -webkit-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
-}
-
-.left-container .butt:hover {
-  background: linear-gradient(45deg, #c85bff, #b726ff);
-}
-
-.left-container .butt:focus {
-  outline: none;
-}
-
-.left-container .fas {
-  position: relative;
-  color: #bb36fd;
-  left: 36px;
-}
-
-.butt_out {
-  cursor: pointer;
-  background: transparent;
-  color: #fff;
-  width: 120px;
-  border: 2px solid#fff;
-  border-radius: 25px;
-  padding: 10px;
-  -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
-}
-
-.butt_out:hover {
-  border: 2px solid#eecbff;
-}
-
-.butt_out:focus {
-  outline: none;
-}
-
-
-.right-container img {
-  width: 60%;
-}
-
-.right-container a {
-  text-decoration: none;
-  color: brown;
-
-}
-
-.right-container p {
-  color: #fbf3ff;
-  font-size: 1rem;
-}
-
-.loading {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-  font-size: 24px;
+@media (max-width: 400px)
+{
+    .titulo {
+        margin-left: 25px;
+    }
 }

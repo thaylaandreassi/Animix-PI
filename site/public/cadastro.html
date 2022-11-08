@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Animix | Cadastro</title>
@@ -24,127 +24,92 @@
 </head>
 
 <body>
-    <header>
-        <a href="index.html"><img src="assets/animix-logo-preto.svg" alt=""></a>
-    </header>
-    <main>
-        <div class="form-container">
-            <div class="left">
-                <div class="row">
-                    <h2>Crie sua conta </h2>
-                    <div class="form-group">
-                        <i class="fas fa-solid fa-building"></i>
-                        <input class="myInput" placeholder="Nome da empresa" type="text" id="name_ipt" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-solid fa-id-card"></i>
-                        <input class="myInput" type="text" id="cnpj_ipt" placeholder="CNPJ" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-envelope"></i>
-                        <input class="myInput" placeholder="Email" type="text" id="email_ipt" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-solid fa-location-dot"></i>
-                        <input class="myInput" type="text" id="logradouro_ipt" placeholder="Logradouro" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <i class="fas fa-solid fa-phone"></i>
-                        <input class="myInput" placeholder="Telefone" type="text" id="telefone_ipt" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-lock"></i>
-                        <input class="myInput" type="password" id="password_ipt" placeholder="Senha" required>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-lock"></i>
-                        <input class="myInput" type="password" id="password_confirm_ipt"
-                            placeholder="Confirme sua senha" required>
-                    </div>
-                    <input onclick="cadastrar()" type="submit" class="butt" value="CADASTRAR">
-                    <div id="loading" class="loading">
-                        <i class="fa-solid fa-spinner fa-spin"></i>
-                    </div>
-                </div>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-light py-3">
+            <div class="container">
+                <a href="index.html" class="navbar-brand">
+                    <img src="assets/animix-logo-preto.svg" alt="logo" width="150">
+                </a>
             </div>
-            <div class="right">
-                <div class="row">
-                    <img src="assets/a.png" alt="">
-                    <div class="box">
-                        <h4>Ja possui cadastro?</h4>
-                        <a href="login.html"><button type="button" class="butt_out">Entre</button></a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="ctn row py-5 mt-4 align-items-center">
+            <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+                <img src="assets/buzz.png" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-7 col-lg-6 ml-auto">
+                <h1 class="titulo">Crie sua conta!</h1>
+                <form action="#">
+                    <div class="row">
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fas fa-solid fa-building"></i>
+                                </span>
+                            </div>
+                            <input id="firstName" type="text" name="firstname" placeholder="Nome da empresa"
+                                class="form-control bg-white border-left-0 border-md">
+                        </div>
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fas fa-solid fa-id-card"></i>
+                                </span>
+                            </div>
+                            <input id="lastName" type="text" name="lastname" placeholder="CNPJ"
+                                class="form-control bg-white border-left-0 border-md">
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-envelope text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="email" type="email" name="email" placeholder="Email Address"
+                                class="form-control bg-white border-left-0 border-md">
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-phone-square text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="phoneNumber" type="tel" name="phone" placeholder="Telefone"
+                                class="form-control bg-white border-md border-left-0 pl-3">
+                        </div>
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-lock text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="password" type="password" name="password" placeholder="Senha"
+                                class="form-control bg-white border-left-0 border-md">
+                        </div>
+                        <div class="input-group col-lg-6 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-lock text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="passwordConfirmation" type="text" name="passwordConfirmation"
+                                placeholder="Confirme sua senha" class="form-control bg-white border-left-0 border-md">
+                        </div>
+                        <div class="form-group col-lg-12 mx-auto mb-0">
+                            <a href="#" class="cad-btn btn btn-primary btn-block">
+                                <span class="font-weight-bold">Criar conta</span>
+                            </a>
+                        </div>
+                        <div class="text-center w-100">
+                            <p class="text-muted font-weight-bold">Já possui conta?<a href="login.html"
+                                class="text-lg text-primary ml-2">Login</a></p>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-    </main>
-
+    </div>
 </body>
 
 </html>
-
-<script>
-    function cadastrar() {
-
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-
-        var nomeEmpresa = name_ipt.value;
-        var cnpj = cnpj_ipt.value;
-        var emailVar = email_ipt.value;
-        var logradouro = logradouro_ipt.value;
-        var telefone = telefone_ipt.value;
-        var senhaVar = password_ipt.value;
-        var confirmacaoSenhaVar = password_confirm_ipt.value;
-
-        if (nomeEmpresa == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            return false;
-        }
-        else {
-        }
-
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeEmpresa,
-                cnpjServer: cnpj,
-                logradouroServer: logradouro,
-                telefoneServer: telefone,
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                var divLoad = document.getElementById('loading');
-                divLoad.style.display = 'flex';
-                setTimeout(function () {
-                    window.location = "login.html";
-                }, 1000);
-                divLoad.style.display = 'none';
-            } else {
-                var divLoad = document.getElementById('loading');
-                divLoad.style.display = 'flex';
-                setTimeout(function () {
-                    window.location = "login.html";
-                }, 1000);
-                divLoad.style.display = 'none';
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-
-        return false;
-    }
-
-</script>
