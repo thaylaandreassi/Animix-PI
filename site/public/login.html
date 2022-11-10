@@ -60,10 +60,9 @@
                             <input id="password_ipt" type="tel" name="phone" placeholder="Senha"
                                 class="form-control bg-white border-md border-left-0 pl-3">
                         </div>
-                        <div class="form-group col-lg-12 mx-auto mb-0">
+                        <div onclick="entrar()" class="form-group col-lg-12 mx-auto mb-0">
                             <a href="#" class="cad-btn btn btn-primary btn-block">
-                                <button onclick="entrar()">a</button>
-                                <!-- <span onclick="entrar()" class="font-weight-bold">Entrar</span> -->
+                                <span class="font-weight-bold">Entrar</span>
                             </a>
                         </div>
                         <div class="text-center w-100">
@@ -83,12 +82,11 @@
 
         var emailVar = email_ipt.value;
         var senhaVar = password_ipt.value;
-
-        if (emailVar == "" || senhaVar == "") {
-            return false;
-        }
-        else {
-            setInterval(5000)
+        var validado = true;
+        if (emailVar == "" || emailVar.includes('@')) {
+            document.getElementById('email_ipt').style.borderColor = "red";
+        }else if(senhaVar == ""){
+            document.getElementById('password_ipt').style.borderColor = "red";
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -116,12 +114,10 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    var divLoad = document.getElementById('loading');
-                    divLoad.style.display = 'flex';
+
                     setTimeout(function () {
                         window.location = "dashboard/pre-dashboard.html";
-                    }, 1000); 
-                    divLoad.style.display = 'none';
+                    }, 1000);
                 });
 
             } else {
