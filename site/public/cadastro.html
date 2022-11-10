@@ -48,16 +48,17 @@
                                     <i class="fas fa-solid fa-building"></i>
                                 </span>
                             </div>
-                            <input id="firstName" type="text" name="firstname" placeholder="Nome da empresa"
+                            <input id="name_ipt" type="text" name="firstname" placeholder="Nome da empresa"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
+
                         <div class="input-group col-lg-6 mb-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
                                     <i class="fas fa-solid fa-id-card"></i>
                                 </span>
                             </div>
-                            <input id="lastName" type="text" name="lastname" placeholder="CNPJ"
+                            <input id="cnpj_ipt" type="text" name="lastname" placeholder="CNPJ"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
                         <div class="input-group col-lg-12 mb-4">
@@ -66,7 +67,7 @@
                                     <i class="fa fa-envelope text-muted"></i>
                                 </span>
                             </div>
-                            <input id="email" type="email" name="email" placeholder="Email Address"
+                            <input id="email_ipt" type="email" name="email" placeholder="Email"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
                         <div class="input-group col-lg-12 mb-4">
@@ -75,7 +76,16 @@
                                     <i class="fa fa-phone-square text-muted"></i>
                                 </span>
                             </div>
-                            <input id="phoneNumber" type="tel" name="phone" placeholder="Telefone"
+                            <input id="logradouro_ipt" type="tel" name="phone" placeholder="Logradouro"
+                                class="form-control bg-white border-md border-left-0 pl-3">
+                        </div>
+                        <div class="input-group col-lg-12 mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white px-4 border-md border-right-0" required>
+                                    <i class="fa fa-phone-square text-muted"></i>
+                                </span>
+                            </div>
+                            <input id="telefone_ipt" type="tel" name="phone" placeholder="Telefone"
                                 class="form-control bg-white border-md border-left-0 pl-3">
                         </div>
                         <div class="input-group col-lg-6 mb-4">
@@ -84,7 +94,7 @@
                                     <i class="fa fa-lock text-muted"></i>
                                 </span>
                             </div>
-                            <input id="password" type="password" name="password" placeholder="Senha"
+                            <input id="password_ipt" type="password" name="password" placeholder="Senha"
                                 class="form-control bg-white border-left-0 border-md">
                         </div>
                         <div class="input-group col-lg-6 mb-4">
@@ -93,17 +103,17 @@
                                     <i class="fa fa-lock text-muted"></i>
                                 </span>
                             </div>
-                            <input id="passwordConfirmation" type="text" name="passwordConfirmation"
+                            <input id="password_confirm_ipt" type="text" name="passwordConfirmation"
                                 placeholder="Confirme sua senha" class="form-control bg-white border-left-0 border-md">
                         </div>
                         <div class="form-group col-lg-12 mx-auto mb-0">
-                            <a href="#" class="cad-btn btn btn-primary btn-block">
+                            <a onclick="cadastrar()" href="#" class="cad-btn btn btn-primary btn-block">
                                 <span class="font-weight-bold">Criar conta</span>
                             </a>
                         </div>
                         <div class="text-center w-100">
                             <p class="text-muted font-weight-bold">Já possui conta?<a href="login.html"
-                                class="text-lg text-primary ml-2">Login</a></p>
+                                    class="text-lg text-primary ml-2">Login</a></p>
                         </div>
                     </div>
                 </form>
@@ -113,3 +123,74 @@
 </body>
 
 </html>
+<script>
+    function cadastrar() {
+        var nomeEmpresa = name_ipt.value;
+        var cnpj = cnpj_ipt.value;
+        var emailVar = email_ipt.value;
+        var logradouro = logradouro_ipt.value;
+        var telefone = telefone_ipt.value;
+        var senhaVar = password_ipt.value;
+        var confirmacaoSenhaVar = password_confirm_ipt.value;
+        var validado = true;
+
+
+        if (nomeEmpresa == "") {
+            document.getElementById('name_ipt').style.borderColor = "red";
+            validado = false;
+        }
+        if (cnpj.length != 14) {
+            document.getElementById('cnpj_ipt').style.borderColor = "red";
+            validado = false;
+        }
+         if (emailVar == "" || !emailVar.includes('@')) {
+            document.getElementById('email_ipt').style.borderColor = "red";
+            validado = false;
+        }
+         if (logradouro == "") {
+            document.getElementById('logradouro_ipt').style.borderColor = "red";
+            validado = false;
+        }
+         if (telefone < 9) {
+            document.getElementById('telefone_ipt').style.borderColor = "red";
+            validado = false;
+        }
+         if (senhaVar != confirmacaoSenhaVar || senhaVar < 6) {
+            document.getElementById('password_ipt').style.borderColor = "red";
+            document.getElementById('password_confirm_ipt').style.borderColor = "red";
+            validado = false;
+
+        } else if (validado)
+
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeEmpresa,
+                    cnpjServer: cnpj,
+                    logradouroServer: logradouro,
+                    telefoneServer: telefone,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    setTimeout(function () {
+                        window.location = "login.html";
+                    }, 1000);
+                } else {
+                    alert("erro");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
+</script>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Animix | Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +22,7 @@
     <script src="js/funcoes.js"></script>
     <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header class="header">
         <nav class="navbar navbar-expand-lg navbar-light py-3">
@@ -46,7 +48,7 @@
                                     <i class="fa fa-envelope text-muted"></i>
                                 </span>
                             </div>
-                            <input id="phoneNumber" type="tel" name="phone" placeholder="Email"
+                            <input id="email_ipt" type="tel" name="phone" placeholder="Email"
                                 class="form-control bg-white border-md border-left-0 pl-3">
                         </div>
                         <div class="input-group col-lg-12 mb-4">
@@ -55,17 +57,18 @@
                                     <i class="fa fa-lock text-muted"></i>
                                 </span>
                             </div>
-                            <input id="phoneNumber" type="tel" name="phone" placeholder="Senha"
+                            <input id="password_ipt" type="tel" name="phone" placeholder="Senha"
                                 class="form-control bg-white border-md border-left-0 pl-3">
                         </div>
                         <div class="form-group col-lg-12 mx-auto mb-0">
                             <a href="#" class="cad-btn btn btn-primary btn-block">
-                                <span class="font-weight-bold">Entrar</span>
+                                <button onclick="entrar()">a</button>
+                                <!-- <span onclick="entrar()" class="font-weight-bold">Entrar</span> -->
                             </a>
                         </div>
                         <div class="text-center w-100">
                             <p class="text-muted font-weight-bold">Não possui conta?<a href="cadastro.html"
-                                class="text-lg text-primary ml-2"  >Cadastre-se</a></p>
+                                    class="text-lg text-primary ml-2">Cadastre-se</a></p>
                         </div>
                     </div>
                 </form>
@@ -73,4 +76,67 @@
         </div>
     </div>
 </body>
+
 </html>
+<script>
+    function entrar() {
+
+        var emailVar = email_ipt.value;
+        var senhaVar = password_ipt.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            return false;
+        }
+        else {
+            setInterval(5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    var divLoad = document.getElementById('loading');
+                    divLoad.style.display = 'flex';
+                    setTimeout(function () {
+                        window.location = "dashboard/pre-dashboard.html";
+                    }, 1000); 
+                    divLoad.style.display = 'none';
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+</script>

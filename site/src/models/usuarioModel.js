@@ -23,13 +23,15 @@ function cadastrar(nome, telefone, logradouro, cnpj, email, senha) {
     var instrucao = `
     INSERT INTO studio (nomeEmpresa, email, senha, logradouro, telefone, CNPJ ) VALUES ('${nome}', '${email}', '${senha}', '${logradouro}', '${telefone}', '${cnpj}');`;
     console.log("Executando a instrução SQL: \n" + instrucao);
-    database.executar(instrucao);
-    var fkStudio = 1;
-    cadastrarAdmin(nome, email, senha, fkStudio)
+    return database.executar(instrucao);
 }
 
 function cadastrarAdmin(nome, email, senha, fkStudio) {
     var instrucao = `INSERT INTO funcionario (cargo, nome, email, senha, fkStudio)VALUES ('Admin', '${nome}', '${email}', '${senha}', '${fkStudio}');`
+    return database.executar(instrucao);
+}
+function getFkStudio(){
+    var instrucao = `select top 1 idStudio as fkStudio from studio order by idStudio desc;`
     return database.executar(instrucao);
 }
 
@@ -37,5 +39,6 @@ module.exports = {
     entrar,
     cadastrar,
     listar,
-    cadastrarAdmin
+    cadastrarAdmin,
+    getFkStudio
 };
