@@ -30,7 +30,7 @@ function cadastrar(discoIdeal, memoriaIdeal, processadorIdeal,
 }
 
 function getMaquinas(idStudio) {
-    var instrucao = `select * from maquinas where fkStudio = ${idStudio};`
+    var instrucao = `select * from maquinas where fkStudio = ${idStudio} order by situacao;`
     return database.executar(instrucao);
 }
 
