@@ -6,7 +6,7 @@ function buscarUltimasMedidas(idMaquina, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top ${limite_linhas}
-        tempratura as temperatura, 
+        temperatura as temperatura, 
         usoCpu as processador,
         porcentDisco as disco,
         usoMemoria as memoria,
@@ -38,7 +38,7 @@ function buscarMedidasEmTempoReal(idMaquina) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top 1
-        tempratura as temperatura, 
+        temperatura as temperatura, 
         usoCpu as processador,
         porcentDisco as disco,
         usoMemoria as memoria,

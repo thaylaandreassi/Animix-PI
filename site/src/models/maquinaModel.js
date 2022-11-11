@@ -26,7 +26,7 @@ function cadastrar(disco, memoria, processador, sistema, discoIdeal, memoriaIdea
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO maquina (disco, memoria, processador, sistema, memoriaIdeal, discoIdeal, processamentoIdeal, monitoraDisco, monitoraProcessador,  monitoraMemoria, temperaturaIdeal) VALUES 
+        INSERT INTO maquinas (disco, memoria, processador, sistema, memoriaIdeal, discoIdeal, processamentoIdeal, monitoraDisco, monitoraProcessador,  monitoraMemoria, temperaturaIdeal) VALUES 
         ('${disco}', '${memoria}', '${processador}', '${sistema}', '${memoriaIdeal}', '${discoIdeal}', '${processadorIdeal}', '${monitoraDisco}', '${monitoraProcessador}', '${monitoraMemoria}', '${monitoraTemperatura}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

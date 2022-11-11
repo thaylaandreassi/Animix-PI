@@ -36,7 +36,7 @@ function buscarMedidasEmTempoReal(idMaquina) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select max(tempratura) as temperatura, 
+        instrucaoSql = `select max(temperatura) as temperatura, 
         max(usoCpu) as processador,
         max(porcentDisco) as disco,
         max(usoMemoria) as memoria,
