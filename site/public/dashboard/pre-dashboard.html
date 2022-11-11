@@ -17,7 +17,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
-<body>
+<body onload="plotarMaquinas(1), atualizarDados(fkStudio)">
     <section>
         <div class="sidebar">
             <div class="logo_content">
@@ -78,8 +78,8 @@
         </div>
         <main>
             <div class="main-container">
-                <div class="maquinas">
-                    <a onclick="getMaquina(1)">
+                <div id="maquinaDiv" class="maquinas">
+                    <!-- <a onclick="getMaquina(1)">
                         <div class="card">
                             <h2>Máquina 01 🚨</h2>
                             <div class="placa-critica"></div>
@@ -124,7 +124,7 @@
                     <div onclick="getMaquina(9)" class="card">
                         <h2>Máquina 09 ✔️ </h2>
                         <div class="placa-ok"></div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </main>
@@ -134,6 +134,31 @@
 
 </html>
 <script>
+    function atualizarDados(idMaquina) {
+        
+    }
+
+    function plotarMaquinas(fkStudio) {
+        fetch(`/maquinas/plotar/${fkStudio}`)
+        .then(resposta =>{
+            resposta.json().then(function (res) {
+                for (let index = 0; index < res.length; index++) {
+                const element = res[index];
+                maquinaDiv.innerHTML += `
+                <a onclick="getMaquina(${element.idMaquina})">
+                    <div class="card">
+                        <h2>Máquina ${element.idMaquina}</h2>
+                        <div class="placa-critica"></div>
+                    </div>
+                </a>
+                `     
+            }
+            })
+        }).catch(function (erro) {
+            
+        })
+    }
+
     function getMaquina(fkMaquina) {
         sessionStorage.setItem('fkMaquina', fkMaquina);
         window.location.href = "dashboard.html";

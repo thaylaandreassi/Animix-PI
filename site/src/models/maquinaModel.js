@@ -29,8 +29,14 @@ function cadastrar(discoIdeal, memoriaIdeal, processadorIdeal,
     return database.executar(instrucao);
 }
 
+function getMaquinas(idStudio) {
+    var instrucao = `select * from maquinas where fkStudio = ${idStudio};`
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    getMaquinas,
 };
