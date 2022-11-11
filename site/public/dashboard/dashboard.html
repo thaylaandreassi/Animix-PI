@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<script>
+    var fkMaquina = sessionStorage.getItem('fkMaquina');
+</script>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +21,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
-<body onload="obterdados(2), obterDadosGrafico(2)">
+<body onload="obterdados(fkMaquina), obterDadosGrafico(fkMaquina)">
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
@@ -328,7 +330,6 @@
 </script>
 <script>
     localStorage.setItem('theme', 'light');
-    var idMaquina = 1;
     let btn = document.querySelector("#btn");
     let sidebar = document.querySelector(".sidebar");
 
@@ -453,11 +454,11 @@
     );
 
     setInterval(() => {
-        obterdados(1), atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5)
+        obterdados(fkMaquina), atualizarGrafico(fkMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5)
     }, 1500);
 
-    function obterdados(idMaquina) {
-        fetch(`/cards/tempo-real/${idMaquina}`)
+    function obterdados(fkMaquina) {
+        fetch(`/cards/tempo-real/${fkMaquina}`)
             .then(resposta => {
                 var maiorTemp = document.getElementById('maiortemp');
                 var qtdProcessos = document.getElementById('qtdprocessos');
@@ -484,15 +485,15 @@
             });
     }
 
-    function obterDadosGrafico(idMaquina) {
+    function obterDadosGrafico(fkMaquina) {
 
-        fetch(`/graficos/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/graficos/ultimas/${fkMaquina}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idMaquina);
+                    plotarGrafico(resposta, fkMaquina);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -503,7 +504,7 @@
             });
     }
 
-    function plotarGrafico(resposta, idMaquina) {
+    function plotarGrafico(resposta, fkMaquina) {
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
@@ -514,12 +515,12 @@
             data4.datasets[0].data.push(registro.temperatura);
         }
 
-        setTimeout(() => atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 1500);
+        setTimeout(() => atualizarGrafico(fkMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 1500);
     }
 
-    function atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5) {
+    function atualizarGrafico(fkMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5) {
 
-        fetch(`/graficos/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/graficos/tempo-real/${fkMaquina}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -558,7 +559,7 @@
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 1500);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(fkMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 1500);
             }
         })
             .catch(function (error) {

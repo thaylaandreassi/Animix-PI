@@ -2,7 +2,7 @@ var graficosModel = require("../models/graficosModel");
 
 function buscarUltimasMedidas(req, res) {
 
-    const limite_linhas = 7;
+    const limite_linhas = 6;
 
     var idMaquina = req.params.idMaquina;
 

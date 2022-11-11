@@ -80,7 +80,11 @@
                     <input type="text" id="nome_ipt" placeholder="Insira o nome completo">
                     <input type="text" id="email_ipt" placeholder="Insira o email de acesso">
                     <input type="password" id="senha_ipt" placeholder="Insira a senha de acesso">
-                    <input type="text" id="cargo_ipt" placeholder="Insira o cargo">
+                    <select id="cargo_ipt">
+                        <option value="0">Selecione o cargo</option>
+                        <option value="1">Gerente</option>
+                        <option value="2">Analista</option>
+                    </select>
                     <button onclick="cadastrar()">Cadastrar</button>
                 </div>
                 <div class="right-form">

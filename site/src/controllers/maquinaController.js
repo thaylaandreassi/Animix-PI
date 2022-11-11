@@ -61,11 +61,6 @@ function entrar(req, res) {
 }
 
 function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var disco = req.body.discoServer;
-    var memoria = req.body.memoriaServer;
-    var processador = req.body.processadorServer;
-    var sistema = req.body.sistemaServer;
     var discoIdeal = req.body.discoIdealServer;
     var memoriaIdeal = req.body.memoriaIdealServer;
     var processadorIdeal = req.body.processadorIdealServer;
@@ -77,16 +72,15 @@ function cadastrar(req, res) {
 
 
     // Faça as validações dos valores
-    if (sistema == undefined) {
+    if (discoIdeal == undefined) {
         res.status(400).send("Seu usuario está undefined!");
-    } else if (memoria == undefined) {
+    } else if (memoriaIdeal == undefined) {
         res.status(400).send("Seu email está undefined!");
-    } else if (processador == tempIdeal) {
+    } else if (processadorIdeal == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
         
-        // Passe os valores como parâmetro e vá para o arquivo maquinaModel.js
-        maquinaModel.cadastrar(disco, memoria, processador, sistema, discoIdeal, memoriaIdeal, processadorIdeal,
+        maquinaModel.cadastrar(discoIdeal, memoriaIdeal, processadorIdeal,
             tempIdeal, monitoraDisco, monitoraMemoria, monitoraProcessador, monitoraTemperatura)
             .then(
                 function (resultado) {

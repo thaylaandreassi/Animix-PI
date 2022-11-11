@@ -80,33 +80,6 @@
             <div class="formulario-cadastro">
                 <div class="left-form">
                     <h3>Informações da máquina</h3>
-                    <select name="" id="disco_select">
-                        <option value="0">Insira seu disco</option>
-                        <option value="1">1TB</option>
-                        <option value="2">2TB</option>
-                        <option value="4">4TB</option>
-                        <option value="8">8TB</option>
-                        <option value="16">16TB</option>
-                    </select>
-                    <select name="" id="memoria_select">
-                        <option value="0">Insira sua memoria</option>
-                        <option value="32">32gb</option>
-                        <option value="64">64gb</option>
-                        <option value="128">128gb</option>
-                        <option value="256">256gb</option>
-                        <option value="512">512gb</option>
-                    </select>
-                    <select name="" id="processador_select">
-                        <option value="0">Insira seu processador</option>
-                        <option value="Intel">Intel</option>
-                        <option value="AMD">AMD</option>
-                    </select>
-                    <select name="" id="sistema_select">
-                        <option value="0">Insira seu sistema operacional</option>
-                        <option value="Windows">Windows</option>
-                        <option value="Linux">Linux</option>
-                        <option value="Mac0S">MacOS</option>
-                    </select>
                     <select name="" id="discoideal_select">
                         <option value="0">Insira o consumo de disco ideal</option>
                         <option value="30">30%</option>
@@ -133,11 +106,11 @@
                     </select>
                     <select name="" id="tempideal_select">
                         <option value="0">Insira a temperatura ideal</option>
-                        <option value="30">30%</option>
-                        <option value="40">40%</option>
-                        <option value="50">50%</option>
-                        <option value="60">60%</option>
-                        <option value="70">70%</option>
+                        <option value="30">30ºC</option>
+                        <option value="40">40ºC</option>
+                        <option value="50">50ºC</option>
+                        <option value="60">60ºC</option>
+                        <option value="70">70ºC</option>
                     </select>
                 </div>
                 <div class="right-form">
@@ -162,7 +135,7 @@
                         <option value="true">Sim</option>
                         <option value="false">Não</option>
                     </select>
-                    <button onclick="cadastrar()">Enviar</button>
+                    <button onclick="cadastrar()">Cadastrar</button>
                 </div>
             </div>
         </div>
@@ -181,12 +154,6 @@
 </script>
 <script>
     function cadastrar() {
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var disco = disco_select.value;
-        var memoria = memoria_select.value;
-        var processador = processador_select.value;
-        var sistema = sistema_select.value;
         var discoIdeal = discoideal_select.value;
         var memoriaIdeal = memoriaideal_select.value;
         var processadorIdeal = processadorideal_select.value;
@@ -197,8 +164,7 @@
         var monitoraTemperatura = temperatura_bool.value;
 
 
-
-        if (disco == "" || memoria == "" || processador == "" || sistema == "") {
+        if (discoIdeal == "" || memoriaIdeal == "" || processadorIdeal == "" || tempIdeal == "") {
             return false;
         }
         else {
@@ -211,13 +177,7 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                discoServer: disco,
-                memoriaServer: memoria,
-                processadorServer: processador,
-                sistemaServer: sistema,
-                discoIdealServer: disco,
+                discoIdealServer: discoIdeal,
                 memoriaIdealServer: memoriaIdeal,
                 processadorIdealServer: processadorIdeal,
                 tempIdealServer: tempIdeal,
