@@ -28,7 +28,9 @@ select.form-control {
 .border-md {
     border-width: 2px;
 }
-
+.remember {
+    margin-left: 20px;
+}
 .cad-btn {
     background: linear-gradient(45deg, #bb36fd, #9b00e8);
     border-color: #bb36fd;

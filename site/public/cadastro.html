@@ -85,7 +85,7 @@
                                     <i class="fa fa-phone-square text-muted"></i>
                                 </span>
                             </div>
-                            <input id="telefone_ipt" type="tel" name="phone" placeholder="Telefone"
+                            <input id="telefone" type="telefone" name="telefone" placeholder="Telefone"
                                 class="form-control bg-white border-md border-left-0 pl-3">
                         </div>
                         <div class="input-group col-lg-6 mb-4">
@@ -103,9 +103,12 @@
                                     <i class="fa fa-lock text-muted"></i>
                                 </span>
                             </div>
-                            <input id="password_confirm_ipt" type="text" name="passwordConfirmation"
+                            <input id="password_confirm_ipt" type="password" name="passwordConfirmation"
                                 placeholder="Confirme sua senha" class="form-control bg-white border-left-0 border-md">
                         </div>
+                        <label for="mostrarSenha">
+                            <span class="remember">Mostrar senha <input onclick="mostrar()" type="checkbox" name="" id="mostrarSenha"></span>
+                        </label>
                         <div class="form-group col-lg-12 mx-auto mb-0">
                             <a onclick="cadastrar()" href="#" class="cad-btn btn btn-primary btn-block">
                                 <span class="font-weight-bold">Criar conta</span>
@@ -124,6 +127,18 @@
 
 </html>
 <script>
+
+function mostrar() {
+    var senha = document.getElementById("password_ipt");
+
+    if (senha.type == "password") {
+        senha.type = "text";
+    } else {
+        senha.type = "password";
+    }
+
+}
+
     function cadastrar() {
         var nomeEmpresa = name_ipt.value;
         var cnpj = cnpj_ipt.value;
@@ -192,5 +207,22 @@
                 console.log(`#ERRO: ${resposta}`);
             });
     }
+    
+ 
 
+</script>
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+<script>
+    var cleave = new Cleave('#telefone', {
+    delimiters: ['(', ')', ' ','-'],
+    blocks: [0, 2,0, 5, 4],
+    uppercase: true
+});
+</script>
+<script>
+    var cleave = new Cleave('#cnpj_ipt', {
+    delimiters: ['.', '.', '/','-'],
+    blocks: [2, 3, 3, 4,2],
+    uppercase: true
+});
 </script>
