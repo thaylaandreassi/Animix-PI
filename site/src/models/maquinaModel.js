@@ -34,9 +34,15 @@ function getMaquinas(idStudio) {
     return database.executar(instrucao);
 }
 
+function getMaquina(fkMaquina) {
+    var instrucao = `select * from maquinas where idMaquina = ${fkMaquina}`
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     getMaquinas,
+    getMaquina
 };

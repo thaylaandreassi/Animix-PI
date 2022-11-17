@@ -38,17 +38,15 @@ function buscarMedidasEmTempoReal(idMaquina) {
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select max(temperatura) as temperatura, 
         max(usoCpu) as processador,
-        max(porcentDisco) as disco,
-        max(usoMemoria) as memoria,
-        max(qtdServicos) as servicos,
-        max(qtdProcessos) as processos
+        max(usoMemoria) as memoria
           from dados where fkMaquina = ${idMaquina};`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select max(temperatura) as temperatura, 
         max(porcentCPU) as processador,
         max(porcentDisco) as disco,
-        max(porcentMemoria) as memoria
+        max(porcentMemoria) as memoria,
+
           from dados where fkMaquina = ${idMaquina};`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -59,8 +57,18 @@ function buscarMedidasEmTempoReal(idMaquina) {
     return database.executar(instrucaoSql);
 }
 
+function buscarKpiEmTempoReal(idMaquina) {
+    var query = `select top 1 
+    qtdServicos as servicos,
+    qtdProcessos as processos,
+    usoDisco as disco
+      from dados where fkMaquina = ${idMaquina} order by momento;`;
+      return database.executar(query);
+}
+
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    buscarKpiEmTempoReal
 }

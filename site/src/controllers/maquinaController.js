@@ -116,7 +116,25 @@ function plotar(req, res) {
             res.status(500).json(erro.sqlMessage); 
         }
     )
+}
 
+function infosMaquina(req, res) {
+    var fkMaquina = req.params.fkMaquina;
+
+   maquinaModel.getMaquina(fkMaquina).then(
+       function (resultado) {
+           res.json(resultado)
+       }
+   ).catch(
+       function (erro) {
+           console.log(erro);
+           console.log(
+               "\nHouve um erro ao realizar o cadastro! Erro: ",
+               erro.sqlMessage
+           );
+           res.status(500).json(erro.sqlMessage); 
+       }
+   )
 }
 
 module.exports = {
@@ -125,4 +143,5 @@ module.exports = {
     listar,
     testar,
     plotar,
+    infosMaquina
 }

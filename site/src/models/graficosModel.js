@@ -8,7 +8,8 @@ function buscarUltimasMedidas(idMaquina, limite_linhas) {
         instrucaoSql = `select top ${limite_linhas}
         temperatura as temperatura, 
         usoCpu as processador,
-        porcentDisco as disco,
+        leitura as disco,
+        escrita as escrita,
         usoMemoria as memoria,
                         momento,
                         FORMAT(momento, 'HH:mm:ss') as momento_grafico
@@ -18,7 +19,8 @@ function buscarUltimasMedidas(idMaquina, limite_linhas) {
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select temperatura as temperatura, 
         porcentCPU as processador,
-        porcentDisco as disco,
+        leitura as leitura,
+        escrita as escrita,
         porcentMemoria as memoria,
         time_format(horaCaptura, '%h:%m:%s') as momento_grafico
           from dados where fkMaquina = ${idMaquina}
@@ -40,7 +42,8 @@ function buscarMedidasEmTempoReal(idMaquina) {
         instrucaoSql = `select top 1
         temperatura as temperatura, 
         usoCpu as processador,
-        porcentDisco as disco,
+        leitura as leitura,
+        escrita as escrita,
         usoMemoria as memoria,
                         CONVERT(varchar, momento, 108) as momento_grafico, 
                         fkMaquina 

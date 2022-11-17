@@ -61,15 +61,13 @@ function entrar(req, res) {
 }
 
 async function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var telefone = req.body.telefoneServer;
     var logradouro = req.body.logradouroServer;
     var cnpj = req.body.cnpjServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-
-    // Faça as validações dos valores
+    
     if (nome == undefined) {
         res.status(400).send("Seu usuario está undefined!");
     } else if (email == undefined) {

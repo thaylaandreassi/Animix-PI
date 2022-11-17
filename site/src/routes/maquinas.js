@@ -15,6 +15,10 @@ router.get("/plotar/:idStudio", function (req, res) {
     maquinaController.plotar(req, res);
 });
 
+router.get("/infosMaquina/:fkMaquina", function (req, res) {
+    maquinaController.infosMaquina(req, res);
+});
+
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 router.post("/cadastrar", function (req, res) {
     maquinaController.cadastrar(req, res);

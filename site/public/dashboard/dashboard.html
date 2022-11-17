@@ -3,6 +3,7 @@
 <script>
     var fkMaquina = sessionStorage.getItem('fkMaquina');
 </script>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +22,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
-<body onload="obterdados(fkMaquina), obterDadosGrafico(fkMaquina)">
+<body onload="obterdados(fkMaquina), obterDadosGrafico(fkMaquina), infosMaquina(fkMaquina)">
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
@@ -36,13 +37,6 @@
                     <span class="links_name">Pré-Dashboard</span>
                 </a>
                 <span class="tooltip">Pré-Dashboard</span>
-            </li>
-            <li>
-                <a href="dashboard.html">
-                    <i class=' bx bx-objects-horizontal-left'></i>
-                    <span class="links_name">Dashboard</span>
-                </a>
-                <span class="tooltip">Dashboard</span>
             </li>
             <li>
                 <a href="cadastro-funcionarios.html">
@@ -151,15 +145,11 @@
 
             <div class="left-section">
                 <div class="info-card">
-                    <h4> <i class="fa-solid fa-laptop"></i> Sistema operacional: <span id="sistema">Ubuntu</span> </h4>
-                    <h4> <i class="fa-solid fa-copyright"></i> Fabricante: <span id="fabricante">GNU/Linux</span> </h4>
-                    <h4> <i class="fa-solid fa-cube"></i> Arquitetura: <span id="arquitetura">64 bits</span></h4>
+                    <h4> <i class="fa-solid fa-laptop"></i> Sistema operacional: <span id="sistema"></span> </h4>
+                    <h4> <i class="fa-solid fa-copyright"></i> Fabricante: <span id="fabricante"></span> </h4>
+                    <h4> <i class="fa-solid fa-cube"></i> Arquitetura: <span id="arquitetura"></span> bits</h4>
                     <h4> <i class="fa-solid fa-flag-checkered"></i> Inicializado: <span
-                            id="inicializado">2021-03-13T16:07:18Z</span></h4>
-                    <h4> <i class="fa-solid fa-hourglass-start"></i> Tempo de atividade: <span id="atividade">3 days,
-                            06:55:53</span></h4>
-                    <h4> <i class="fa-solid fa-shield-halved"></i> Permissões: <span id="permissoes">Executando como
-                            usuário padrão</span></h4>
+                            id="inicializado"></span></h4>
                 </div>
                 <div class="quick-access">
                     <h3>Acesse outras máquinas</h3>
@@ -363,11 +353,18 @@
     const data3 = {
         labels: labels,
         datasets: [{
-            label: 'Disco em tempo real',
+            label: 'Escrita em tempo real',
+            backgroundColor: 'rgb(255, 255, 255)',
+            borderColor: 'rgb(85, 21, 66)',
+            data: [],
+        },
+        {
+            label: 'Leitura em tempo real',
             backgroundColor: 'rgb(255, 255, 255)',
             borderColor: 'rgb(85, 21, 66)',
             data: [],
         }]
+
     };
     const data4 = {
         labels: labels,
@@ -466,19 +463,25 @@
                 var maiorDisco = document.getElementById('maiordisco');
                 var maiorProcessador = document.getElementById('maiorprocessador');
                 var maiorMemoria = document.getElementById('maiormemoria');
-                if (resposta.ok) {
-                    resposta.json().then(resposta => {
-                        maiorProcessador.innerHTML = resposta[0].processador + "%";
-                        maiorDisco.innerHTML = resposta[0].disco + "%";
-                        maiorMemoria.innerHTML = resposta[0].memoria + "%";
-                        maiorTemp.innerHTML = resposta[0].temperatura + "°";
-                        qtdProcessos.innerHTML = resposta[0].processos;
-                        qtdServicos.innerHTML = resposta[0].servicos;
-                    });
-                } else {
+                fetch(`/cards/tempo-real-kpi/${fkMaquina}`).then(res2 => {
+                    if (resposta.ok) {
+                        resposta.json().then(resposta => {
+                            maiorProcessador.innerHTML = resposta[0].processador + "%";
+                            maiorMemoria.innerHTML = resposta[0].memoria + "%";
+                            maiorTemp.innerHTML = resposta[0].temperatura + "°";
+                            
+                        })
+                            res2.json().then(res2 => {
+                            qtdProcessos.innerHTML = res2[0].processos;
+                            qtdServicos.innerHTML = res2[0].servicos;
+                            maiorDisco.innerHTML = res2[0].disco + "%";
+                        });
+                    } else {
 
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
+                        console.error('Nenhum dado encontrado ou erro na API');
+                    }
+                })
+
             })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
@@ -505,13 +508,13 @@
     }
 
     function plotarGrafico(resposta, fkMaquina) {
-
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.momento_grafico);
             data.datasets[0].data.push(registro.memoria);
             data2.datasets[0].data.push(registro.processador);
-            data3.datasets[0].data.push(registro.disco);
+            data3.datasets[0].data.push(registro.leitura);
+            data3.datasets[1].data.push(registro.escrita);
             data4.datasets[0].data.push(registro.temperatura);
         }
 
@@ -545,7 +548,10 @@
                     data3.labels.push(novoRegistro[0].momento_grafico);
 
                     data3.datasets[0].data.shift();
-                    data3.datasets[0].data.push(novoRegistro[0].disco);
+                    data3.datasets[0].data.push(novoRegistro[0].leitura);
+
+                    data3.datasets[1].data.shift();
+                    data3.datasets[1].data.push(novoRegistro[0].escrita);
 
                     myChart3.update();
 
@@ -590,4 +596,17 @@
             localStorage.setItem('theme', 'light')
         }
     });
+
+    function infosMaquina(fkMaquina) {
+        fetch(`/maquinas/infosMaquina/${fkMaquina}`)
+            .then(resposta => {
+                resposta.json().then(function (res) {
+                    console.log(res[0])
+                    sistema.innerHTML = res[0].sistema;
+                    fabricante.innerHTML = res[0].fabricante;
+                    arquitetura.innerHTML = res[0].arquitetura;
+                    inicializado.innerHTML = res[0].inicializado;
+                })
+            })
+    }
 </script>

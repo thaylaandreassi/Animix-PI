@@ -73,7 +73,7 @@
                         <div class="input-group col-lg-12 mb-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                    <i class="fa fa-phone-square text-muted"></i>
+                                    <i class="fas fa-solid fa-building"></i>
                                 </span>
                             </div>
                             <input id="logradouro_ipt" type="tel" name="phone" placeholder="Logradouro"
@@ -85,7 +85,7 @@
                                     <i class="fa fa-phone-square text-muted"></i>
                                 </span>
                             </div>
-                            <input id="telefone" type="telefone" name="telefone" placeholder="Telefone"
+                            <input id="telefone_ipt" type="telefone" name="telefone" placeholder="Telefone"
                                 class="form-control bg-white border-md border-left-0 pl-3">
                         </div>
                         <div class="input-group col-lg-6 mb-4">
@@ -154,7 +154,7 @@ function mostrar() {
             document.getElementById('name_ipt').style.borderColor = "red";
             validado = false;
         }
-        if (cnpj.length != 14) {
+        if (cnpj.length != 18) {
             document.getElementById('cnpj_ipt').style.borderColor = "red";
             validado = false;
         }
@@ -213,7 +213,7 @@ function mostrar() {
 </script>
 <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
 <script>
-    var cleave = new Cleave('#telefone', {
+    var cleave = new Cleave('#telefone_ipt', {
     delimiters: ['(', ')', ' ','-'],
     blocks: [0, 2,0, 5, 4],
     uppercase: true

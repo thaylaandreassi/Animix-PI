@@ -240,7 +240,6 @@ main {
     border-radius: 12px;
     box-shadow: 6px 6px 16px var(--top-shadow),
         -6px -6px 16px var(--bottom-shadow);
-    margin-right: 180px;
     transition: all 600ms;
     padding: 24px;
 }
@@ -297,7 +296,7 @@ main {
 }
 
 .charts-container {
-    height: 145vh;
+    height: 135vh;
     width: 96vw;
     background-color: var(--background_color);
 }
@@ -353,8 +352,8 @@ main {
     background-color: var(--background_color-card);
     box-shadow: 6px 6px 16px var(--top-shadow),
         -6px -6px 16px var(--bottom-shadow);
-    height: 300px;
-    width: 45%;
+    height: 260px;
+    width: 40%;
     border-radius: 12px;
     padding: 12px;
     transition: all 600ms;
@@ -365,8 +364,8 @@ main {
     background-color: var(--background_color-card);
     box-shadow: 6px 6px 16px var(--top-shadow),
         -6px -6px 16px var(--bottom-shadow);
-    height: 300px;
-    width: 45%;
+        height: 260px;
+    width: 40%;
     border-radius: 12px;
     padding: 12px;
     transition: all 600ms;
@@ -377,7 +376,7 @@ main {
     background-color: var(--background_color-card);
     box-shadow: 6px 6px 16px var(--top-shadow),
         -6px -6px 16px var(--bottom-shadow);
-    height: 250px;
+        height: 260px;
     width: 40%;
     border-radius: 12px;
     display: flex;
