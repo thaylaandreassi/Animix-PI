@@ -1,0 +1,3 @@
+--> Data e Hora
+--> Logs para login
+--> Logs de anormalidade
