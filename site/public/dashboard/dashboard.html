@@ -18,6 +18,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/simpleheat.js"></script>
     <script src="demo/data.js"></script>
+    <script src="js/simpleheat02.js"></script>
+    <script src="demo/data02.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
@@ -53,7 +55,7 @@
                 <span class="tooltip">Máquinas</span>
             </li>
             <li>
-                <a href="https://animix.freshdesk.com/support/tickets/new">
+                <a href="#">
                     <i class='bx bx-support'></i>
                     <span class="links_name">Suporte</span>
                 </a>
@@ -148,8 +150,7 @@
                     <h4> <i class="fa-solid fa-laptop"></i> Sistema operacional: <span id="sistema"></span> </h4>
                     <h4> <i class="fa-solid fa-copyright"></i> Fabricante: <span id="fabricante"></span> </h4>
                     <h4> <i class="fa-solid fa-cube"></i> Arquitetura: <span id="arquitetura"></span> bits</h4>
-                    <h4> <i class="fa-solid fa-flag-checkered"></i> Inicializado: <span
-                            id="inicializado"></span></h4>
+                    <h4> <i class="fa-solid fa-flag-checkered"></i> Inicializado: <span id="inicializado"></span></h4>
                 </div>
                 <div class="quick-access">
                     <h3>Acesse outras máquinas</h3>
@@ -171,16 +172,18 @@
 
                 <div class="heatmap">
                     <div class="options">
-                        <input oninput="kk()" onchange="kk()" type="range" id="tink" class="iptRange" value="1" min="10"
-                            max="20"><br />
+
                         <input oninput="kk2()" type="text" id="valor" value="100" style="display: none;"><br />
                         <input type="range" id="blurr" value="19" min="10" max="50" style="display: none;">
+                        <input oninput="kk3()" type="text" id="valor2" value="100" style="display: none;"><br />
                     </div>
                     <div class="placa1">
 
                         <!--HEATMAP: COMEÇO -->
                         <div class="mapa">
-                            <canvas id="canvas" class="heatt" width=460 height=450></canvas>
+                            <canvas id="canvas" class="heatt" width=460 height=450 { willReadFrequently: true }></canvas >
+                            <canvas id="canvas2" class="heatt" width=460 height=450 { willReadFrequently: true }></canvas>
+
                             <p id="budget">Renderização: . . .</p>
                             <div class="fim2"></div>
                         </div>
@@ -193,17 +196,8 @@
 
 </html>
 <script>
-    var rangeSlider = document.getElementById("iptRange");
-    var rangeBullet = document.getElementById("rs-bullet");
-
-    rangeSlider.addEventListener("input", showSliderValue, false);
-
-    function showSliderValue() {
-        rangeBullet.innerHTML = iptRange.value;
-        var bulletPosition = (iptRange.value / iptRange.max);
-        rangeBullet.style.left = (bulletPosition * 578) + "px";
-    }
-
+    
+  
     // pode colocar isso em qualquer lugar msm
     function kk2() {
 
@@ -212,92 +206,28 @@
         heat.radius(+radius.value);
         frame = frame || window.requestAnimationFrame(draw);
 
-        if (changeType > 11) {
-            diva.style.display = 'none'
-        }
+
+    }
+    function kk3() {
+
+        var radius = get('valor2');
+
+        heat.radius(+radius.value);
+        frame2 = frame2 || window.requestAnimationFrame(draw2);
+
+
     }
 
-    function kk(params) {
-        if (document.getElementById("tink").value == 10) {
-            document.getElementById("valor").value = 3;
-            budget.innerHTML = "Renderização:  . . ."
-
-            kk2()
-        }
-        if (document.getElementById("tink").value == 11) {
-            document.getElementById("valor").value = 6;
-            budget.innerHTML = "Renderização: 10:00 - 11:00"
-
-            kk2()
-        }
-        if (document.getElementById("tink").value == 12) {
-            document.getElementById("valor").value = 7;
-            budget.innerHTML = "Renderização: 11:00 - 12:00"
-
-            kk2()
-
-        }
-        if (document.getElementById("tink").value == 13) {
-            document.getElementById("valor").value = 8;
-            budget.innerHTML = "Renderização: 12:00 - 13:00"
-
-            kk2()
-
-        }
-        if (document.getElementById("tink").value == 14) {
-            document.getElementById("valor").value = 10;
-            budget.innerHTML = "Renderização: 13:00 - 14:00"
-
-            kk2()
-
-        }
-        if (document.getElementById("tink").value == 15) {
-            document.getElementById("valor").value = 11;
-            budget.innerHTML = "Renderização: 14:00 - 15:00"
-
-            kk2()
-
-        }
-        if (document.getElementById("tink").value == 16) {
-            document.getElementById("valor").value = 10;
-            budget.innerHTML = "Renderização: 15:00 - 16:00"
-
-            kk2()
-        }
-        if (document.getElementById("tink").value == 17) {
-            document.getElementById("valor").value = 9;
-            budget.innerHTML = "Renderização: 16:00 - 17:00"
-
-            kk2()
-        }
-        if (document.getElementById("tink").value == 18) {
-            document.getElementById("valor").value = 10;
-            budget.innerHTML = "Renderização: 17:00 - 18:00"
-
-            kk2()
-        }
-        if (document.getElementById("tink").value == 19) {
-            document.getElementById("valor").value = 8;
-            budget.innerHTML = "Renderização: 18:00 - 19:00"
-
-            kk2()
-        }
-        if (document.getElementById("tink").value == 20) {
-            document.getElementById("valor").value = 6;
-            budget.innerHTML = "Renderização: 19:00 - 20:00"
-
-            kk2()
-        }
-    }
                 // Não esqueça de linkar os dos src's abaixo, sendo eles "simpleheat.js e "demo/data"
 </script>
 <script>
 
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-        window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        window.webkitRequestAnimationFrame || window.msRequestAnimationFrame
 
-    function get(id) {
-        return document.getElementById(id);
+      
+    function get(id = 'valor') {
+        return document.getElementById(id = 'valor');
     }
 
     var heat = simpleheat('canvas').data(data00).max(15),
@@ -316,6 +246,29 @@
         heat.add([e.layerX, e.layerY, 1]);
         frame = frame || window.requestAnimationFrame(draw);
     };
+
+
+    function get2(id = 'valor2') {
+        return document.getElementById(id = 'valor2');
+    }
+    var heat2 = simpleheat02('canvas2').data(data02).max(15),
+        frame2;
+
+    function draw2() {
+        console.time('draw2');
+        heat2.draw2();
+        console.timeEnd('draw2');
+        frame2 = null;
+    }
+
+    draw2();
+
+    get2('canvas2').onclick = function (a) {
+        heat2.add([a.layerX, a.layerY, 1]);
+        frame2 = frame2 || window.requestAnimationFrame(draw2);
+    };
+
+
 
 </script>
 <script>
@@ -469,9 +422,9 @@
                             maiorProcessador.innerHTML = resposta[0].processador + "%";
                             maiorMemoria.innerHTML = resposta[0].memoria + "%";
                             maiorTemp.innerHTML = resposta[0].temperatura + "°";
-                            
+
                         })
-                            res2.json().then(res2 => {
+                        res2.json().then(res2 => {
                             qtdProcessos.innerHTML = res2[0].processos;
                             qtdServicos.innerHTML = res2[0].servicos;
                             maiorDisco.innerHTML = res2[0].disco + "%";
@@ -516,6 +469,7 @@
             data3.datasets[0].data.push(registro.leitura);
             data3.datasets[1].data.push(registro.escrita);
             data4.datasets[0].data.push(registro.temperatura);
+
         }
 
         setTimeout(() => atualizarGrafico(fkMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 1500);
@@ -562,7 +516,61 @@
                     data4.datasets[0].data.push(novoRegistro[0].temperatura);
 
                     myChart4.update();
+
+
+                    if (data2.datasets[0].data[0] > 5) {
+                        document.getElementById("valor").value = 5;
+
+                        kk2()
+                    } if (data2.datasets[0].data[0] > 7) {
+                        document.getElementById("valor").value = 7;
+                        kk2()
+                    }
+                    if (data2.datasets[0].data[0] > 10) {
+                        document.getElementById("valor").value = 9;
+                        kk2()
+                    } if (data2.datasets[0].data[0] > 14) {
+                        document.getElementById("valor").value = 11;
+                        kk2()
+                    }
+                    if (data2.datasets[0].data[0] > 19) {
+                        document.getElementById("valor").value = 12;
+                        kk2()
+                    } if (data2.datasets[0].data[0] > 25) {
+                        document.getElementById("valor").value = 13;
+                        kk2()
+                    }
+                    if (data2.datasets[0].data[0] > 27) {
+                        document.getElementById("valor").value = 15;
+                        kk2()
+                    } if (data2.datasets[0].data[0] > 31) {
+                        document.getElementById("valor").value = 16;
+                        kk2()
+                    }
+                    if (data2.datasets[0].data[0] > 35) {
+                        document.getElementById("valor").value = 17;
+                        kk2()
+                    }
+                    if (data2.datasets[0].data[0] > 40) {
+                        document.getElementById("valor").value = 18;
+                        kk2()
+                    } if (data2.datasets[0].data[0] > 43) {
+                        document.getElementById("valor").value = 18.5;
+                        kk2()
+                    }
+                    if (data2.datasets[0].data[0] > 50) {
+                        document.getElementById("valor").value = 19;
+                        kk2()
+                    }
+                    if (data2.datasets[0].data[0] > 70) {
+                        document.getElementById("valor").value = 20.5;
+                        kk2()
+                    } if (data2.datasets[0].data[0] > 90) {
+                        document.getElementById("valor").value = 21;
+                        kk2()
+                    }
                 });
+
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 proximaAtualizacao = setTimeout(() => atualizarGrafico(fkMaquina, data, data2, data3, data4, data5, myChart, myChart2, myChart3, myChart4, myChart5), 1500);
@@ -571,6 +579,7 @@
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
+
     }
 
     const toggle = document.getElementById("toggle");
@@ -609,4 +618,5 @@
                 })
             })
     }
+
 </script>
