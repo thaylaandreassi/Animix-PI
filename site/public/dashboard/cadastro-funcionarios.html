@@ -104,6 +104,7 @@
         var email = email_ipt.value;
         var senha = senha_ipt.value;
         var cargo = cargo_ipt.value;
+        var fkStudio = sessionStorage.getItem('ID_STUDIO');
 
         if (nome == "" || email == "" || senha == "" || cargo == "") {
             return false;
@@ -122,6 +123,7 @@
                 emailServer: email,
                 senhaServer: senha,
                 cargoServer: cargo,
+                fkStudioServer: fkStudio,
             })
         }).then(function (resposta) {
 

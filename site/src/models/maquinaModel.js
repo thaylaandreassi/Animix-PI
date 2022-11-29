@@ -19,18 +19,18 @@ function entrar(email, senha) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function cadastrar(discoIdeal, memoriaIdeal, processadorIdeal,
-    tempIdeal, monitoraDisco, monitoraMemoria, monitoraProcessador, monitoraTemperatura) {
+function cadastrar(fkStudio, discoIdeal, memoriaIdeal, processadorIdeal,
+     monitoraDisco, monitoraMemoria, monitoraProcessador) {
     var instrucao = `
-        INSERT INTO maquinas (memoriaIdeal, discoIdeal, processamentoIdeal, monitoraDisco, monitoraProcessador,  monitoraMemoria, monitoraTemperatura, temperaturaIdeal) VALUES 
-        ('${memoriaIdeal}', '${discoIdeal}', '${processadorIdeal}', '${monitoraDisco}', '${monitoraProcessador}', '${monitoraMemoria}', '${monitoraTemperatura}', '${tempIdeal}');
+        INSERT INTO maquinas (fkStudio, memoriaIdeal, discoIdeal, processamentoIdeal, monitoraDisco, monitoraProcessador,  monitoraMemoria) VALUES 
+        ('${fkStudio}',   '${memoriaIdeal}', '${discoIdeal}', '${processadorIdeal}', '${monitoraDisco}', '${monitoraProcessador}', '${monitoraMemoria}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 function getMaquinas(idStudio) {
-    var instrucao = `select * from maquinas where fkStudio = ${idStudio} order by situacao;`
+    var instrucao = `select * from maquinas where fkStudio = ${idStudio} order by CASE WHEN situacao IS NULL THEN 3 END, situacao ;`
     return database.executar(instrucao);
 }
 

@@ -64,12 +64,10 @@ function cadastrar(req, res) {
     var discoIdeal = req.body.discoIdealServer;
     var memoriaIdeal = req.body.memoriaIdealServer;
     var processadorIdeal = req.body.processadorIdealServer;
-    var tempIdeal = req.body.tempIdealServer;
     var monitoraDisco = req.body.monitoraDiscoServer;
     var monitoraMemoria = req.body.monitoraMemoriaServer;
     var monitoraProcessador = req.body.monitoraProcessadorServer;
-    var monitoraTemperatura = req.body.monitoraTemperaturaServer;
-
+    var fkStudio = req.body.fkStudioServer;
 
     // Faça as validações dos valores
     if (discoIdeal == undefined) {
@@ -80,8 +78,8 @@ function cadastrar(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else {
         
-        maquinaModel.cadastrar(discoIdeal, memoriaIdeal, processadorIdeal,
-            tempIdeal, monitoraDisco, monitoraMemoria, monitoraProcessador, monitoraTemperatura)
+        maquinaModel.cadastrar(fkStudio, discoIdeal, memoriaIdeal, processadorIdeal,
+         monitoraDisco, monitoraMemoria, monitoraProcessador)
             .then(
                 function (resultado) {
                     res.json(resultado);

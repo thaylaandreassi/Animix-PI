@@ -96,14 +96,6 @@
                         <option value="60">60%</option>
                         <option value="70">70%</option>
                     </select>
-                    <select name="" id="tempideal_select">
-                        <option value="0">Insira a temperatura ideal</option>
-                        <option value="30">30ºC</option>
-                        <option value="40">40ºC</option>
-                        <option value="50">50ºC</option>
-                        <option value="60">60ºC</option>
-                        <option value="70">70ºC</option>
-                    </select>
                 </div>
                 <div class="right-form">
                     <h3>Opções de monitoramento da máquina</h3>
@@ -119,11 +111,6 @@
                     </select>
                     <select name="" id="memoria_bool">
                         <option value="0">Monitoramento de memória?</option>
-                        <option value="true">Sim</option>
-                        <option value="false">Não</option>
-                    </select>
-                    <select name="" id="temperatura_bool">
-                        <option value="0">Monitoramento de temperatura?</option>
                         <option value="true">Sim</option>
                         <option value="false">Não</option>
                     </select>
@@ -149,14 +136,12 @@
         var discoIdeal = discoideal_select.value;
         var memoriaIdeal = memoriaideal_select.value;
         var processadorIdeal = processadorideal_select.value;
-        var tempIdeal = tempideal_select.value;
         var monitoraDisco = disco_bool.value;
         var monitoraMemoria = memoria_bool.value;
         var monitoraProcessador = processador_bool.value;
-        var monitoraTemperatura = temperatura_bool.value;
+        var fkStudio = sessionStorage.getItem('ID_STUDIO');
 
-
-        if (discoIdeal == "" || memoriaIdeal == "" || processadorIdeal == "" || tempIdeal == "") {
+        if (discoIdeal == "" || memoriaIdeal == "" || processadorIdeal == "" ) {
             return false;
         }
         else {
@@ -172,11 +157,10 @@
                 discoIdealServer: discoIdeal,
                 memoriaIdealServer: memoriaIdeal,
                 processadorIdealServer: processadorIdeal,
-                tempIdealServer: tempIdeal,
                 monitoraDiscoServer: monitoraDisco,
                 monitoraMemoriaServer: monitoraMemoria,
                 monitoraProcessadorServer: monitoraProcessador,
-                monitoraTemperaturaServer: monitoraTemperatura,
+                fkStudioServer: fkStudio,
             })
         }).then(function (resposta) {
 

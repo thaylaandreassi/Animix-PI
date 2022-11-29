@@ -19,14 +19,11 @@ function entrar(email, senha) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
-function cadastrar(nome, email, senha, cargo) {
-    // console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", usuario, email, senha);
+function cadastrar(fkStudio, nome, email, senha, cargo) {
     
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO funcionario (nome, cargo, email, senha) VALUES 
-        ('${nome}', '${cargo}', '${email}', '${senha}');
+        INSERT INTO funcionario (fkStudio, nome, cargo, email, senha) VALUES 
+        ('${fkStudio}', '${nome}', '${cargo}', '${email}', '${senha}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
