@@ -308,6 +308,7 @@ main {
     flex-direction: row;
     align-items: center;
     color: var(--font-color-preta);
+    justify-content: space-evenly;
 }
 
 .kpi-card {
