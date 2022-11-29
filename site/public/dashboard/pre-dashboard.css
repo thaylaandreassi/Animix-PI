@@ -221,6 +221,7 @@ main {
     justify-content: space-evenly;
     transition: all 600ms;
     color: var(--font-color-preta);
+    
 }
 
 .card:hover {
