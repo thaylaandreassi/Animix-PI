@@ -11,7 +11,7 @@ router.get("/listar", function (req, res) {
     maquinaController.listar(req, res);
 });
 
-router.get("/plotar/:idStudio", function (req, res) {
+router.get("/plotar/:fkStudio", function (req, res) {
     maquinaController.plotar(req, res);
 });
 

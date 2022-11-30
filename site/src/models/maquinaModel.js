@@ -29,8 +29,8 @@ function cadastrar(fkStudio, discoIdeal, memoriaIdeal, processadorIdeal,
     return database.executar(instrucao);
 }
 
-function getMaquinas(idStudio) {
-    var instrucao = `select * from maquinas where fkStudio = ${idStudio} order by CASE WHEN situacao IS NULL THEN 3 END, situacao ;`
+function getMaquinas(fkStudio) {
+    var instrucao = `select * from maquinas where fkStudio = ${fkStudio} order by CASE WHEN situacao IS NULL THEN 3 END, situacao ;`
     return database.executar(instrucao);
 }
 

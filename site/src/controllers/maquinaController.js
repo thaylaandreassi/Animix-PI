@@ -98,9 +98,10 @@ function cadastrar(req, res) {
 }
 
 function plotar(req, res) {
-     var idStudio = req.params.idStudio;
+     var fkStudio = req.params.fkStudio;
+     console.log(fkStudio);
 
-    maquinaModel.getMaquinas(idStudio).then(
+    maquinaModel.getMaquinas(fkStudio).then(
         function (resultado) {
             res.json(resultado)
         }
